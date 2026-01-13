@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popsixle - Component Library</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .component-section {
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-8);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .component-section:last-child {
+      border-bottom: none;
+    }
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+    .component-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+      align-items: center;
+    }
+    .page-header {
+      background: linear-gradient(135deg, var(--color-primary-gradient-start), var(--color-primary-gradient-end));
+      color: white;
+      padding: var(--space-8);
+      margin-bottom: var(--space-8);
+    }
+    .page-header h1 {
+      margin: 0;
+    }
+    .page-header p {
+      margin: var(--space-2) 0 0;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-header">
+    <div class="container">
+      <h1>Popsixle Component Library</h1>
+      <p>Polaris-aligned components for the onboarding prototype</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Buttons -->
+    <section class="component-section">
+      <h2>Buttons</h2>
+      <div class="component-row">
+        <button class="btn btn-primary">Primary Button</button>
+        <button class="btn btn-secondary">Secondary Button</button>
+        <button class="btn btn-tertiary">Tertiary Button</button>
+      </div>
+      <div class="component-row">
+        <button class="btn btn-primary btn-sm">Small Primary</button>
+        <button class="btn btn-primary btn-lg">Large Primary</button>
+        <button class="btn btn-primary" disabled>Disabled</button>
+      </div>
+    </section>
+
+    <!-- Status Chips -->
+    <section class="component-section">
+      <h2>Status Chips</h2>
+      <div class="component-row">
+        <span class="status-chip status-connected">Connected</span>
+        <span class="status-chip status-not-connected">Not Connected</span>
+        <span class="status-chip status-attention">Needs Attention</span>
+        <span class="status-chip status-error">Error</span>
+        <span class="status-chip status-checking">Checking...</span>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="component-section">
+      <h2>Cards</h2>
+      <div class="component-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Card Title</h3>
+            <p class="card-subtitle">Card subtitle text</p>
+          </div>
+          <div class="card-body">
+            <p>Card body content goes here. This is a standard card component.</p>
+          </div>
+        </div>
+        <div class="card card-selectable">
+          <div class="card-body">
+            <h4>Selectable Card</h4>
+            <p class="text-secondary text-sm">Click to select</p>
+          </div>
+        </div>
+        <div class="card card-selectable selected">
+          <div class="card-body">
+            <h4>Selected Card</h4>
+            <p class="text-secondary text-sm">This card is selected</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress Bar -->
+    <section class="component-section">
+      <h2>Progress Bar</h2>
+      <div style="max-width: 400px;">
+        <p class="text-sm mb-2">0% Complete</p>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" style="width: 0%"></div>
+        </div>
+        <p class="text-sm mb-2 mt-4">40% Complete</p>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" style="width: 40%"></div>
+        </div>
+        <p class="text-sm mb-2 mt-4">100% Complete</p>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" style="width: 100%"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step Indicators -->
+    <section class="component-section">
+      <h2>Step Indicators</h2>
+      <div style="max-width: 300px;">
+        <ul class="step-list">
+          <li class="step-item completed">
+            <span class="step-number"></span>
+            <div class="step-content">
+              <span class="step-title">Product Type</span>
+            </div>
+          </li>
+          <li class="step-item active">
+            <span class="step-number">2</span>
+            <div class="step-content">
+              <span class="step-title">Pixel Setup</span>
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-number">3</span>
+            <div class="step-content">
+              <span class="step-title">Special Cases</span>
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-number">4</span>
+            <div class="step-content">
+              <span class="step-title">Review</span>
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-number">5</span>
+            <div class="step-content">
+              <span class="step-title">Channels</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Radio Cards -->
+    <section class="component-section">
+      <h2>Radio Cards (Product Type Selection)</h2>
+      <div class="component-grid">
+        <label class="radio-card">
+          <input type="radio" name="demo-type" class="radio-card-input">
+          <span class="radio-card-indicator"></span>
+          <div class="radio-card-content">
+            <span class="radio-card-title">Regular Products</span>
+            <span class="radio-card-description">Clothing, home goods, electronics</span>
+          </div>
+        </label>
+        <label class="radio-card selected">
+          <input type="radio" name="demo-type" class="radio-card-input" checked>
+          <span class="radio-card-indicator"></span>
+          <div class="radio-card-content">
+            <span class="radio-card-title">Health & Wellness</span>
+            <span class="radio-card-description">Supplements, fitness, beauty</span>
+          </div>
+        </label>
+      </div>
+    </section>
+
+    <!-- Toggles -->
+    <section class="component-section">
+      <h2>Toggle Switches</h2>
+      <div class="component-row">
+        <label class="toggle">
+          <input type="checkbox" class="toggle-input">
+          <span class="toggle-switch"></span>
+          <span class="toggle-label">Landing Page Tracking</span>
+        </label>
+      </div>
+      <div class="component-row">
+        <label class="toggle">
+          <input type="checkbox" class="toggle-input" checked>
+          <span class="toggle-switch"></span>
+          <span class="toggle-label">Enabled Option</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Banners -->
+    <section class="component-section">
+      <h2>Banners / Alerts</h2>
+      <div class="banner banner-warning">
+        <span class="banner-icon">&#9888;</span>
+        <div class="banner-content">
+          <div class="banner-title">Enable app embed on theme</div>
+          <div class="banner-message">To start tracking events, please enable the Popsixle app embed block.</div>
+        </div>
+        <div class="banner-action">
+          <button class="btn btn-sm btn-secondary">Enable</button>
+        </div>
+      </div>
+      <div class="banner banner-info">
+        <span class="banner-icon">&#8505;</span>
+        <div class="banner-content">
+          <div class="banner-title">Unrestricted Products</div>
+          <div class="banner-message">Your product type may require our Unrestricted offering for compliance.</div>
+        </div>
+      </div>
+      <div class="banner banner-success">
+        <span class="banner-icon">&#10003;</span>
+        <div class="banner-content">
+          <div class="banner-title">Pixel Enabled</div>
+          <div class="banner-message">Popsixle Pixel is active and tracking events.</div>
+        </div>
+      </div>
+      <div class="banner banner-error">
+        <span class="banner-icon">&#10005;</span>
+        <div class="banner-content">
+          <div class="banner-title">Connection Failed</div>
+          <div class="banner-message">Unable to connect to Meta. Please try again.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Channel Cards -->
+    <section class="component-section">
+      <h2>Channel Cards</h2>
+      <div style="max-width: 500px; display: flex; flex-direction: column; gap: var(--space-3);">
+        <div class="channel-card" data-channel="meta">
+          <div class="channel-icon channel-icon-meta">f</div>
+          <div class="channel-info">
+            <div class="channel-name">Meta (Facebook / Instagram)</div>
+            <div class="channel-status">
+              <span class="status-chip status-connected">Events Tracked</span>
+            </div>
+          </div>
+          <div class="channel-action">
+            <button class="btn btn-secondary btn-sm" disabled>Connected</button>
+          </div>
+        </div>
+        <div class="channel-card" data-channel="google">
+          <div class="channel-icon channel-icon-google">G</div>
+          <div class="channel-info">
+            <div class="channel-name">Google Ads</div>
+            <div class="channel-status">
+              <span class="status-chip status-not-connected">Not Connected</span>
+            </div>
+          </div>
+          <div class="channel-action">
+            <button class="btn btn-primary btn-sm">Connect</button>
+          </div>
+        </div>
+        <div class="channel-card" data-channel="tiktok">
+          <div class="channel-icon channel-icon-tiktok">T</div>
+          <div class="channel-info">
+            <div class="channel-name">TikTok</div>
+            <div class="channel-status">
+              <span class="status-chip status-attention">Needs Attention</span>
+            </div>
+          </div>
+          <div class="channel-action">
+            <button class="btn btn-secondary btn-sm">Reconnect</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accordion -->
+    <section class="component-section">
+      <h2>Accordion</h2>
+      <div class="accordion" style="max-width: 500px;">
+        <div class="accordion-item open">
+          <div class="accordion-header">
+            <span class="accordion-title">See pricing details</span>
+            <span class="accordion-icon">&#9660;</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p><strong>Base fee:</strong> $95/month</p>
+              <p><strong>Usage fee:</strong> $1 per $1,000 in processed purchase revenue (after first $10K)</p>
+              <p><strong>Trial:</strong> 14 days free</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="accordion-title">Why do I need the Popsixle Pixel?</span>
+            <span class="accordion-icon">&#9660;</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>The pixel captures conversion events from your store and sends them server-side to ad platforms.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Celebration -->
+    <section class="component-section">
+      <h2>Success Celebration</h2>
+      <div class="card" style="max-width: 500px;">
+        <div class="celebration">
+          <div class="celebration-icon">&#127881;</div>
+          <h3 class="celebration-title">You're all set!</h3>
+          <p class="celebration-message">Your Popsixle setup is complete. Start tracking your ad performance.</p>
+          <button class="btn btn-primary btn-lg">Go to Dashboard</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Loading Spinner -->
+    <section class="component-section">
+      <h2>Loading Spinner</h2>
+      <div class="component-row">
+        <div class="spinner"></div>
+        <button class="btn btn-primary">
+          <span class="spinner" style="border-top-color: white;"></span>
+          Connecting...
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,3744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popsixle - Get Started</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* ============================================
+       PRICING SCREEN - Clean Elevar-inspired Style
+       ============================================ */
+    .pricing-screen {
+      min-height: 100vh;
+      background: #FAFBFC;
+    }
+
+    .pricing-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: var(--space-4) var(--space-6);
+      background: white;
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .pricing-logo {
+      height: 32px;
+    }
+
+    .pricing-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: var(--space-10) var(--space-6);
+    }
+
+    .pricing-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+
+    .pricing-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pricing-header {
+      margin-bottom: var(--space-6);
+    }
+
+    .pricing-header h1 {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin: 0 0 var(--space-2);
+    }
+
+    .pricing-header p {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+
+    .pricing-header p strong {
+      color: var(--color-primary);
+    }
+
+    .pricing-card {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pricing-plan-name {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--space-2);
+    }
+
+    .pricing-amount {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-1);
+      margin-bottom: var(--space-4);
+    }
+
+    .pricing-amount-value {
+      font-size: 36px;
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+    }
+
+    .pricing-amount-period {
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+    }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--space-6);
+      flex: 1;
+    }
+
+    .pricing-feature {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+      font-size: var(--font-size-sm);
+      color: var(--color-text-primary);
+    }
+
+    .pricing-feature-icon {
+      color: var(--color-success);
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .pricing-feature-plus {
+      color: var(--color-text-muted);
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .pricing-feature .tooltip {
+      margin-left: var(--space-1);
+      color: var(--color-text-muted);
+      cursor: help;
+    }
+
+    .pricing-cta {
+      width: 100%;
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      background: #A855F7;
+      border: none;
+      border-radius: var(--radius-md);
+      color: white;
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+
+    .pricing-cta:hover {
+      background: #9333EA;
+    }
+
+    .pricing-details-section {
+      margin-top: var(--space-6);
+      text-align: center;
+    }
+
+    .pricing-details-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--font-size-sm);
+      color: var(--color-primary);
+      cursor: pointer;
+    }
+
+    .pricing-details-link:hover {
+      text-decoration: underline;
+    }
+
+    .pricing-details-icon {
+      font-size: 10px;
+      transition: transform var(--transition-fast);
+    }
+
+    .pricing-details.open .pricing-details-icon {
+      transform: rotate(180deg);
+    }
+
+    .pricing-details-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-normal);
+    }
+
+    .pricing-details.open .pricing-details-content {
+      max-height: 400px;
+    }
+
+    .pricing-details-body {
+      text-align: left;
+      padding: var(--space-4);
+      margin-top: var(--space-4);
+      background: #F9FAFB;
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+    }
+
+    .pricing-details-body p {
+      margin: 0 0 var(--space-2);
+    }
+
+    .pricing-details-body ul {
+      margin: var(--space-2) 0;
+      padding-left: var(--space-5);
+    }
+
+    .pricing-details-body li {
+      margin-bottom: var(--space-2);
+    }
+
+    /* Right Column - Two Stacked Cards */
+    .pricing-right {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .pricing-trust {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .pricing-trust-label {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--space-4);
+    }
+
+    .pricing-trust-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .pricing-trust-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) 0;
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-primary);
+    }
+
+    .pricing-trust-icon {
+      color: var(--color-success);
+      font-size: 16px;
+      flex-shrink: 0;
+      font-weight: bold;
+    }
+
+    .pricing-quote {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .pricing-quote-text {
+      font-size: var(--font-size-base);
+      color: var(--color-text-primary);
+      font-style: italic;
+      line-height: 1.7;
+      margin: 0 0 var(--space-4);
+    }
+
+    .pricing-quote-author {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      font-weight: var(--font-weight-semibold);
+      margin: 0;
+    }
+
+    /* ============================================
+       WIZARD SCREEN STYLES
+       ============================================ */
+    .wizard-screen {
+      display: none;
+      min-height: 100vh;
+      background: #FAFBFC;
+    }
+
+    .wizard-screen.active {
+      display: flex;
+    }
+
+    /* ============================================
+       OUTER SIDEBAR (Elevar-style App Navigation)
+       ============================================ */
+    .wizard-app-layout {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    .outer-sidebar {
+      width: 240px;
+      background: #FFFFFF;
+      border-right: 1px solid #E2E8F0;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .outer-sidebar-header {
+      padding: 20px 16px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .outer-sidebar-store {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .outer-sidebar-store-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #D946EF 0%, #8B5CF6 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .outer-sidebar-store-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .outer-sidebar-store-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .outer-sidebar-store-label {
+      font-size: 11px;
+      color: #94A3B8;
+    }
+
+    .outer-sidebar-store-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1E293B;
+    }
+
+    /* Main Navigation */
+    .outer-sidebar-nav {
+      padding: 16px 12px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .outer-sidebar-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #64748B;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .outer-sidebar-nav-item:hover {
+      background: #F8FAFC;
+      color: #1E293B;
+      text-decoration: none;
+    }
+
+    .outer-sidebar-nav-item.active {
+      background: #FAF5FF;
+      color: #A855F7;
+    }
+
+    .outer-sidebar-nav-item svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Setup Assistance Section */
+    .outer-sidebar-section {
+      padding: 16px 12px;
+      flex: 1;
+    }
+
+    .outer-sidebar-section-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0 12px;
+      margin-bottom: 8px;
+    }
+
+    .outer-sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #64748B;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .outer-sidebar-link:hover {
+      background: #F8FAFC;
+      color: #1E293B;
+      text-decoration: none;
+    }
+
+    .outer-sidebar-link svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: #94A3B8;
+    }
+
+    .outer-sidebar-link img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* User Footer */
+    .outer-sidebar-footer {
+      padding: 16px 12px;
+      border-top: 1px solid #E2E8F0;
+    }
+
+    .outer-sidebar-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .outer-sidebar-user:hover {
+      background: #F8FAFC;
+    }
+
+    .outer-sidebar-user-avatar {
+      width: 32px;
+      height: 32px;
+      background: #E2E8F0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748B;
+    }
+
+    .outer-sidebar-user-avatar svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .outer-sidebar-user-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1E293B;
+    }
+
+    /* ============================================
+       INNER LAYOUT (Setup Steps + Main + Explanation)
+       ============================================ */
+    .wizard-inner-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      flex: 1;
+      min-height: 100vh;
+      background: #FAFBFC;
+    }
+
+    /* Content Area (Main + Explanation side by side) */
+    .wizard-content-area {
+      display: flex;
+      gap: 24px;
+      padding: 32px;
+      align-items: flex-start;
+    }
+
+    /* Explanation Panel (White card next to wizard) */
+    .explanation-panel {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 24px;
+      width: 340px;
+      min-width: 340px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 32px;
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .explanation-content {
+      display: none;
+    }
+
+    .explanation-content.active {
+      display: block;
+    }
+
+    .explanation-header {
+      margin-bottom: 20px;
+    }
+
+    .explanation-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #A855F7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .explanation-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1E293B;
+      margin: 0;
+    }
+
+    .explanation-body {
+      font-size: 14px;
+      color: #64748B;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .explanation-body p {
+      margin: 0 0 12px;
+    }
+
+    .explanation-section {
+      margin-bottom: 24px;
+    }
+
+    .explanation-section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1E293B;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .explanation-section-title svg {
+      width: 16px;
+      height: 16px;
+      color: #A855F7;
+    }
+
+    .faq-item {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .faq-question {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1E293B;
+      margin-bottom: 6px;
+    }
+
+    .faq-answer {
+      font-size: 13px;
+      color: #64748B;
+      line-height: 1.5;
+    }
+
+    /* Setup Steps Panel */
+    .setup-steps-panel {
+      background: #F8FAFC;
+      border-right: 1px solid #E2E8F0;
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .setup-steps-header {
+      padding: 24px 24px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wizard-main-header {
+      display: flex;
+      justify-content: flex-end;
+      padding: 16px 0 0 0;
+    }
+
+    .skip-to-dashboard {
+      font-size: 13px;
+      color: #64748B;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .skip-to-dashboard:hover {
+      color: #A855F7;
+      text-decoration: underline;
+    }
+
+    .setup-steps-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1E293B;
+    }
+
+    .setup-steps-progress {
+      font-size: 13px;
+      font-weight: 500;
+      color: #64748B;
+    }
+
+    .setup-steps-list {
+      flex: 1;
+      padding: 0 24px;
+      overflow-y: auto;
+    }
+
+    .setup-steps-footer {
+      padding: 16px 24px;
+      border-top: 1px solid #E2E8F0;
+      background: white;
+    }
+
+    .setup-steps-footer-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #A855F7;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .setup-steps-footer-link:hover {
+      text-decoration: underline;
+    }
+
+    .setup-steps-footer-avatars {
+      display: flex;
+      margin-right: 4px;
+    }
+
+    .setup-steps-footer-avatars img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid white;
+      object-fit: cover;
+    }
+
+    /* Wizard Navigation (Modern B2B) */
+    .wizard-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: white;
+      border-bottom: 1px solid #E2E8F0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .wizard-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .wizard-logo {
+      height: 32px;
+    }
+
+    .wizard-nav-progress {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-left: 20px;
+      border-left: 1px solid #E2E8F0;
+    }
+
+    .wizard-step-counter {
+      font-size: 13px;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    .wizard-progress-bar {
+      width: 120px;
+      height: 4px;
+      background: #E2E8F0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .wizard-progress-fill {
+      height: 100%;
+      background: #A855F7;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .wizard-nav-right a {
+      font-size: 13px;
+      color: #64748B;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .wizard-nav-right a:hover {
+      color: #1E293B;
+    }
+
+    /* Wizard Layout */
+    .wizard-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      min-height: calc(100vh - 65px);
+      position: relative;
+    }
+
+    /* Wizard Sidebar (Modern B2B) */
+    .wizard-sidebar {
+      background: #F8FAFC;
+      border-right: 1px solid #E2E8F0;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wizard-steps {
+      flex: 1;
+    }
+
+    .wizard-step-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .wizard-step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      position: relative;
+    }
+
+    .wizard-step-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 36px;
+      bottom: 0;
+      width: 2px;
+      background: #E2E8F0;
+    }
+
+    .wizard-step-item.completed:not(:last-child)::after {
+      background: #A855F7;
+    }
+
+    .wizard-step-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 500;
+      flex-shrink: 0;
+      background: white;
+      border: 2px solid #E2E8F0;
+      color: #94A3B8;
+    }
+
+    .wizard-step-item.active .wizard-step-number {
+      background: #A855F7;
+      border-color: #A855F7;
+      color: white;
+    }
+
+    .wizard-step-item.completed .wizard-step-number {
+      background: #A855F7;
+      border-color: #A855F7;
+      color: white;
+    }
+
+    .wizard-step-content {
+      flex: 1;
+      padding-top: 2px;
+    }
+
+    .wizard-step-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #94A3B8;
+    }
+
+    .wizard-step-item.active .wizard-step-title {
+      color: #1E293B;
+    }
+
+    .wizard-step-item.completed .wizard-step-title {
+      color: #1E293B;
+    }
+
+    /* Help Panel - Floating Persistent Card */
+    .wizard-help-panel {
+      position: fixed;
+      right: 24px;
+      top: 89px;
+      width: 320px;
+      z-index: 50;
+    }
+
+    .wizard-help-card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 10px 24px rgba(0,0,0,0.08);
+    }
+
+    .wizard-help-header {
+      margin-bottom: 16px;
+    }
+
+    .wizard-help-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1E293B;
+    }
+
+    .wizard-help-description {
+      font-size: 14px;
+      color: #64748B;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .wizard-help-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .wizard-help-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .wizard-help-btn:hover {
+      background: white;
+      border-color: #CBD5E1;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transform: translateY(-1px);
+    }
+
+    .wizard-help-btn-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .wizard-help-btn-icon svg {
+      width: 22px;
+      height: 22px;
+      color: #A855F7;
+    }
+
+    .wizard-help-btn-content {
+      flex: 1;
+      text-align: left;
+    }
+
+    .wizard-help-btn-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: #1E293B;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .wizard-help-btn-subtitle {
+      font-size: 13px;
+      color: #64748B;
+      display: block;
+    }
+
+    .wizard-help-btn-arrow {
+      color: #94A3B8;
+      font-size: 16px;
+    }
+
+    .wizard-help-btn.primary {
+      background: #A855F7;
+      border-color: #A855F7;
+    }
+
+    .wizard-help-btn.primary:hover {
+      background: #9333EA;
+      border-color: #9333EA;
+    }
+
+    .wizard-help-btn.primary .wizard-help-btn-icon {
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .wizard-help-btn.primary .wizard-help-btn-icon svg {
+      color: white;
+    }
+
+    .wizard-help-btn-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .wizard-help-btn.primary .wizard-help-btn-title {
+      color: white;
+    }
+
+    .wizard-help-btn.primary .wizard-help-btn-subtitle {
+      color: rgba(255,255,255,0.8);
+    }
+
+    .wizard-help-btn.primary .wizard-help-btn-arrow {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .wizard-help-footer {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #E2E8F0;
+    }
+
+    .wizard-help-footer-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #A855F7;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .wizard-help-footer-link:hover {
+      color: #9333EA;
+    }
+
+    .wizard-help-footer-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Wizard Main Content (Modern B2B) */
+    .wizard-main {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 32px 40px;
+      flex: 1;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .wizard-content-header {
+      margin-bottom: 28px;
+    }
+
+    .wizard-content-header h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #1E293B;
+      margin: 0 0 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .wizard-content-header p {
+      font-size: 14px;
+      color: #64748B;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .wizard-content-body {
+      margin-bottom: 32px;
+      flex: 1;
+    }
+
+    /* Step Content Panels */
+    .step-panel {
+      display: none;
+      height: 100%;
+    }
+
+    .step-panel.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Wizard Footer / Navigation (Modern B2B) */
+    .wizard-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 24px;
+      border-top: 1px solid #E2E8F0;
+      margin-top: auto;
+    }
+
+    .wizard-footer-left {
+      display: flex;
+      gap: 12px;
+    }
+
+    .wizard-footer-right {
+      display: flex;
+      gap: 12px;
+    }
+
+    .wizard-btn {
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .wizard-btn-primary {
+      background: #A855F7;
+      color: white;
+      border: none;
+      box-shadow: 0 1px 2px rgba(168, 85, 247, 0.2);
+    }
+
+    .wizard-btn-primary:hover {
+      background: #9333EA;
+      box-shadow: 0 2px 4px rgba(168, 85, 247, 0.3);
+    }
+
+    .wizard-btn-primary:disabled {
+      background: #E2E8F0;
+      color: #94A3B8;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .wizard-btn-secondary {
+      background: white;
+      color: #1E293B;
+      border: 1px solid #E2E8F0;
+    }
+
+    .wizard-btn-secondary:hover {
+      background: #F8FAFC;
+      border-color: #CBD5E1;
+    }
+
+    .wizard-btn-text {
+      background: none;
+      border: none;
+      color: #64748B;
+      padding: 10px 12px;
+    }
+
+    .wizard-btn-text:hover {
+      color: #1E293B;
+    }
+
+    /* ============================================
+       STEP 1: PRODUCT TYPE SELECTION (Modern B2B)
+       ============================================ */
+    .product-type-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .product-type-card {
+      display: block;
+      cursor: pointer;
+    }
+
+    .product-type-input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .product-type-content {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      transition: all 0.15s ease;
+    }
+
+    .product-type-card:hover .product-type-content {
+      border-color: #CBD5E1;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .product-type-input:checked + .product-type-content {
+      border-color: #A855F7;
+      background: #FAF5FF;
+      box-shadow: 0 0 0 1px #A855F7;
+    }
+
+    .product-type-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #F1F5F9;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .product-type-icon svg {
+      width: 20px;
+      height: 20px;
+      color: #64748B;
+    }
+
+    .product-type-input:checked + .product-type-content .product-type-icon {
+      background: #F3E8FF;
+    }
+
+    .product-type-input:checked + .product-type-content .product-type-icon svg {
+      color: #A855F7;
+    }
+
+    .product-type-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .product-type-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1E293B;
+    }
+
+    .product-type-description {
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .product-type-indicator {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #CBD5E1;
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
+      transition: all 0.15s ease;
+    }
+
+    .product-type-input:checked + .product-type-content .product-type-indicator {
+      border-color: #A855F7;
+      background: #A855F7;
+    }
+
+    .product-type-input:checked + .product-type-content .product-type-indicator::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    /* Tooltip (Modern) */
+    .tooltip-trigger {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      margin-left: 4px;
+    }
+
+    .tooltip-icon {
+      color: #94A3B8;
+      cursor: help;
+      font-size: 14px;
+    }
+
+    .tooltip-content {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1E293B;
+      color: white;
+      font-size: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      width: 240px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s ease, visibility 0.15s ease;
+      z-index: 100;
+      line-height: 1.5;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .tooltip-content::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #1E293B;
+    }
+
+    .tooltip-trigger:hover .tooltip-content {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Unrestricted Banner (Modern) */
+    .unrestricted-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      margin-top: 16px;
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: 10px;
+    }
+
+    .unrestricted-banner.hidden {
+      display: none;
+    }
+
+    .unrestricted-banner-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FEF3C7;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .unrestricted-banner-icon svg {
+      width: 18px;
+      height: 18px;
+      color: #D97706;
+    }
+
+    .unrestricted-banner-content {
+      flex: 1;
+    }
+
+    .unrestricted-banner-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #92400E;
+      margin-bottom: 4px;
+    }
+
+    .unrestricted-banner-text {
+      font-size: 13px;
+      color: #A16207;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .unrestricted-banner-link {
+      font-size: 13px;
+      color: #A855F7;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .unrestricted-banner-link:hover {
+      color: #9333EA;
+    }
+
+    /* ============================================
+       OVERVIEW/WELCOME PAGE
+       ============================================ */
+    .overview-panel {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .overview-hero {
+      text-align: center;
+      padding: 40px 0;
+      margin-bottom: 32px;
+    }
+
+    .overview-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #D946EF 0%, #8B5CF6 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+
+    .overview-icon svg {
+      width: 32px;
+      height: 32px;
+      color: white;
+    }
+
+    .overview-hero h1 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #1E293B;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .overview-hero p {
+      font-size: 16px;
+      color: #64748B;
+      margin: 0;
+      line-height: 1.6;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .overview-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .overview-step {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+    }
+
+    .overview-step-number {
+      width: 32px;
+      height: 32px;
+      background: #F1F5F9;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #64748B;
+      flex-shrink: 0;
+    }
+
+    .overview-step-text {
+      flex: 1;
+    }
+
+    .overview-step-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1E293B;
+      margin-bottom: 2px;
+    }
+
+    .overview-step-desc {
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .overview-step-time {
+      font-size: 12px;
+      color: #94A3B8;
+      font-weight: 500;
+    }
+
+    .overview-cta {
+      text-align: center;
+    }
+
+    .overview-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: #A855F7;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      box-shadow: 0 2px 4px rgba(168, 85, 247, 0.2);
+    }
+
+    .overview-cta-btn:hover {
+      background: #9333EA;
+      box-shadow: 0 4px 8px rgba(168, 85, 247, 0.3);
+    }
+
+    .overview-time-estimate {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .overview-time-estimate svg {
+      width: 14px;
+      height: 14px;
+      vertical-align: -2px;
+      margin-right: 4px;
+    }
+
+    /* ============================================
+       STEP 2: PIXEL SETUP
+       ============================================ */
+
+    /* Education Accordion */
+    .pixel-education {
+      margin-bottom: 24px;
+    }
+
+    .pixel-accordion {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .pixel-accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .pixel-accordion-header:hover {
+      background: #F8FAFC;
+    }
+
+    .pixel-accordion-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1E293B;
+    }
+
+    .pixel-accordion-title svg {
+      width: 20px;
+      height: 20px;
+      color: #A855F7;
+    }
+
+    .pixel-accordion-icon {
+      color: #94A3B8;
+      transition: transform 0.2s ease;
+    }
+
+    .pixel-accordion.open .pixel-accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    .pixel-accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .pixel-accordion.open .pixel-accordion-content {
+      max-height: 500px;
+    }
+
+    .pixel-accordion-body {
+      padding: 0 20px 20px;
+      border-top: 1px solid #E2E8F0;
+    }
+
+    .pixel-explanation {
+      padding-top: 16px;
+    }
+
+    .pixel-explanation p {
+      font-size: 14px;
+      color: #64748B;
+      line-height: 1.6;
+      margin: 0 0 16px;
+    }
+
+    .pixel-flow-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px;
+      background: #F8FAFC;
+      border-radius: 8px;
+      margin-top: 16px;
+    }
+
+    .pixel-flow-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pixel-flow-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+    }
+
+    .pixel-flow-icon svg {
+      width: 24px;
+      height: 24px;
+      color: #64748B;
+    }
+
+    .pixel-flow-icon.purple {
+      background: #FAF5FF;
+      border-color: #E9D5FF;
+    }
+
+    .pixel-flow-icon.purple svg {
+      color: #A855F7;
+    }
+
+    .pixel-flow-label {
+      font-size: 12px;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    .pixel-flow-arrow {
+      color: #CBD5E1;
+      font-size: 20px;
+    }
+
+    /* Setup Instructions Card */
+    .pixel-setup-card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .pixel-setup-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .pixel-setup-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1E293B;
+      margin-bottom: 4px;
+    }
+
+    .pixel-setup-subtitle {
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .pixel-setup-badge {
+      font-size: 11px;
+      font-weight: 500;
+      color: #A855F7;
+      background: #FAF5FF;
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+
+    .pixel-setup-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .pixel-setup-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .pixel-setup-step-number {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #F1F5F9;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748B;
+      flex-shrink: 0;
+    }
+
+    .pixel-setup-step-text {
+      font-size: 14px;
+      color: #1E293B;
+      line-height: 1.5;
+      padding-top: 2px;
+    }
+
+    .pixel-setup-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .pixel-open-editor-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: #A855F7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .pixel-open-editor-btn:hover {
+      background: #9333EA;
+    }
+
+    .pixel-open-editor-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .pixel-show-how-link {
+      font-size: 13px;
+      color: #A855F7;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .pixel-show-how-link:hover {
+      color: #9333EA;
+    }
+
+    /* Compact Status Badge (in card header) */
+    .pixel-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .pixel-status-badge .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .pixel-status-badge.status-not-detected {
+      background: #F1F5F9;
+      color: #64748B;
+    }
+
+    .pixel-status-badge.status-not-detected .status-dot {
+      background: #94A3B8;
+    }
+
+    .pixel-status-badge.status-not-detected.checked {
+      background: #FEF2F2;
+      color: #DC2626;
+    }
+
+    .pixel-status-badge.status-not-detected.checked .status-dot {
+      background: #EF4444;
+    }
+
+    .pixel-status-badge.status-enabled {
+      background: #ECFDF5;
+      color: #059669;
+    }
+
+    .pixel-status-badge.status-enabled .status-dot {
+      background: #10B981;
+    }
+
+    /* Demo Controls */
+    .pixel-demo-controls {
+      margin-top: 20px;
+      padding: 16px;
+      background: #F1F5F9;
+      border-radius: 8px;
+      border: 1px dashed #CBD5E1;
+    }
+
+    .pixel-demo-controls-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .pixel-demo-controls-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pixel-demo-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .pixel-demo-btn:hover {
+      background: #F8FAFC;
+    }
+
+    /* ============================================
+       STEP 3: SPECIAL CASES
+       ============================================ */
+    .special-cases-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .special-case-item {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      transition: all 0.15s ease;
+    }
+
+    .special-case-item:hover {
+      border-color: #CBD5E1;
+    }
+
+    .special-case-item.selected {
+      border-color: #A855F7;
+      background: #FAF5FF;
+    }
+
+    .special-case-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .special-case-info {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .special-case-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #F1F5F9;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .special-case-icon svg {
+      width: 18px;
+      height: 18px;
+      color: #64748B;
+    }
+
+    .special-case-item.selected .special-case-icon {
+      background: #F3E8FF;
+    }
+
+    .special-case-item.selected .special-case-icon svg {
+      color: #A855F7;
+    }
+
+    .special-case-text {
+      flex: 1;
+    }
+
+    .special-case-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1E293B;
+      margin-bottom: 2px;
+    }
+
+    .special-case-description {
+      font-size: 13px;
+      color: #1E293B;
+    }
+
+    /* Toggle Switch */
+    .special-case-toggle {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .special-case-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .special-case-toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #E2E8F0;
+      border-radius: 24px;
+      transition: all 0.2s ease;
+    }
+
+    .special-case-toggle-slider::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      left: 3px;
+      bottom: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .special-case-toggle input:checked + .special-case-toggle-slider {
+      background: #A855F7;
+    }
+
+    .special-case-toggle input:checked + .special-case-toggle-slider::before {
+      transform: translateX(20px);
+    }
+
+    .special-case-learn-more {
+      font-size: 12px;
+      color: #A855F7;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .special-case-learn-more:hover {
+      color: #9333EA;
+    }
+
+    .special-cases-note {
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: #F8FAFC;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #1E293B;
+    }
+
+    .special-case-url-input {
+      margin-top: 12px;
+      padding: 12px 16px;
+      background: #F8FAFC;
+      border-radius: 6px;
+      border-top: 1px solid #E2E8F0;
+    }
+
+    .special-case-url-input label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: #64748B;
+      margin-bottom: 6px;
+    }
+
+    .url-input-field {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #1E293B;
+      background: white;
+      box-sizing: border-box;
+    }
+
+    .url-input-field:focus {
+      outline: none;
+      border-color: #A855F7;
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+    }
+
+    .url-input-field::placeholder {
+      color: #94A3B8;
+    }
+
+    /* Live Chat Button */
+    .live-chat-button {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      background: #A855F7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      z-index: 9999;
+      border: none;
+    }
+
+    .live-chat-button:hover {
+      transform: scale(1.05);
+      background: #9333EA;
+      box-shadow: 0 6px 16px rgba(168, 85, 247, 0.5);
+    }
+
+    .live-chat-button:active {
+      transform: scale(0.98);
+    }
+
+    .live-chat-icon {
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    /* Step 4: Review Configuration */
+    .review-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .review-item {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .review-item-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .review-item-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748B;
+    }
+
+    .review-item-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .review-item-icon.success {
+      background: #ECFDF5;
+      color: #10B981;
+    }
+
+    .review-item-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .review-item-label {
+      font-size: 12px;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .review-item-value {
+      font-size: 15px;
+      color: #1E293B;
+      font-weight: 500;
+    }
+
+    .review-item-edit {
+      font-size: 13px;
+      color: #A855F7;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .review-item-edit:hover {
+      color: #9333EA;
+      text-decoration: underline;
+    }
+
+    .review-summary {
+      margin-top: 20px;
+      padding: 16px;
+      background: #F0FDF4;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-summary-icon {
+      color: #10B981;
+      font-size: 20px;
+    }
+
+    .review-summary-text {
+      font-size: 14px;
+      color: #1E293B;
+    }
+
+    /* Step 5: Channel Connect */
+    .channel-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 28px 24px;
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+
+    .channel-flow-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .channel-flow-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .channel-flow-icon svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .channel-flow-icon.shopify {
+      background: #95BF47;
+      color: white;
+    }
+
+    .channel-flow-icon.popsixle {
+      background: linear-gradient(135deg, #D946EF, #8B5CF6);
+      color: white;
+    }
+
+    .channel-flow-icon.channels {
+      background: #F1F5F9;
+      color: #64748B;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .channel-flow-label {
+      font-size: 12px;
+      color: #64748B;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .channel-flow-arrow {
+      color: #CBD5E1;
+      font-size: 24px;
+      margin-top: -24px;
+    }
+
+    .channel-connect-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .channel-connect-card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .channel-connect-card.connected {
+      border-color: #10B981;
+      background: #F0FDF4;
+    }
+
+    .channel-connect-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .channel-connect-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .channel-connect-icon.meta {
+      background: #1877F2;
+      color: white;
+    }
+
+    .channel-connect-icon.google {
+      background: white;
+      border: 1px solid #E2E8F0;
+    }
+
+    .channel-connect-icon.tiktok {
+      background: #000000;
+      color: white;
+    }
+
+    .channel-connect-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .channel-connect-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: #1E293B;
+    }
+
+    .channel-connect-status {
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .channel-connect-status.connected {
+      color: #10B981;
+    }
+
+    .channel-connect-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .channel-connect-btn {
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .channel-connect-btn.connect {
+      background: #A855F7;
+      color: white;
+    }
+
+    .channel-connect-btn.connect:hover {
+      background: #9333EA;
+    }
+
+    .channel-connect-btn.connected {
+      background: #D1FAE5;
+      color: #059669;
+      cursor: default;
+    }
+
+    .channel-connect-check {
+      color: #10B981;
+      font-size: 20px;
+    }
+
+    .channel-note {
+      margin-top: 16px;
+      font-size: 13px;
+      color: #64748B;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- ============================================
+       PRICING SCREEN (Pre-Step) - Clean Style
+       ============================================ -->
+  <div id="pricing-screen" class="pricing-screen">
+    <!-- Navigation -->
+    <nav class="pricing-nav">
+      <img src="popsixle_logo_gradient_circle_500 (1).png" alt="Popsixle" class="pricing-logo">
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pricing-main">
+      <div class="pricing-header">
+        <h1>Start Tracking All Your Conversions</h1>
+        <p>Join <strong>200+ brands</strong> getting 20% better ad performance</p>
+      </div>
+
+      <!-- Two Column Layout -->
+      <div class="pricing-layout">
+        <!-- Left Column - Pricing Card -->
+        <div class="pricing-left">
+          <div class="pricing-card">
+            <div class="pricing-plan-name">Popsixle Core</div>
+            <div class="pricing-amount">
+              <span class="pricing-amount-value">$95</span>
+              <span class="pricing-amount-period">/month</span>
+            </div>
+
+            <ul class="pricing-features">
+              <li class="pricing-feature">
+                <span class="pricing-feature-icon">&#10003;</span>
+                <span>Includes the first $10,000/month in revenue</span>
+              </li>
+              <li class="pricing-feature">
+                <span class="pricing-feature-plus">+</span>
+                <span>$1 per $1,000 after that</span>
+              </li>
+              <li class="pricing-feature">
+                <span class="pricing-feature-icon">&#10003;</span>
+                <span>Setup in 10 minutes, no engineer required</span>
+              </li>
+              <li class="pricing-feature">
+                <span class="pricing-feature-icon">&#10003;</span>
+                <span>Send all your conversion data to Meta, Google & TikTok</span>
+              </li>
+            </ul>
+
+            <button id="start-trial-btn" class="pricing-cta">
+              Start 14-Day Free Trial
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column - Two Stacked Cards -->
+        <div class="pricing-right">
+          <!-- Why Brands Choose -->
+          <div class="pricing-trust">
+            <div class="pricing-trust-label">Why brands choose Popsixle</div>
+            <ul class="pricing-trust-list">
+              <li class="pricing-trust-item">
+                <span class="pricing-trust-icon">&#10003;</span>
+                <span>20% performance lift</span>
+              </li>
+              <li class="pricing-trust-item">
+                <span class="pricing-trust-icon">&#10003;</span>
+                <span>Easy install</span>
+              </li>
+              <li class="pricing-trust-item">
+                <span class="pricing-trust-icon">&#10003;</span>
+                <span>Top notch support</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Customer Testimonial -->
+          <div class="pricing-quote">
+            <p class="pricing-quote-text">"Popsixle has demystified our Facebook attribution. We're seeing higher quality event matches, site metrics and ad performance."</p>
+            <p class="pricing-quote-author">— Cozy Earth</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing Details - Below Layout -->
+      <div class="pricing-details-section">
+        <div class="pricing-details" id="pricing-details">
+          <span class="pricing-details-link" onclick="togglePricingDetails()">
+            View Pricing Details
+            <span class="pricing-details-icon">&#9660;</span>
+          </span>
+          <div class="pricing-details-content">
+            <div class="pricing-details-body">
+              <p><strong>How pricing works:</strong></p>
+              <ul>
+                <li><strong>Base fee:</strong> $95/month after your 14-day trial</li>
+                <li><strong>Usage fee:</strong> $1 per $1,000 in purchase revenue processed</li>
+                <li><strong>Free tier:</strong> First $10,000/month in revenue is always free</li>
+                <li><strong>Billing:</strong> 30-day billing cycles, charged in USD</li>
+              </ul>
+              <p><strong>Example:</strong> Processing $50,000/month = $95 + (40 × $1) = <strong>$135/month</strong></p>
+              <p style="margin-top: var(--space-3); color: var(--color-text-muted);">Cancel anytime. No long-term contract.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ============================================
+       WIZARD SCREEN (Steps 1-5)
+       ============================================ -->
+  <div id="wizard-screen" class="wizard-screen">
+    <!-- Two-Sidebar Layout (Elevar-style) -->
+    <div class="wizard-app-layout">
+
+      <!-- OUTER SIDEBAR (Elevar-style App Navigation) -->
+      <aside class="outer-sidebar">
+        <!-- Store Header -->
+        <div class="outer-sidebar-header">
+          <div class="outer-sidebar-store">
+            <div class="outer-sidebar-store-icon">
+              <img src="popsixle_logo_gradient_circle_500 (1).png" alt="Popsixle">
+            </div>
+            <div class="outer-sidebar-store-info">
+              <span class="outer-sidebar-store-label">My Store</span>
+              <span class="outer-sidebar-store-name">yourstore.myshopify.com</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="outer-sidebar-nav">
+          <a href="#" class="outer-sidebar-nav-item active">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+            </svg>
+            Popsixle Setup
+          </a>
+        </nav>
+
+        <!-- Setup Assistance Section -->
+        <div class="outer-sidebar-section">
+          <div class="outer-sidebar-section-label">Setup Assistance</div>
+          <a href="#" class="outer-sidebar-link">
+            <img src="assets/omar.jpeg" alt="Omar">
+            Free Onboarding Call
+          </a>
+          <a href="#" class="outer-sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+            </svg>
+            How Popsixle Works
+          </a>
+          <a href="#" class="outer-sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+            </svg>
+            Explore Setup Guides
+          </a>
+        </div>
+
+        <!-- User Footer -->
+        <div class="outer-sidebar-footer">
+          <div class="outer-sidebar-user">
+            <div class="outer-sidebar-user-avatar">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+              </svg>
+            </div>
+            <span class="outer-sidebar-user-name">Your Name</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- INNER LAYOUT (Setup Steps + Main Content) -->
+      <div class="wizard-inner-layout">
+
+        <!-- Setup Steps Panel -->
+        <aside class="setup-steps-panel">
+          <div class="setup-steps-header">
+            <span class="setup-steps-title">Setup Steps</span>
+            <span class="setup-steps-progress" id="setup-progress">0/5</span>
+          </div>
+          <div class="setup-steps-list">
+            <ul class="wizard-step-list">
+            <li class="wizard-step-item active" data-step="0">
+              <span class="wizard-step-number">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                </svg>
+              </span>
+              <div class="wizard-step-content">
+                <span class="wizard-step-title">Overview</span>
+              </div>
+            </li>
+            <li class="wizard-step-item" data-step="1">
+              <span class="wizard-step-number">1</span>
+              <div class="wizard-step-content">
+                <span class="wizard-step-title">Product Type</span>
+              </div>
+            </li>
+            <li class="wizard-step-item" data-step="2">
+              <span class="wizard-step-number">2</span>
+              <div class="wizard-step-content">
+                <span class="wizard-step-title">Pixel Setup</span>
+              </div>
+            </li>
+            <li class="wizard-step-item" data-step="3">
+              <span class="wizard-step-number">3</span>
+              <div class="wizard-step-content">
+                <span class="wizard-step-title">Special Cases</span>
+              </div>
+            </li>
+            <li class="wizard-step-item" data-step="4">
+              <span class="wizard-step-number">4</span>
+              <div class="wizard-step-content">
+                <span class="wizard-step-title">Review</span>
+              </div>
+            </li>
+            <li class="wizard-step-item" data-step="5">
+              <span class="wizard-step-number">5</span>
+              <div class="wizard-step-content">
+                <span class="wizard-step-title">Connect Channels</span>
+              </div>
+            </li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Content Area (Main + Explanation side by side) -->
+        <div class="wizard-content-area">
+          <main class="wizard-main">
+        <div class="wizard-main-header">
+          <a href="dashboard.html" class="skip-to-dashboard" id="skip-to-dashboard">Skip to Dashboard</a>
+        </div>
+        <!-- Step 0: Overview -->
+        <div class="step-panel active" data-step="0">
+          <div class="overview-panel">
+            <div class="overview-hero">
+              <div class="overview-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                </svg>
+              </div>
+              <h1>Let's set up your conversion tracking</h1>
+              <p>In just a few minutes, you'll have server-side tracking that sends accurate conversion data to all your ad platforms.</p>
+            </div>
+
+            <div class="overview-steps">
+              <div class="overview-step">
+                <div class="overview-step-number">1</div>
+                <div class="overview-step-text">
+                  <div class="overview-step-title">Tell us about your store</div>
+                  <div class="overview-step-desc">Select your product category</div>
+                </div>
+                <div class="overview-step-time">~30 sec</div>
+              </div>
+              <div class="overview-step">
+                <div class="overview-step-number">2</div>
+                <div class="overview-step-text">
+                  <div class="overview-step-title">Enable the Popsixle pixel</div>
+                  <div class="overview-step-desc">One toggle in your Shopify theme</div>
+                </div>
+                <div class="overview-step-time">~2 min</div>
+              </div>
+              <div class="overview-step">
+                <div class="overview-step-number">3</div>
+                <div class="overview-step-text">
+                  <div class="overview-step-title">Connect your ad channels</div>
+                  <div class="overview-step-desc">Meta, Google, TikTok and more</div>
+                </div>
+                <div class="overview-step-time">~3 min</div>
+              </div>
+            </div>
+
+            <div class="overview-cta">
+              <button class="overview-cta-btn" id="overview-start-btn">
+                Get Started
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:18px;height:18px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
+              <p class="overview-time-estimate">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Takes about 5 minutes to complete
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 1: Product Type -->
+        <div class="step-panel" data-step="1">
+          <div class="wizard-content-header">
+            <h1>What type of products do you sell?</h1>
+            <p>This helps us configure your tracking correctly.
+              <span class="tooltip-trigger">
+                <span class="tooltip-icon">&#9432;</span>
+                <span class="tooltip-content">Different product categories have different tracking requirements and platform policies. Selecting the correct type ensures optimal setup.</span>
+              </span>
+            </p>
+          </div>
+          <div class="wizard-content-body">
+            <!-- Product Type Radio Cards -->
+            <div class="product-type-grid">
+              <label class="product-type-card">
+                <input type="radio" name="product-type" value="regular" class="product-type-input">
+                <div class="product-type-content">
+                  <div class="product-type-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                    </svg>
+                  </div>
+                  <div class="product-type-text">
+                    <span class="product-type-title">Regular Products</span>
+                    <span class="product-type-description">Clothing, home goods, electronics, accessories</span>
+                  </div>
+                  <span class="product-type-indicator"></span>
+                </div>
+              </label>
+
+              <label class="product-type-card">
+                <input type="radio" name="product-type" value="health" class="product-type-input">
+                <div class="product-type-content">
+                  <div class="product-type-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                  </div>
+                  <div class="product-type-text">
+                    <span class="product-type-title">Health & Wellness</span>
+                    <span class="product-type-description">Supplements, fitness, beauty, personal care</span>
+                  </div>
+                  <span class="product-type-indicator"></span>
+                </div>
+              </label>
+
+              <label class="product-type-card">
+                <input type="radio" name="product-type" value="cbd" class="product-type-input">
+                <div class="product-type-content">
+                  <div class="product-type-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                    </svg>
+                  </div>
+                  <div class="product-type-text">
+                    <span class="product-type-title">CBD or Hemp Products</span>
+                    <span class="product-type-description">CBD oils, hemp-derived products, topicals</span>
+                  </div>
+                  <span class="product-type-indicator"></span>
+                </div>
+              </label>
+
+              <label class="product-type-card">
+                <input type="radio" name="product-type" value="restricted" class="product-type-input">
+                <div class="product-type-content">
+                  <div class="product-type-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                    </svg>
+                  </div>
+                  <div class="product-type-text">
+                    <span class="product-type-title">Other Restricted Category</span>
+                    <span class="product-type-description">Alcohol, firearms, adult content, other restricted</span>
+                  </div>
+                  <span class="product-type-indicator"></span>
+                </div>
+              </label>
+            </div>
+
+            <!-- Unrestricted Info Banner (Hidden by default) -->
+            <div id="unrestricted-banner" class="unrestricted-banner hidden">
+              <div class="unrestricted-banner-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                </svg>
+              </div>
+              <div class="unrestricted-banner-content">
+                <div class="unrestricted-banner-title">Your product type may require Popsixle Unrestricted</div>
+                <div class="unrestricted-banner-text">
+                  Health, wellness, CBD, and restricted products often face platform limitations.
+                  Our Unrestricted offering provides compliant tracking solutions.
+                </div>
+                <a href="https://unrestricted.popsixle.com" target="_blank" class="unrestricted-banner-link">
+                  Learn about Popsixle Unrestricted →
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="wizard-footer">
+            <div class="wizard-footer-left">
+              <!-- No back button on step 1 -->
+            </div>
+            <div class="wizard-footer-right">
+              <button class="wizard-btn wizard-btn-primary" id="step1-continue" disabled>Continue</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Pixel Setup -->
+        <div class="step-panel" data-step="2">
+          <div class="wizard-content-header">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+              <div>
+                <h1>Enable the Popsixle Pixel</h1>
+                <p style="color: #1E293B;">The Popsixle Pixel tracks all activity on your site and sends conversion data back to your ad platforms.</p>
+              </div>
+              <!-- Compact Status Badge -->
+              <div class="pixel-status-badge status-not-detected" id="pixel-status-badge">
+                <span class="status-dot"></span>
+                <span class="status-text">Pixel Not Detected</span>
+              </div>
+            </div>
+          </div>
+          <div class="wizard-content-body">
+            <!-- Setup Instructions Card -->
+            <div class="pixel-setup-card" style="padding: 20px;">
+              <div class="pixel-setup-steps" style="margin-bottom: 20px;">
+                <div class="pixel-setup-step">
+                  <span class="pixel-setup-step-number">1</span>
+                  <span class="pixel-setup-step-text">Click the button below to open your Shopify Theme Editor</span>
+                </div>
+                <div class="pixel-setup-step">
+                  <span class="pixel-setup-step-number">2</span>
+                  <span class="pixel-setup-step-text">Find <strong>"App embeds"</strong> in the left sidebar</span>
+                </div>
+                <div class="pixel-setup-step">
+                  <span class="pixel-setup-step-number">3</span>
+                  <span class="pixel-setup-step-text">Toggle <strong>"Popsixle"</strong> to ON</span>
+                </div>
+                <div class="pixel-setup-step">
+                  <span class="pixel-setup-step-number">4</span>
+                  <span class="pixel-setup-step-text">Click <strong>Save</strong></span>
+                </div>
+              </div>
+              <div class="pixel-setup-actions">
+                <button class="pixel-open-editor-btn" id="open-theme-editor-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                  </svg>
+                  Open Theme Editor
+                </button>
+                <span class="pixel-show-how-link" id="show-how-link">Show me how →</span>
+              </div>
+            </div>
+
+            <!-- Demo Controls (for prototype testing) -->
+            <div class="pixel-demo-controls">
+              <div class="pixel-demo-controls-label">Demo Controls (preview states)</div>
+              <div class="pixel-demo-controls-buttons">
+                <button class="pixel-demo-btn" onclick="showPixelStatus('not-detected')">Not Detected (gray)</button>
+                <button class="pixel-demo-btn" onclick="showPixelStatus('not-detected-checked')">Not Detected (red)</button>
+                <button class="pixel-demo-btn" onclick="showPixelStatus('enabled')">Enabled (green)</button>
+              </div>
+            </div>
+          </div>
+          <div class="wizard-footer">
+            <div class="wizard-footer-left">
+              <button class="wizard-btn wizard-btn-secondary" id="back-btn-2">Back</button>
+            </div>
+            <div class="wizard-footer-right">
+              <button class="wizard-btn wizard-btn-primary" id="step2-continue" disabled>Continue</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Special Cases -->
+        <div class="step-panel" data-step="3">
+          <div class="wizard-content-header">
+            <h1>Any Special Setup Needs?</h1>
+            <p style="color: #1E293B;">Enable these if they apply to your store. Most merchants can skip this step.</p>
+          </div>
+          <div class="wizard-content-body">
+            <div class="special-cases-list">
+              <!-- Landing Pages Outside of Shopify -->
+              <div class="special-case-item" id="special-case-landing">
+                <div class="special-case-header">
+                  <div class="special-case-info">
+                    <div class="special-case-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                      </svg>
+                    </div>
+                    <div class="special-case-text">
+                      <div class="special-case-title">Landing Pages Outside of Shopify</div>
+                      <div class="special-case-description">Track conversions from external landing pages</div>
+                    </div>
+                  </div>
+                  <label class="special-case-toggle">
+                    <input type="checkbox" id="toggle-landing">
+                    <span class="special-case-toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="special-case-url-input" id="landing-url-input" style="display: none;">
+                  <label for="landing-url">Enter the landing page URL below (use commas if there are multiple)</label>
+                  <input type="text" id="landing-url" placeholder="https://your-landing-page.com" class="url-input-field">
+                </div>
+              </div>
+
+              <!-- Headless Storefront -->
+              <div class="special-case-item" id="special-case-headless">
+                <div class="special-case-header">
+                  <div class="special-case-info">
+                    <div class="special-case-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
+                      </svg>
+                    </div>
+                    <div class="special-case-text">
+                      <div class="special-case-title">Headless Storefront</div>
+                      <div class="special-case-description">Using Hydrogen, custom React/Next.js, or other headless setup</div>
+                    </div>
+                  </div>
+                  <label class="special-case-toggle">
+                    <input type="checkbox" id="toggle-headless">
+                    <span class="special-case-toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Custom Cart -->
+              <div class="special-case-item" id="special-case-cart">
+                <div class="special-case-header">
+                  <div class="special-case-info">
+                    <div class="special-case-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                      </svg>
+                    </div>
+                    <div class="special-case-text">
+                      <div class="special-case-title">Custom Cart Implementation</div>
+                      <div class="special-case-description">Using a third-party cart like Rebuy, Slide Cart, or custom AJAX cart</div>
+                    </div>
+                  </div>
+                  <label class="special-case-toggle">
+                    <input type="checkbox" id="toggle-cart">
+                    <span class="special-case-toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="special-cases-note">
+              Not sure? Chat with one of our team members now
+            </div>
+          </div>
+          <div class="wizard-footer">
+            <div class="wizard-footer-left">
+              <button class="wizard-btn wizard-btn-secondary" id="back-btn-3">Back</button>
+            </div>
+            <div class="wizard-footer-right">
+              <button class="wizard-btn wizard-btn-primary" id="step3-continue">Continue</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Review -->
+        <div class="step-panel" data-step="4">
+          <div class="wizard-content-header">
+            <h1>Review Your Setup</h1>
+            <p style="color: #1E293B;">Confirm your configuration before connecting channels.</p>
+          </div>
+          <div class="wizard-content-body">
+            <div class="review-list">
+              <!-- Product Type -->
+              <div class="review-item">
+                <div class="review-item-left">
+                  <div class="review-item-icon success">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                    </svg>
+                  </div>
+                  <div class="review-item-content">
+                    <span class="review-item-label">Product Type</span>
+                    <span class="review-item-value" id="review-product-type">Regular Products</span>
+                  </div>
+                </div>
+                <a href="#" class="review-item-edit" data-edit-step="1">Edit</a>
+              </div>
+
+              <!-- Pixel Status -->
+              <div class="review-item">
+                <div class="review-item-left">
+                  <div class="review-item-icon success">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div class="review-item-content">
+                    <span class="review-item-label">Popsixle Pixel</span>
+                    <span class="review-item-value" id="review-pixel-status">Enabled</span>
+                  </div>
+                </div>
+                <a href="#" class="review-item-edit" data-edit-step="2">Edit</a>
+              </div>
+
+              <!-- Special Cases -->
+              <div class="review-item">
+                <div class="review-item-left">
+                  <div class="review-item-icon" id="review-special-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                    </svg>
+                  </div>
+                  <div class="review-item-content">
+                    <span class="review-item-label">Special Cases</span>
+                    <span class="review-item-value" id="review-special-cases">None selected</span>
+                  </div>
+                </div>
+                <a href="#" class="review-item-edit" data-edit-step="3">Edit</a>
+              </div>
+            </div>
+
+            <div class="review-summary">
+              <span class="review-summary-icon">✓</span>
+              <span class="review-summary-text">You're ready to connect your ad channels</span>
+            </div>
+          </div>
+          <div class="wizard-footer">
+            <div class="wizard-footer-left">
+              <button class="wizard-btn wizard-btn-secondary" id="back-btn-4">Back</button>
+            </div>
+            <div class="wizard-footer-right">
+              <button class="wizard-btn wizard-btn-primary" id="step4-continue">Continue</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5: Connect Channels -->
+        <div class="step-panel" data-step="5">
+          <div class="wizard-content-header">
+            <h1>Connect Your Channels</h1>
+            <p style="color: #1E293B;">Send your conversion data to ad platforms</p>
+          </div>
+          <div class="wizard-content-body">
+            <!-- Visual Flow Diagram -->
+            <div class="channel-flow">
+              <!-- Shopify Node -->
+              <div class="channel-flow-node">
+                <div class="channel-flow-icon shopify">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                  </svg>
+                </div>
+                <span class="channel-flow-label">Your Store</span>
+              </div>
+
+              <!-- Arrow -->
+              <span class="channel-flow-arrow">→</span>
+
+              <!-- Popsixle Node -->
+              <div class="channel-flow-node">
+                <div class="channel-flow-icon popsixle">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
+                  </svg>
+                </div>
+                <span class="channel-flow-label">Server-Side<br>Tracking</span>
+              </div>
+
+              <!-- Arrow -->
+              <span class="channel-flow-arrow">→</span>
+
+              <!-- Channels Node -->
+              <div class="channel-flow-node">
+                <div class="channel-flow-icon channels">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                  </svg>
+                </div>
+                <span class="channel-flow-label">Ad Channels</span>
+              </div>
+            </div>
+
+            <!-- Channel Cards -->
+            <div class="channel-connect-list">
+              <!-- Meta -->
+              <div class="channel-connect-card" id="channel-meta">
+                <div class="channel-connect-left">
+                  <div class="channel-connect-icon meta">f</div>
+                  <div class="channel-connect-info">
+                    <span class="channel-connect-name">Meta (Facebook / Instagram)</span>
+                    <span class="channel-connect-status" id="meta-status">Ready to connect</span>
+                  </div>
+                </div>
+                <div class="channel-connect-right">
+                  <button class="channel-connect-btn connect" id="connect-meta">Connect</button>
+                </div>
+              </div>
+
+              <!-- Google -->
+              <div class="channel-connect-card" id="channel-google">
+                <div class="channel-connect-left">
+                  <div class="channel-connect-icon google">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                  </div>
+                  <div class="channel-connect-info">
+                    <span class="channel-connect-name">Google Ads</span>
+                    <span class="channel-connect-status" id="google-status">Ready to connect</span>
+                  </div>
+                </div>
+                <div class="channel-connect-right">
+                  <button class="channel-connect-btn connect" id="connect-google">Connect</button>
+                </div>
+              </div>
+
+              <!-- TikTok -->
+              <div class="channel-connect-card" id="channel-tiktok">
+                <div class="channel-connect-left">
+                  <div class="channel-connect-icon tiktok">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+                    </svg>
+                  </div>
+                  <div class="channel-connect-info">
+                    <span class="channel-connect-name">TikTok</span>
+                    <span class="channel-connect-status" id="tiktok-status">Ready to connect</span>
+                  </div>
+                </div>
+                <div class="channel-connect-right">
+                  <button class="channel-connect-btn connect" id="connect-tiktok">Connect</button>
+                </div>
+              </div>
+            </div>
+
+            <p class="channel-note">Connect at least one channel to continue</p>
+          </div>
+          <div class="wizard-footer">
+            <div class="wizard-footer-left">
+              <button class="wizard-btn wizard-btn-secondary" id="back-btn-5">Back</button>
+            </div>
+            <div class="wizard-footer-right">
+              <button class="wizard-btn wizard-btn-primary" id="go-to-dashboard" disabled>Go to Dashboard</button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Explanation Panel (Right Side) -->
+      <aside class="explanation-panel">
+        <!-- Step 0: Overview Explanation -->
+        <div class="explanation-content active" data-explanation="0">
+          <div class="explanation-header">
+            <div class="explanation-label">Getting Started</div>
+            <h3 class="explanation-title">Why Popsixle?</h3>
+          </div>
+          <div class="explanation-body">
+            <p>Browser-based tracking is becoming less reliable due to ad blockers, iOS privacy changes, and cookie restrictions.</p>
+            <p>Popsixle sends your conversion data directly from your server, bypassing these limitations and giving ad platforms the accurate data they need.</p>
+          </div>
+          <div class="explanation-section">
+            <div class="explanation-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+              Common Questions
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">How long does setup take?</div>
+              <div class="faq-answer">Most merchants complete setup in under 10 minutes. No coding or developer required.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Will this affect my site speed?</div>
+              <div class="faq-answer">No. Popsixle runs server-side and has zero impact on your storefront performance.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 1: Product Type Explanation -->
+        <div class="explanation-content" data-explanation="1">
+          <div class="explanation-header">
+            <div class="explanation-label">Step 1</div>
+            <h3 class="explanation-title">Why We Ask About Product Type</h3>
+          </div>
+          <div class="explanation-body">
+            <p>Different product categories have different tracking requirements due to ad platform policies.</p>
+            <p>Selecting the correct category ensures your tracking is configured properly and compliant with platform guidelines.</p>
+          </div>
+          <div class="explanation-section">
+            <div class="explanation-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+              Common Questions
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">What if I sell multiple product types?</div>
+              <div class="faq-answer">Select the category that represents the majority of your products. You can adjust this later in settings.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">What are "restricted" categories?</div>
+              <div class="faq-answer">Products like CBD, supplements, and adult content have special tracking requirements on ad platforms.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Pixel Setup Explanation -->
+        <div class="explanation-content" data-explanation="2">
+          <div class="explanation-header">
+            <div class="explanation-label">Step 2</div>
+            <h3 class="explanation-title">Why the Pixel Matters</h3>
+          </div>
+          <div class="explanation-body">
+            <p>The Popsixle pixel captures conversion events directly from your store and sends them to our servers.</p>
+            <p>This is the foundation of server-side tracking - without it, we can't capture the data your ad platforms need.</p>
+          </div>
+          <div class="explanation-section">
+            <div class="explanation-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+              Common Questions
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Is this different from the Meta/Google pixel?</div>
+              <div class="faq-answer">Yes. Popsixle works alongside those pixels, enhancing their data with server-side tracking.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">What if the pixel isn't detected?</div>
+              <div class="faq-answer">Make sure you've saved your theme after enabling. If issues persist, our support team can help.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Special Cases Explanation -->
+        <div class="explanation-content" data-explanation="3">
+          <div class="explanation-header">
+            <div class="explanation-label">Step 3</div>
+            <h3 class="explanation-title">Special Configurations</h3>
+          </div>
+          <div class="explanation-body">
+            <p>These options help us handle edge cases in your store setup.</p>
+            <p>Most merchants can skip this step, but if you have a custom implementation, these settings ensure accurate tracking.</p>
+          </div>
+          <div class="explanation-section">
+            <div class="explanation-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+              Common Questions
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">What is a headless storefront?</div>
+              <div class="faq-answer">A custom frontend that doesn't use Shopify's standard theme system (e.g., Next.js, Hydrogen).</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Do I need landing page tracking?</div>
+              <div class="faq-answer">Only if you use separate landing pages outside your Shopify store for marketing campaigns.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Review Explanation -->
+        <div class="explanation-content" data-explanation="4">
+          <div class="explanation-header">
+            <div class="explanation-label">Step 4</div>
+            <h3 class="explanation-title">Review Your Setup</h3>
+          </div>
+          <div class="explanation-body">
+            <p>Take a moment to verify your configuration before connecting your ad platforms.</p>
+            <p>You can always change these settings later from your Popsixle dashboard.</p>
+          </div>
+          <div class="explanation-section">
+            <div class="explanation-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+              Common Questions
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Can I change settings later?</div>
+              <div class="faq-answer">Yes, all settings can be modified from your dashboard at any time.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">What happens next?</div>
+              <div class="faq-answer">After confirming, you'll connect your ad platforms so Popsixle can start sending conversion data.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5: Channel Connect Explanation -->
+        <div class="explanation-content" data-explanation="5">
+          <div class="explanation-header">
+            <div class="explanation-label">Step 5</div>
+            <h3 class="explanation-title">Connect Your Ad Platforms</h3>
+          </div>
+          <div class="explanation-body">
+            <p>Connecting your ad accounts allows Popsixle to send conversion data directly to each platform's API.</p>
+            <p>This is what enables the improved attribution and match rates that boost your ad performance.</p>
+          </div>
+          <div class="explanation-section">
+            <div class="explanation-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+              Common Questions
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Do I need to connect all platforms?</div>
+              <div class="faq-answer">No, just connect the ones you actively advertise on. You can add more later.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Is my data secure?</div>
+              <div class="faq-answer">Yes. We use OAuth authentication and never store your ad account credentials.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">When will I see results?</div>
+              <div class="faq-answer">Data starts flowing immediately. Most merchants see improved attribution within 24-48 hours.</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+        </div><!-- /.wizard-content-area -->
+
+      </div><!-- /.wizard-inner-layout -->
+    </div><!-- /.wizard-app-layout -->
+  </div><!-- /#wizard-screen -->
+
+  <script>
+    // Toggle pricing details accordion
+    function togglePricingDetails() {
+      const details = document.getElementById('pricing-details');
+      details.classList.toggle('open');
+    }
+
+    // Wizard State
+    let currentStep = 0; // Start at Overview (step 0)
+    const totalSteps = 5; // Steps 1-5 (not counting Overview)
+
+    // Start trial - transition to wizard
+    document.getElementById('start-trial-btn').addEventListener('click', function() {
+      document.getElementById('pricing-screen').style.display = 'none';
+      document.getElementById('wizard-screen').classList.add('active');
+      updateWizardUI();
+    });
+
+    // Navigate to a specific step
+    function goToStep(step) {
+      if (step < 0 || step > totalSteps) return;
+      currentStep = step;
+      updateWizardUI();
+    }
+
+    // Update wizard UI based on current step
+    function updateWizardUI() {
+      // Update setup progress counter in the setup-steps-panel
+      const setupProgress = document.getElementById('setup-progress');
+      if (setupProgress) {
+        // Count completed steps (steps 1-5, not including overview)
+        const completedSteps = Math.max(0, currentStep);
+        setupProgress.textContent = `${completedSteps}/${totalSteps}`;
+      }
+
+      // Update sidebar steps
+      document.querySelectorAll('.wizard-step-item').forEach(item => {
+        const stepNum = parseInt(item.dataset.step);
+        item.classList.remove('active', 'completed');
+
+        if (stepNum < currentStep) {
+          item.classList.add('completed');
+        } else if (stepNum === currentStep) {
+          item.classList.add('active');
+        }
+      });
+
+      // Update step panels
+      document.querySelectorAll('.step-panel').forEach(panel => {
+        const stepNum = parseInt(panel.dataset.step);
+        panel.classList.toggle('active', stepNum === currentStep);
+      });
+
+      // Update explanation panel
+      document.querySelectorAll('.explanation-content').forEach(content => {
+        const explanationStep = parseInt(content.dataset.explanation);
+        content.classList.toggle('active', explanationStep === currentStep);
+      });
+    }
+
+    // Overview "Get Started" button
+    document.getElementById('overview-start-btn').addEventListener('click', function() {
+      goToStep(1);
+    });
+
+    // Navigation button handlers
+    document.querySelectorAll('.wizard-btn-primary').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (currentStep < totalSteps) {
+          goToStep(currentStep + 1);
+        } else {
+          // Go to dashboard
+          window.location.href = 'dashboard.html';
+        }
+      });
+    });
+
+    document.querySelectorAll('.wizard-btn-secondary').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (currentStep > 0) {
+          goToStep(currentStep - 1);
+        }
+      });
+    });
+
+    // Skip button
+    document.querySelectorAll('.wizard-btn-text').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (currentStep < totalSteps) {
+          goToStep(currentStep + 1);
+        }
+      });
+    });
+
+    // Skip to dashboard
+    document.getElementById('skip-to-dashboard').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = 'dashboard.html';
+    });
+
+    // Sidebar step clicks (for navigation)
+    document.querySelectorAll('.wizard-step-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const stepNum = parseInt(this.dataset.step);
+        // Only allow clicking on completed steps or current step
+        if (stepNum <= currentStep) {
+          goToStep(stepNum);
+        }
+      });
+      item.style.cursor = 'pointer';
+    });
+
+    // ============================================
+    // STEP 1: Product Type Selection
+    // ============================================
+    const wizardState = {
+      productType: null,
+      pixelEnabled: false,
+      specialCases: {
+        landingPage: false,
+        landingPageUrl: '',
+        headless: false,
+        customCart: false
+      },
+      channels: {
+        meta: false,
+        google: false,
+        tiktok: false
+      }
+    };
+
+    // Product type selection
+    const productTypeInputs = document.querySelectorAll('.product-type-input');
+    const unrestrictedBanner = document.getElementById('unrestricted-banner');
+    const step1Continue = document.getElementById('step1-continue');
+
+    productTypeInputs.forEach(input => {
+      input.addEventListener('change', function() {
+        wizardState.productType = this.value;
+
+        // Show/hide unrestricted banner based on selection
+        const restrictedTypes = ['health', 'cbd', 'restricted'];
+        if (restrictedTypes.includes(this.value)) {
+          unrestrictedBanner.classList.remove('hidden');
+        } else {
+          unrestrictedBanner.classList.add('hidden');
+        }
+
+        // Enable continue button
+        step1Continue.disabled = false;
+      });
+    });
+
+    // Step 1 Continue button
+    step1Continue.addEventListener('click', function() {
+      if (wizardState.productType) {
+        goToStep(2);
+      }
+    });
+
+    // ============================================
+    // STEP 2: Pixel Setup
+    // ============================================
+
+    // Pixel status elements
+    const pixelStatusBadge = document.getElementById('pixel-status-badge');
+    const step2Continue = document.getElementById('step2-continue');
+    let hasClickedButton = false;
+
+    // Function to show a specific pixel status (simplified 2-state system)
+    function showPixelStatus(status) {
+      const statusText = pixelStatusBadge.querySelector('.status-text');
+
+      // Remove all status classes
+      pixelStatusBadge.classList.remove('status-not-detected', 'status-enabled', 'checked');
+
+      switch(status) {
+        case 'not-detected':
+          // Gray state (before clicking button)
+          pixelStatusBadge.classList.add('status-not-detected');
+          statusText.textContent = 'Pixel Not Detected';
+          step2Continue.disabled = true;
+          break;
+        case 'not-detected-checked':
+          // Red state (after clicking button but pixel not found)
+          pixelStatusBadge.classList.add('status-not-detected', 'checked');
+          statusText.textContent = 'Pixel Not Detected';
+          hasClickedButton = true;
+          step2Continue.disabled = true;
+          break;
+        case 'enabled':
+          // Green state (pixel found)
+          pixelStatusBadge.classList.add('status-enabled');
+          statusText.textContent = 'Enabled';
+          wizardState.pixelEnabled = true;
+          step2Continue.disabled = false;
+          break;
+      }
+    }
+
+    // Simulate pixel check (for prototype)
+    let pixelCheckAttempts = 0;
+
+    function simulatePixelCheck() {
+      // Simulate API check delay
+      pixelCheckAttempts++;
+      // After 2 attempts, show as enabled (simulates user actually enabling it)
+      if (pixelCheckAttempts >= 2) {
+        showPixelStatus('enabled');
+      } else {
+        showPixelStatus('not-detected-checked');
+      }
+    }
+
+    // Open Theme Editor button (simulates opening Shopify)
+    const openThemeEditorBtn = document.getElementById('open-theme-editor-btn');
+    if (openThemeEditorBtn) {
+      openThemeEditorBtn.addEventListener('click', function() {
+        // In real implementation, this would open Shopify theme editor
+        // For prototype, simulate the check after "returning"
+        alert('In production, this opens your Shopify Theme Editor.\n\nFor this prototype, click OK to simulate returning after enabling the pixel.');
+        simulatePixelCheck();
+      });
+    }
+
+    // Show me how link
+    const showHowLink = document.getElementById('show-how-link');
+    if (showHowLink) {
+      showHowLink.addEventListener('click', function() {
+        alert('Show me how modal would appear here with step-by-step screenshots.\n\n1. Click "Open Theme Editor"\n2. Find "App embeds" in left sidebar\n3. Toggle "Popsixle" to ON\n4. Click Save');
+      });
+    }
+
+    // Step 2 Continue button
+    if (step2Continue) {
+      step2Continue.addEventListener('click', function() {
+        if (wizardState.pixelEnabled) {
+          goToStep(3);
+        }
+      });
+    }
+
+    // Back button for Step 2
+    const backBtn2 = document.getElementById('back-btn-2');
+    if (backBtn2) {
+      backBtn2.addEventListener('click', function() {
+        goToStep(1);
+      });
+    }
+
+    // ============================================
+    // STEP 3: Special Cases
+    // ============================================
+
+    // Toggle handlers for special cases
+    const specialCaseToggles = [
+      { toggle: 'toggle-landing', item: 'special-case-landing', key: 'landingPage' },
+      { toggle: 'toggle-headless', item: 'special-case-headless', key: 'headless' },
+      { toggle: 'toggle-cart', item: 'special-case-cart', key: 'customCart' }
+    ];
+
+    specialCaseToggles.forEach(({ toggle, item, key }) => {
+      const toggleInput = document.getElementById(toggle);
+      const itemElement = document.getElementById(item);
+
+      if (toggleInput && itemElement) {
+        toggleInput.addEventListener('change', function() {
+          if (this.checked) {
+            itemElement.classList.add('selected');
+            wizardState.specialCases[key] = true;
+          } else {
+            itemElement.classList.remove('selected');
+            wizardState.specialCases[key] = false;
+          }
+
+          // Special handling for landing page URL input
+          if (key === 'landingPage') {
+            const urlInput = document.getElementById('landing-url-input');
+            if (urlInput) {
+              urlInput.style.display = this.checked ? 'block' : 'none';
+            }
+          }
+        });
+      }
+    });
+
+    // Landing page URL input handler
+    const landingUrlInput = document.getElementById('landing-url');
+    if (landingUrlInput) {
+      landingUrlInput.addEventListener('input', function() {
+        wizardState.specialCases.landingPageUrl = this.value;
+      });
+    }
+
+    // Step 3 Continue button
+    const step3Continue = document.getElementById('step3-continue');
+    if (step3Continue) {
+      step3Continue.addEventListener('click', function() {
+        goToStep(4);
+      });
+    }
+
+    // Back button for Step 3
+    const backBtn3 = document.getElementById('back-btn-3');
+    if (backBtn3) {
+      backBtn3.addEventListener('click', function() {
+        goToStep(2);
+      });
+    }
+
+    // ============================================
+    // STEP 4: Review Configuration
+    // ============================================
+
+    // Product type display names
+    const productTypeNames = {
+      'regular': 'Regular Products',
+      'health': 'Health & Wellness',
+      'cbd': 'CBD / Hemp Products',
+      'restricted': 'Other Restricted Category'
+    };
+
+    // Update review page when entering Step 4
+    function updateReviewPage() {
+      // Product Type
+      const productTypeEl = document.getElementById('review-product-type');
+      if (productTypeEl && wizardState.productType) {
+        productTypeEl.textContent = productTypeNames[wizardState.productType] || 'Not selected';
+      }
+
+      // Pixel Status
+      const pixelStatusEl = document.getElementById('review-pixel-status');
+      if (pixelStatusEl) {
+        pixelStatusEl.textContent = wizardState.pixelEnabled ? 'Enabled' : 'Not enabled';
+      }
+
+      // Special Cases
+      const specialCasesEl = document.getElementById('review-special-cases');
+      const specialIconEl = document.getElementById('review-special-icon');
+      if (specialCasesEl) {
+        const cases = [];
+        if (wizardState.specialCases.landingPage) cases.push('Landing Pages');
+        if (wizardState.specialCases.headless) cases.push('Headless');
+        if (wizardState.specialCases.customCart) cases.push('Custom Cart');
+
+        if (cases.length > 0) {
+          specialCasesEl.textContent = cases.join(', ');
+          if (specialIconEl) specialIconEl.classList.add('success');
+        } else {
+          specialCasesEl.textContent = 'None selected';
+          if (specialIconEl) specialIconEl.classList.remove('success');
+        }
+      }
+    }
+
+    // Hook into goToStep to update review when entering Step 4
+    const originalGoToStep = goToStep;
+    goToStep = function(step) {
+      if (step === 4) {
+        updateReviewPage();
+      }
+      originalGoToStep(step);
+    };
+
+    // Edit links
+    document.querySelectorAll('.review-item-edit').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const step = parseInt(this.dataset.editStep);
+        if (step) {
+          goToStep(step);
+        }
+      });
+    });
+
+    // Step 4 Continue button
+    const step4Continue = document.getElementById('step4-continue');
+    if (step4Continue) {
+      step4Continue.addEventListener('click', function() {
+        goToStep(5);
+      });
+    }
+
+    // Back button for Step 4
+    const backBtn4 = document.getElementById('back-btn-4');
+    if (backBtn4) {
+      backBtn4.addEventListener('click', function() {
+        goToStep(3);
+      });
+    }
+
+    // ============================================
+    // STEP 5: Channel Connect
+    // ============================================
+
+    const goToDashboardBtn = document.getElementById('go-to-dashboard');
+
+    // Update dashboard button state
+    function updateDashboardButton() {
+      const hasConnection = wizardState.channels.meta || wizardState.channels.google || wizardState.channels.tiktok;
+      if (goToDashboardBtn) {
+        goToDashboardBtn.disabled = !hasConnection;
+      }
+    }
+
+    // Connect channel function
+    function connectChannel(channel) {
+      const card = document.getElementById(`channel-${channel}`);
+      const status = document.getElementById(`${channel}-status`);
+      const btn = document.getElementById(`connect-${channel}`);
+
+      if (!card || !status || !btn) return;
+
+      // Simulate OAuth connection
+      const channelNames = {
+        meta: 'Meta (Facebook)',
+        google: 'Google Ads',
+        tiktok: 'TikTok'
+      };
+
+      // Show connecting state
+      btn.textContent = 'Connecting...';
+      btn.disabled = true;
+
+      // Simulate API delay
+      setTimeout(() => {
+        // Update state
+        wizardState.channels[channel] = true;
+
+        // Update UI
+        card.classList.add('connected');
+        status.textContent = 'Connected';
+        status.classList.add('connected');
+        btn.textContent = 'Connected';
+        btn.classList.remove('connect');
+        btn.classList.add('connected');
+
+        // Update dashboard button
+        updateDashboardButton();
+      }, 800);
+    }
+
+    // Connect button handlers
+    const connectMeta = document.getElementById('connect-meta');
+    if (connectMeta) {
+      connectMeta.addEventListener('click', () => connectChannel('meta'));
+    }
+
+    const connectGoogle = document.getElementById('connect-google');
+    if (connectGoogle) {
+      connectGoogle.addEventListener('click', () => connectChannel('google'));
+    }
+
+    const connectTiktok = document.getElementById('connect-tiktok');
+    if (connectTiktok) {
+      connectTiktok.addEventListener('click', () => connectChannel('tiktok'));
+    }
+
+    // Go to Dashboard button
+    if (goToDashboardBtn) {
+      goToDashboardBtn.addEventListener('click', function() {
+        if (!this.disabled) {
+          // Navigate to dashboard
+          window.location.href = 'dashboard.html';
+        }
+      });
+    }
+
+    // Back button for Step 5
+    const backBtn5 = document.getElementById('back-btn-5');
+    if (backBtn5) {
+      backBtn5.addEventListener('click', function() {
+        goToStep(4);
+      });
+    }
+  </script>
+  <script src="js/main.js"></script>
+
+  <!-- Live Chat Button -->
+  <button class="live-chat-button" title="Chat with us">
+    <span class="live-chat-icon">💬</span>
+  </button>
+</body>
+</html>

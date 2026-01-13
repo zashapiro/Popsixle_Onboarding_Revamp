@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popsixle - Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: #F8FAFC;
+      min-height: 100vh;
+    }
+
+    /* Dashboard Nav */
+    .dashboard-nav {
+      background: white;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .dashboard-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .dashboard-logo {
+      height: 32px;
+    }
+
+    .dashboard-nav-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1E293B;
+    }
+
+    .dashboard-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      color: #64748B;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      color: #A855F7;
+    }
+
+    /* Conditional Banner - CRITICAL BLOCKER */
+    .conditional-banner {
+      background: #DC2626;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    }
+
+    .conditional-banner.hidden {
+      display: none;
+    }
+
+    .banner-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .banner-icon {
+      color: white;
+      font-size: 24px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); }
+    }
+
+    .banner-text {
+      font-size: 16px;
+      color: white;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .banner-btn {
+      background: white;
+      color: #DC2626;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .banner-btn:hover {
+      background: #FEF2F2;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Demo Selector */
+    .demo-selector {
+      position: fixed;
+      bottom: 90px;
+      right: 24px;
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 9998;
+      width: 240px;
+    }
+
+    .demo-selector-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .demo-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      cursor: pointer;
+    }
+
+    .demo-option input {
+      accent-color: #A855F7;
+    }
+
+    .demo-option-label {
+      font-size: 13px;
+      color: #1E293B;
+    }
+
+    .demo-option.active .demo-option-label {
+      color: #A855F7;
+      font-weight: 500;
+    }
+
+    /* Dashboard Container */
+    .dashboard-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* Dashboard Grid */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    /* Summary Panel */
+    .summary-panel {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .summary-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1E293B;
+      margin-bottom: 16px;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #F1F5F9;
+    }
+
+    .summary-item:last-child {
+      border-bottom: none;
+    }
+
+    .summary-label {
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .summary-value {
+      font-size: 13px;
+      color: #1E293B;
+      font-weight: 500;
+    }
+
+    .summary-value.status-active {
+      color: #10B981;
+    }
+
+    .summary-note {
+      font-size: 11px;
+      color: #94A3B8;
+      margin-top: 4px;
+    }
+
+    /* Impact Cards */
+    .impact-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .impact-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .impact-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1E293B;
+    }
+
+    .impact-period {
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .impact-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .impact-card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .impact-card.green {
+      background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+      border-color: #A7F3D0;
+    }
+
+    .impact-card.blue {
+      background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+      border-color: #93C5FD;
+    }
+
+    .impact-card-label {
+      font-size: 12px;
+      color: #64748B;
+      margin-bottom: 8px;
+    }
+
+    .impact-card-value {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .impact-card.green .impact-card-value {
+      color: #059669;
+    }
+
+    .impact-card.blue .impact-card-value {
+      color: #2563EB;
+    }
+
+    /* Get More From Your Data */
+    .data-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .data-card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .data-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1E293B;
+      margin-bottom: 16px;
+    }
+
+    .data-section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #A855F7;
+      margin-bottom: 12px;
+    }
+
+    .channel-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #F1F5F9;
+    }
+
+    .channel-row:last-child {
+      border-bottom: none;
+    }
+
+    .channel-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .channel-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .channel-icon.facebook {
+      background: #1877F2;
+      color: white;
+    }
+
+    .channel-icon.google {
+      background: #4285F4;
+      color: white;
+    }
+
+    .channel-icon.tiktok {
+      background: #000;
+      color: white;
+    }
+
+    .channel-name {
+      font-size: 14px;
+      color: #1E293B;
+    }
+
+    .channel-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+    }
+
+    .channel-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .channel-status-dot.connected {
+      background: #10B981;
+    }
+
+    .channel-status-dot.not-connected {
+      background: #94A3B8;
+    }
+
+    .channel-status.connected {
+      color: #10B981;
+    }
+
+    .channel-status.not-connected {
+      color: #64748B;
+    }
+
+    /* Setup Links */
+    .setup-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .setup-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .setup-checkbox {
+      width: 16px;
+      height: 16px;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+    }
+
+    .setup-link-text {
+      font-size: 14px;
+      color: #1E293B;
+    }
+
+    .setup-link-action {
+      font-size: 13px;
+      color: #A855F7;
+      text-decoration: none;
+      margin-left: auto;
+    }
+
+    .setup-link-action:hover {
+      text-decoration: underline;
+    }
+
+    /* Learn Section */
+    .learn-card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .learn-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1E293B;
+      margin-bottom: 16px;
+    }
+
+    .video-placeholder {
+      background: #1E293B;
+      border-radius: 8px;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-logo {
+      max-width: 200px;
+    }
+
+    .video-controls {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.6);
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .play-btn {
+      width: 32px;
+      height: 32px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .video-time {
+      font-size: 12px;
+      color: white;
+    }
+
+    /* Pixel Helper */
+    .pixel-helper {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+
+    .pixel-helper-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1E293B;
+      margin-bottom: 8px;
+    }
+
+    .pixel-helper-text {
+      font-size: 14px;
+      color: #64748B;
+      line-height: 1.5;
+    }
+
+    .pixel-helper-link {
+      color: #A855F7;
+      text-decoration: none;
+    }
+
+    .pixel-helper-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Live Chat Button */
+    .live-chat-button {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      background: #A855F7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      z-index: 9999;
+      border: none;
+    }
+
+    .live-chat-button:hover {
+      transform: scale(1.05);
+      background: #9333EA;
+      box-shadow: 0 6px 16px rgba(168, 85, 247, 0.5);
+    }
+
+    .live-chat-icon {
+      font-size: 24px;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Dashboard Nav -->
+  <nav class="dashboard-nav">
+    <div class="dashboard-nav-left">
+      <img src="popsixle_logo_gradient_circle_500 (1).png" alt="Popsixle" class="dashboard-logo">
+      <span class="dashboard-nav-title">Dashboard</span>
+    </div>
+    <div class="dashboard-nav-right">
+      <a href="#" class="nav-link">Settings</a>
+      <a href="#" class="nav-link">Help</a>
+    </div>
+  </nav>
+
+  <!-- Conditional Banner: Pixel Not Setup -->
+  <div class="conditional-banner hidden" id="pixel-warning-banner">
+    <div class="banner-content">
+      <span class="banner-icon">&#9888;</span>
+      <span class="banner-text">Popsixle is not setup - Enable the Pixel to start tracking events</span>
+    </div>
+    <a href="onboarding.html" class="banner-btn">Enable Pixel</a>
+  </div>
+
+  <!-- Conditional Banner: Channel Not Connected -->
+  <div class="conditional-banner hidden" id="channel-warning-banner">
+    <div class="banner-content">
+      <span class="banner-icon">&#9888;</span>
+      <span class="banner-text">Popsixle is not setup - Connect a Channel to start tracking events</span>
+    </div>
+    <a href="onboarding.html" class="banner-btn">Connect Channel</a>
+  </div>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    <!-- Main Grid: Summary + Impact -->
+    <div class="dashboard-grid">
+      <!-- Summary Panel -->
+      <div class="summary-panel">
+        <h2 class="summary-title">Summary</h2>
+        <div class="summary-item">
+          <span class="summary-label">Launch Date:</span>
+          <span class="summary-value">12/29/2025</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Status:</span>
+          <span class="summary-value status-active">Trial Active</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Days Live:</span>
+          <span class="summary-value">11</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Next Billing Date:</span>
+          <span class="summary-value">2026-01-12</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Current Usage Charge:</span>
+          <span class="summary-value">$0.00</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Usage Rate:</span>
+          <div>
+            <span class="summary-value">$1.00 per $1000 in revenue</span>
+            <p class="summary-note">(first $10K included)</p>
+          </div>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Total Events Processed:</span>
+          <span class="summary-value">99,965</span>
+        </div>
+      </div>
+
+      <!-- Impact Section -->
+      <div class="impact-section">
+        <div class="impact-header">
+          <h2 class="impact-title">Impact</h2>
+          <span class="impact-period">Last 30 days</span>
+        </div>
+        <div class="impact-cards">
+          <div class="impact-card green">
+            <div class="impact-card-label">Incremental Revenue</div>
+            <div class="impact-card-value">+$5K</div>
+          </div>
+          <div class="impact-card blue">
+            <div class="impact-card-label">Incremental Orders</div>
+            <div class="impact-card-value">+56</div>
+          </div>
+          <div class="impact-card green">
+            <div class="impact-card-label">Orders from New Customers</div>
+            <div class="impact-card-value">53%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Get More From Your Data + Learn -->
+    <div class="data-section">
+      <!-- Get More From Your Data -->
+      <div class="data-card">
+        <h2 class="data-card-title">Get More From Your Data</h2>
+
+        <!-- Connect More Channels -->
+        <div class="data-section-title">Connect More Channels</div>
+        <div class="channel-list">
+          <div class="channel-row">
+            <div class="channel-info">
+              <div class="channel-icon facebook">f</div>
+              <span class="channel-name">Facebook</span>
+            </div>
+            <div class="channel-status connected" id="fb-status">
+              <span class="channel-status-dot connected"></span>
+              Events Tracked
+            </div>
+          </div>
+          <div class="channel-row">
+            <div class="channel-info">
+              <div class="channel-icon google">G</div>
+              <span class="channel-name">Google</span>
+            </div>
+            <div class="channel-status not-connected" id="google-status">
+              <span class="channel-status-dot not-connected"></span>
+              Not Connected
+            </div>
+          </div>
+          <div class="channel-row">
+            <div class="channel-info">
+              <div class="channel-icon tiktok">T</div>
+              <span class="channel-name">TikTok</span>
+            </div>
+            <div class="channel-status connected" id="tiktok-status">
+              <span class="channel-status-dot connected"></span>
+              Events Tracked
+            </div>
+          </div>
+        </div>
+
+        <!-- Customize Your Setup -->
+        <div class="data-section-title" style="margin-top: 24px;">Customize Your Setup</div>
+        <div class="setup-links">
+          <div class="setup-link">
+            <div class="setup-checkbox"></div>
+            <span class="setup-link-text">New-vs-Return Data Segmentation</span>
+            <a href="#" class="setup-link-action">learn more</a>
+          </div>
+          <div class="setup-link">
+            <div class="setup-checkbox"></div>
+            <span class="setup-link-text">Health Data Compliance</span>
+            <a href="#" class="setup-link-action">learn more</a>
+          </div>
+          <div class="setup-link">
+            <div class="setup-checkbox"></div>
+            <span class="setup-link-text">Data Privacy Settings</span>
+            <a href="#" class="setup-link-action">learn more</a>
+          </div>
+          <div class="setup-link">
+            <div class="setup-checkbox"></div>
+            <span class="setup-link-text">Custom Events</span>
+            <a href="#" class="setup-link-action">learn more</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Learn About Popsixle -->
+      <div class="learn-card">
+        <h2 class="learn-title">Learn About Popsixle</h2>
+        <div class="video-placeholder">
+          <img src="popsixle_logo_gradient_1600.png" alt="Popsixle" class="video-logo">
+          <div class="video-controls">
+            <div class="play-btn">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                <path d="M0 0L12 7L0 14V0Z" fill="#1E293B"/>
+              </svg>
+            </div>
+            <span class="video-time">0:00 / 1:34</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popsixle Pixel Helper -->
+    <div class="pixel-helper">
+      <h2 class="pixel-helper-title">Popsixle Pixel Helper</h2>
+      <p class="pixel-helper-text">
+        The Popsixle Pixel Helper will allow you to see Popsixle data directly on your site. To begin, enable the helper below and then click the button to go to your website.
+        <a href="#" class="pixel-helper-link">Learn more</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Demo Selector -->
+  <div class="demo-selector">
+    <div class="demo-selector-title">Demo: Dashboard State</div>
+    <label class="demo-option">
+      <input type="radio" name="demo-state" value="all-good" checked>
+      <span class="demo-option-label">All Good (No Banner)</span>
+    </label>
+    <label class="demo-option">
+      <input type="radio" name="demo-state" value="pixel-not-setup">
+      <span class="demo-option-label">Pixel Not Setup</span>
+    </label>
+    <label class="demo-option">
+      <input type="radio" name="demo-state" value="channel-not-connected">
+      <span class="demo-option-label">Channel Not Connected</span>
+    </label>
+  </div>
+
+  <!-- Live Chat Button -->
+  <button class="live-chat-button" title="Chat with us">
+    <span class="live-chat-icon">💬</span>
+  </button>
+
+  <script>
+    // Banner elements
+    const pixelBanner = document.getElementById('pixel-warning-banner');
+    const channelBanner = document.getElementById('channel-warning-banner');
+
+    // Function to update dashboard state based on demo selector
+    function updateDashboardState(state) {
+      // Hide all banners first
+      pixelBanner.classList.add('hidden');
+      channelBanner.classList.add('hidden');
+
+      // Show appropriate banner based on state
+      switch (state) {
+        case 'pixel-not-setup':
+          pixelBanner.classList.remove('hidden');
+          break;
+        case 'channel-not-connected':
+          channelBanner.classList.remove('hidden');
+          break;
+        case 'all-good':
+        default:
+          // All banners hidden (already done above)
+          break;
+      }
+    }
+
+    // Demo selector event listeners
+    document.querySelectorAll('input[name="demo-state"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        updateDashboardState(this.value);
+
+        // Update active state styling
+        document.querySelectorAll('.demo-option').forEach(opt => {
+          opt.classList.remove('active');
+        });
+        this.closest('.demo-option').classList.add('active');
+      });
+    });
+
+    // Set initial state
+    const initialRadio = document.querySelector('input[name="demo-state"]:checked');
+    if (initialRadio) {
+      initialRadio.closest('.demo-option').classList.add('active');
+      updateDashboardState(initialRadio.value);
+    }
+  </script>
+</body>
+</html>
