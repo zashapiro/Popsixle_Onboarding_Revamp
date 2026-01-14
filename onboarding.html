@@ -1065,11 +1065,12 @@
     .wizard-step-item:not(:last-child)::after {
       content: '';
       position: absolute;
-      left: 11px;
-      top: 36px;
-      bottom: 0;
+      left: 13px;
+      top: 40px;
+      bottom: -12px;
       width: 2px;
       background: #E2E8F0;
+      z-index: 0;
     }
 
     .wizard-step-item.completed:not(:last-child)::after {
@@ -1089,6 +1090,8 @@
       background: white;
       border: 2px solid #E2E8F0;
       color: #94A3B8;
+      position: relative;
+      z-index: 1;
     }
 
     .wizard-step-item.active .wizard-step-number {
