@@ -2076,21 +2076,24 @@
       color: #9333EA;
     }
 
-    /* Compact Status Badge (in card header) */
+    /* Status Badge (in instruction card) */
     .pixel-status-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 16px;
-      font-size: 13px;
-      font-weight: 500;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-size: 15px;
+      font-weight: 600;
       white-space: nowrap;
     }
 
     .pixel-status-badge .status-dot {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
     }
 
@@ -3043,21 +3046,18 @@
         <!-- Step 2: Pixel Setup -->
         <div class="step-panel" data-step="2">
           <div class="wizard-content-header">
-            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
-              <div>
-                <h1>Enable the Popsixle Pixel</h1>
-                <p style="color: #1E293B;">The Popsixle Pixel tracks all activity on your site and sends conversion data back to your ad platforms.</p>
-              </div>
-              <!-- Compact Status Badge -->
+            <h1>Enable the Popsixle Pixel</h1>
+            <p style="color: #1E293B;">The Popsixle Pixel tracks all activity on your site and sends conversion data back to your ad platforms.</p>
+          </div>
+          <div class="wizard-content-body">
+            <!-- Setup Instructions Card -->
+            <div class="pixel-setup-card" style="padding: 20px; position: relative;">
+              <!-- Status Badge - Top Right of Card -->
               <div class="pixel-status-badge status-not-detected" id="pixel-status-badge">
                 <span class="status-dot"></span>
                 <span class="status-text">Pixel Not Detected</span>
               </div>
-            </div>
-          </div>
-          <div class="wizard-content-body">
-            <!-- Setup Instructions Card -->
-            <div class="pixel-setup-card" style="padding: 20px;">
+
               <div class="pixel-setup-steps" style="margin-bottom: 20px;">
                 <div class="pixel-setup-step">
                   <span class="pixel-setup-step-number">1</span>
