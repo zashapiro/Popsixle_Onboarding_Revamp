@@ -3554,6 +3554,42 @@
     </div><!-- /.wizard-app-layout -->
   </div><!-- /#wizard-screen -->
 
+  <!-- Skip to Dashboard Warning Popup -->
+  <div class="skip-popup-overlay" id="skip-popup-overlay">
+    <div class="skip-popup">
+      <button class="skip-popup-close" id="skip-popup-close">&times;</button>
+      <div class="skip-popup-icon">⚠️</div>
+      <h3 class="skip-popup-title">Setup Not Complete</h3>
+      <p class="skip-popup-message">You haven't finished setting up Popsixle. Your tracking won't work until setup is complete.</p>
+
+      <div class="skip-popup-help">
+        <div class="skip-popup-help-label">Need Help?</div>
+        <a href="#" class="skip-popup-help-link">
+          <img src="assets/omar.jpeg" alt="Omar">
+          Free Onboarding Call
+        </a>
+        <a href="#" class="skip-popup-help-link">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
+          </svg>
+          Popsixle Setup Overview
+        </a>
+        <a href="#" class="skip-popup-help-link">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          </svg>
+          Explore Setup Guides
+        </a>
+      </div>
+
+      <div class="skip-popup-actions">
+        <button class="skip-popup-btn-secondary" id="skip-popup-cancel">Continue Setup</button>
+        <a href="dashboard.html" class="skip-popup-btn-primary">Skip Anyway</a>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Toggle pricing details accordion
     function togglePricingDetails() {
@@ -4053,42 +4089,6 @@
     }
   </script>
   <script src="js/main.js"></script>
-
-  <!-- Skip to Dashboard Warning Popup -->
-  <div class="skip-popup-overlay" id="skip-popup-overlay">
-    <div class="skip-popup">
-      <button class="skip-popup-close" id="skip-popup-close">&times;</button>
-      <div class="skip-popup-icon">⚠️</div>
-      <h3 class="skip-popup-title">Setup Not Complete</h3>
-      <p class="skip-popup-message">You haven't finished setting up Popsixle. Your tracking won't work until setup is complete.</p>
-
-      <div class="skip-popup-help">
-        <div class="skip-popup-help-label">Need Help?</div>
-        <a href="#" class="skip-popup-help-link">
-          <img src="assets/omar.jpeg" alt="Omar">
-          Free Onboarding Call
-        </a>
-        <a href="#" class="skip-popup-help-link">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
-          </svg>
-          Popsixle Setup Overview
-        </a>
-        <a href="#" class="skip-popup-help-link">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-          </svg>
-          Explore Setup Guides
-        </a>
-      </div>
-
-      <div class="skip-popup-actions">
-        <button class="skip-popup-btn-secondary" id="skip-popup-cancel">Continue Setup</button>
-        <a href="dashboard.html" class="skip-popup-btn-primary">Skip Anyway</a>
-      </div>
-    </div>
-  </div>
 
   <!-- Live Chat Button -->
   <button class="live-chat-button" title="Chat with us">
