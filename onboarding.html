@@ -4525,6 +4525,11 @@
         const explanationStep = parseInt(content.dataset.explanation);
         content.classList.toggle('active', explanationStep === currentStep);
       });
+
+      // Update flow lines when on step 5 (Connect Channels)
+      if (currentStep === 5) {
+        setTimeout(updateFlowLines, 50);
+      }
     }
 
     // Overview "Get Started" button
@@ -4921,6 +4926,65 @@
         updateDashboardButton();
       }, 800);
     }
+
+    // Function to dynamically position SVG lines based on card positions
+    function updateFlowLines() {
+      const branchSvg = document.querySelector('.branch-lines');
+      const flowDestinations = document.querySelector('.flow-destinations');
+      const metaWrapper = document.querySelector('[data-channel="meta"]');
+      const googleWrapper = document.querySelector('[data-channel="google"]');
+      const tiktokWrapper = document.querySelector('[data-channel="tiktok"]');
+
+      if (!branchSvg || !flowDestinations || !metaWrapper || !googleWrapper || !tiktokWrapper) return;
+
+      // Get the bounding rect of the destinations container
+      const destRect = flowDestinations.getBoundingClientRect();
+
+      // Get the center Y position of each card relative to the destinations container
+      const metaRect = metaWrapper.querySelector('.flow-destination-card').getBoundingClientRect();
+      const googleRect = googleWrapper.querySelector('.flow-destination-card').getBoundingClientRect();
+      const tiktokRect = tiktokWrapper.querySelector('.flow-destination-card').getBoundingClientRect();
+
+      // Calculate Y positions relative to the destinations container top
+      const metaY = (metaRect.top + metaRect.height / 2) - destRect.top;
+      const googleY = (googleRect.top + googleRect.height / 2) - destRect.top;
+      const tiktokY = (tiktokRect.top + tiktokRect.height / 2) - destRect.top;
+
+      // Calculate total height needed
+      const totalHeight = destRect.height;
+      const centerY = totalHeight / 2;
+
+      // Update SVG viewBox and height
+      branchSvg.setAttribute('height', totalHeight);
+      branchSvg.setAttribute('viewBox', `0 0 80 ${totalHeight}`);
+
+      // Update the trunk line (horizontal from Popsixle to branch point)
+      const trunkLine = branchSvg.querySelector('.trunk');
+      if (trunkLine) {
+        trunkLine.setAttribute('d', `M 0,${centerY} L 30,${centerY}`);
+      }
+
+      // Update individual branch lines
+      const lineMeta = document.getElementById('line-meta');
+      const lineGoogle = document.getElementById('line-google');
+      const lineTiktok = document.getElementById('line-tiktok');
+
+      if (lineMeta) {
+        lineMeta.setAttribute('d', `M 30,${centerY} L 30,${metaY} L 80,${metaY}`);
+      }
+      if (lineGoogle) {
+        lineGoogle.setAttribute('d', `M 30,${centerY} L 80,${googleY}`);
+      }
+      if (lineTiktok) {
+        lineTiktok.setAttribute('d', `M 30,${centerY} L 30,${tiktokY} L 80,${tiktokY}`);
+      }
+    }
+
+    // Run on window resize
+    window.addEventListener('resize', updateFlowLines);
+
+    // Initial call after a brief delay to ensure layout is complete
+    setTimeout(updateFlowLines, 100);
 
     // Connect button handlers
     const connectMeta = document.getElementById('connect-meta');
