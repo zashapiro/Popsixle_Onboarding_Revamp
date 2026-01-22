@@ -343,18 +343,15 @@
     .outer-sidebar-store-icon {
       width: 36px;
       height: 36px;
-      background: linear-gradient(135deg, #D946EF 0%, #8B5CF6 100%);
-      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
     }
 
     .outer-sidebar-store-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
     }
 
     .outer-sidebar-store-info {
@@ -1632,6 +1629,206 @@
       color: #9333EA;
     }
 
+    /* Unrestricted Modal */
+    .unrestricted-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .unrestricted-modal-overlay.active {
+      display: flex;
+    }
+
+    .unrestricted-modal {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 480px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .unrestricted-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #94A3B8;
+      cursor: pointer;
+    }
+
+    .unrestricted-modal-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      background: #F3E8FF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .unrestricted-modal-icon svg {
+      width: 32px;
+      height: 32px;
+      color: #A855F7;
+    }
+
+    .unrestricted-modal-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #1E293B;
+      text-align: center;
+      margin: 0 0 12px;
+    }
+
+    .unrestricted-modal-message {
+      font-size: 15px;
+      color: #64748B;
+      text-align: center;
+      line-height: 1.6;
+      margin: 0 0 24px;
+    }
+
+    .unrestricted-benefits {
+      background: #F8FAFC;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+
+    .unrestricted-benefit {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: #1E293B;
+      padding: 8px 0;
+    }
+
+    .unrestricted-benefit svg {
+      width: 20px;
+      height: 20px;
+      color: #10B981;
+      flex-shrink: 0;
+    }
+
+    .unrestricted-cta-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .unrestricted-cta-card:hover {
+      border-color: #A855F7;
+      background: #FAF5FF;
+      text-decoration: none;
+    }
+
+    .unrestricted-cta-icon {
+      width: 44px;
+      height: 44px;
+      background: #F3E8FF;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .unrestricted-cta-icon img {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .unrestricted-cta-icon svg {
+      width: 22px;
+      height: 22px;
+      color: #A855F7;
+    }
+
+    .unrestricted-cta-content {
+      flex: 1;
+    }
+
+    .unrestricted-cta-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1E293B;
+      margin-bottom: 2px;
+    }
+
+    .unrestricted-cta-desc {
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .unrestricted-modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .unrestricted-btn-secondary {
+      flex: 1;
+      padding: 14px 20px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #64748B;
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .unrestricted-btn-secondary:hover {
+      background: #F8FAFC;
+      border-color: #CBD5E1;
+    }
+
+    .unrestricted-btn-primary {
+      flex: 1;
+      padding: 14px 20px;
+      font-size: 15px;
+      font-weight: 500;
+      color: white;
+      background: #A855F7;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .unrestricted-btn-primary:hover {
+      background: #9333EA;
+      color: white;
+      text-decoration: none;
+    }
+
     /* ============================================
        OVERVIEW/WELCOME PAGE
        ============================================ */
@@ -1652,18 +1849,16 @@
     .overview-icon {
       width: 64px;
       height: 64px;
-      background: linear-gradient(135deg, #D946EF 0%, #8B5CF6 100%);
-      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 24px;
     }
 
-    .overview-icon svg {
-      width: 32px;
-      height: 32px;
-      color: white;
+    .overview-icon img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
     }
 
     .overview-hero h1 {
@@ -2512,7 +2707,8 @@
     }
 
     .flow-node.shopify {
-      background: #95BF47;
+      background: transparent;
+      box-shadow: none;
     }
 
     .flow-node.popsixle {
@@ -2527,9 +2723,11 @@
       object-fit: cover;
     }
 
-    .flow-node.shopify svg {
-      width: 50px;
-      height: 50px;
+    .flow-node.shopify img {
+      width: 100px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 0;
     }
 
     .flow-node-label {
@@ -2982,9 +3180,7 @@
           <div class="overview-panel">
             <div class="overview-hero">
               <div class="overview-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-                </svg>
+                <img src="popsixle_logo_gradient_circle_500 (1).png" alt="Popsixle">
               </div>
               <h1>Let's set up your conversion tracking</h1>
               <p>In just a few minutes, you'll have server-side tracking that sends accurate conversion data to ad platforms.</p>
@@ -3389,9 +3585,7 @@
               <!-- Source: Shopify (store name pulled dynamically) -->
               <div class="flow-source">
                 <div class="flow-node shopify">
-                  <svg viewBox="0 0 109.5 124.5" fill="white">
-                    <path d="M95.9 23.9c-.1-.6-.6-1-1.1-1-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.7-.7-2.2-.5-2.7-.3 0 0-1.4.4-3.7 1.1-.4-1.3-1-2.8-1.8-4.4-2.6-5-6.5-7.7-11.1-7.7-.3 0-.6 0-1 .1-.1-.2-.3-.3-.4-.5-2-2.2-4.6-3.2-7.7-3.1-6 .2-12 4.5-16.8 12.2-3.4 5.4-6 12.2-6.7 17.5-6.9 2.1-11.7 3.6-11.8 3.7-3.5 1.1-3.6 1.2-4 4.5-.3 2.5-9.5 73.1-9.5 73.1l75.6 13.1 32.7-8.2S96 24.5 95.9 23.9zM67.2 16.8l-5.7 1.8c0-.1 0-.3-.1-.5-.5-2.7-1.4-4.9-2.5-6.6 3.1.5 5.1 4.1 6.3 7.6-.6.2-1.3.4-2 .7zm-9.5 2.9l-11.6 3.6c1.1-4.4 3.2-8.8 5.8-11.7.9-1.1 2.3-2.2 3.8-2.9 1.5 3.1 2.1 7.5 2 11zm-7.7-13.4c1.2 0 2.3.3 3.2.9-1.4.7-2.8 1.9-4.1 3.4-3.4 3.8-6 9.6-7 15.2l-9.1 2.8c1.7-8.9 9-21.4 17-22.3z"/>
-                  </svg>
+                  <img src="assets/Shopify_Logo.png" alt="Shopify">
                 </div>
                 <span class="flow-node-label" id="flow-store-name">Zach's Shop</span>
               </div>
@@ -3729,6 +3923,72 @@
     </div>
   </div>
 
+  <!-- Unrestricted Modal -->
+  <div class="unrestricted-modal-overlay" id="unrestricted-modal-overlay">
+    <div class="unrestricted-modal">
+      <button class="unrestricted-modal-close" id="unrestricted-modal-close">&times;</button>
+
+      <div class="unrestricted-modal-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+        </svg>
+      </div>
+
+      <h3 class="unrestricted-modal-title">You May Need Popsixle Unrestricted</h3>
+      <p class="unrestricted-modal-message">
+        Health, wellness, and CBD brands often face ad account restrictions and domain flagging on Meta. Popsixle Unrestricted was purpose-built to solve this.
+      </p>
+
+      <div class="unrestricted-benefits">
+        <div class="unrestricted-benefit">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+          </svg>
+          <span>Compliant tracking that won't trigger flags</span>
+        </div>
+        <div class="unrestricted-benefit">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+          </svg>
+          <span>Domain masking to protect your main site</span>
+        </div>
+        <div class="unrestricted-benefit">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+          </svg>
+          <span>Keyword cleansing from event data</span>
+        </div>
+      </div>
+
+      <a href="#" class="unrestricted-cta-card">
+        <div class="unrestricted-cta-icon">
+          <img src="assets/omar.jpeg" alt="Omar">
+        </div>
+        <div class="unrestricted-cta-content">
+          <div class="unrestricted-cta-title">Talk to our team</div>
+          <div class="unrestricted-cta-desc">Book a free call to see if Unrestricted is right for you</div>
+        </div>
+      </a>
+
+      <a href="https://unrestricted.popsixle.com" target="_blank" class="unrestricted-cta-card">
+        <div class="unrestricted-cta-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+          </svg>
+        </div>
+        <div class="unrestricted-cta-content">
+          <div class="unrestricted-cta-title">Learn more about Unrestricted</div>
+          <div class="unrestricted-cta-desc">See how it works and view pricing</div>
+        </div>
+      </a>
+
+      <div class="unrestricted-modal-actions">
+        <button class="unrestricted-btn-secondary" id="unrestricted-continue-core">Continue with Core</button>
+        <a href="#" class="unrestricted-btn-primary">Book a Call</a>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Toggle pricing details accordion
     function togglePricingDetails() {
@@ -3870,9 +4130,10 @@
       input.addEventListener('change', function() {
         wizardState.productType = this.value;
 
-        // Show/hide unrestricted banner based on selection
+        // Show unrestricted modal for restricted categories
         const restrictedTypes = ['health', 'cbd', 'restricted'];
         if (restrictedTypes.includes(this.value)) {
+          document.getElementById('unrestricted-modal-overlay').classList.add('active');
           unrestrictedBanner.classList.remove('hidden');
         } else {
           unrestrictedBanner.classList.add('hidden');
@@ -4241,6 +4502,27 @@
       skipOverlay.addEventListener('click', (e) => {
         if (e.target === skipOverlay) {
           skipOverlay.classList.remove('active');
+        }
+      });
+    }
+
+    // Unrestricted Modal
+    const unrestrictedOverlay = document.getElementById('unrestricted-modal-overlay');
+    const unrestrictedClose = document.getElementById('unrestricted-modal-close');
+    const unrestrictedContinue = document.getElementById('unrestricted-continue-core');
+
+    if (unrestrictedOverlay) {
+      unrestrictedClose.addEventListener('click', () => {
+        unrestrictedOverlay.classList.remove('active');
+      });
+
+      unrestrictedContinue.addEventListener('click', () => {
+        unrestrictedOverlay.classList.remove('active');
+      });
+
+      unrestrictedOverlay.addEventListener('click', (e) => {
+        if (e.target === unrestrictedOverlay) {
+          unrestrictedOverlay.classList.remove('active');
         }
       });
     }
