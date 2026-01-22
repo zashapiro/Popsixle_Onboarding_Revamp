@@ -2483,187 +2483,292 @@
       color: #1E293B;
     }
 
-    /* Step 5: Channel Connect */
-    .channel-flow {
+    /* Step 5: Data Flow Visual - BIGGER */
+    .data-flow-visual {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 20px;
-      padding: 28px 24px;
-      background: white;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
+      padding: 60px 32px;
       margin-bottom: 24px;
+      min-height: 450px;
+      gap: 0;
     }
 
-    .channel-flow-node {
+    .flow-source, .flow-hub {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      position: relative;
     }
 
-    .channel-flow-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
+    .flow-node {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
     }
 
-    .channel-flow-icon svg {
-      width: 28px;
-      height: 28px;
-    }
-
-    .channel-flow-icon.shopify {
+    .flow-node.shopify {
       background: #95BF47;
-      color: white;
     }
 
-    .channel-flow-icon.popsixle {
-      background: linear-gradient(135deg, #D946EF, #8B5CF6);
-      color: white;
+    .flow-node.popsixle {
+      background: transparent;
+      box-shadow: none;
     }
 
-    .channel-flow-icon.channels {
-      background: #F1F5F9;
-      color: #64748B;
-      font-size: 14px;
+    .flow-node img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .flow-node.shopify svg {
+      width: 50px;
+      height: 50px;
+    }
+
+    .flow-node-label {
+      font-size: 15px;
+      color: #1E293B;
       font-weight: 600;
+      position: absolute;
+      top: 100%;
+      margin-top: 12px;
+      white-space: nowrap;
     }
 
-    .channel-flow-label {
-      font-size: 12px;
-      color: #64748B;
-      font-weight: 500;
-      text-align: center;
+    /* Dashed lines using SVG */
+    .flow-line-svg {
+      overflow: visible;
     }
 
-    .channel-flow-arrow {
-      color: #CBD5E1;
-      font-size: 24px;
-      margin-top: -24px;
+    .dashed-line {
+      stroke-dasharray: 12, 10;
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
     }
 
-    .channel-connect-list {
+    .dashed-line.green {
+      stroke: #95BF47;
+      animation: dash-flow 0.8s linear infinite;
+    }
+
+    /* Branch lines - Ghost (faded) by default */
+    .dashed-line.purple {
+      stroke: #A855F7;
+      opacity: 0.15;
+      stroke-dasharray: 12, 10;
+    }
+
+    .dashed-line.purple.connected {
+      opacity: 1;
+      animation: dash-appear 0.5s ease-out, dash-flow 0.8s linear infinite 0.5s;
+    }
+
+    @keyframes dash-appear {
+      from {
+        opacity: 0;
+        stroke-dashoffset: 100;
+      }
+      to {
+        opacity: 1;
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes dash-flow {
+      to { stroke-dashoffset: -22; }
+    }
+
+    /* Sublabel under nodes - same as label */
+    .flow-node-sublabel {
+      font-size: 15px;
+      color: #1E293B;
+      font-weight: 600;
+      position: absolute;
+      top: 100%;
+      margin-top: 12px;
+      white-space: nowrap;
+    }
+
+    /* Destinations column */
+    .flow-destinations {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 28px;
     }
 
-    .channel-connect-card {
-      background: white;
-      border: 1px solid #E2E8F0;
-      border-radius: 8px;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-
-    .channel-connect-card.connected {
-      border-color: #10B981;
-      background: #F0FDF4;
-    }
-
-    .channel-connect-left {
+    .flow-destination-wrapper {
       display: flex;
       align-items: center;
       gap: 16px;
     }
 
-    .channel-connect-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
+    .flow-destination-wrapper.connected .flow-destination-card {
+      border-color: #A855F7;
+      box-shadow: 0 0 0 1px #A855F7;
+    }
+
+    .flow-destination-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: white;
+      border-radius: 12px;
+      border: 1.5px solid #94A3B8;
+      min-width: 260px;
+    }
+
+    .destination-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      font-size: 18px;
-    }
-
-    .channel-connect-icon.meta {
-      background: #1877F2;
-      color: white;
-    }
-
-    .channel-connect-icon.google {
-      background: white;
+      flex-shrink: 0;
+      overflow: hidden;
+      background: #F8FAFC;
       border: 1px solid #E2E8F0;
     }
 
-    .channel-connect-icon.tiktok {
-      background: #000000;
-      color: white;
+    .destination-icon img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
     }
 
-    .channel-connect-info {
+    .destination-icon svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    .destination-icon.meta {
+      background: #F8FAFC;
+    }
+
+    .destination-icon.google {
+      background: #F8FAFC;
+    }
+
+    .destination-icon.tiktok {
+      background: #000;
+      border-color: #000;
+    }
+
+    .destination-info {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 4px;
     }
 
-    .channel-connect-name {
+    .destination-name {
       font-size: 16px;
-      font-weight: 500;
+      font-weight: 600;
       color: #1E293B;
     }
 
-    .channel-connect-status {
-      font-size: 14px;
+    /* Channel Status Badge */
+    .channel-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      background: #F1F5F9;
       color: #64748B;
     }
 
-    .channel-connect-status.connected {
-      color: #10B981;
+    .channel-status-badge .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #94A3B8;
     }
 
-    .channel-connect-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .channel-status-badge.connected {
+      background: #ECFDF5;
+      color: #059669;
     }
 
-    .channel-connect-btn {
-      padding: 8px 20px;
-      border-radius: 6px;
+    .channel-status-badge.connected .status-dot {
+      background: #10B981;
+    }
+
+    .flow-connect-btn {
+      padding: 10px 24px;
+      border-radius: 8px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
-      border: none;
-    }
-
-    .channel-connect-btn.connect {
       background: #A855F7;
       color: white;
+      border: none;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
     }
 
-    .channel-connect-btn.connect:hover {
+    .flow-connect-btn:hover {
       background: #9333EA;
     }
 
-    .channel-connect-btn.connected {
-      background: #D1FAE5;
+    .flow-connect-btn.connected {
+      background: #ECFDF5;
       color: #059669;
       cursor: default;
     }
 
-    .channel-connect-check {
-      color: #10B981;
-      font-size: 20px;
+    .flow-connect-btn.connected:hover {
+      background: #ECFDF5;
     }
 
-    .channel-note {
-      margin-top: 16px;
+    /* Dashboard button tooltip */
+    .dashboard-btn-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dashboard-tooltip {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      right: 0;
+      background: #1E293B;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
       font-size: 13px;
-      color: #64748B;
-      text-align: center;
+      white-space: nowrap;
+      transition: opacity 0.2s, visibility 0.2s;
+      z-index: 10;
+    }
+
+    .dashboard-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      border: 6px solid transparent;
+      border-top-color: #1E293B;
+    }
+
+    .dashboard-btn-wrapper:hover .dashboard-tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .dashboard-btn-wrapper.connected .dashboard-tooltip {
+      display: none;
     }
   </style>
 </head>
@@ -3276,112 +3381,116 @@
         <div class="step-panel" data-step="5">
           <div class="wizard-content-header">
             <h1>Connect Your Channels</h1>
-            <p style="color: #1E293B;">Send your conversion data to ad platforms</p>
+            <p style="color: #1E293B;">Send your conversion data to ad platforms to improve your ad performance</p>
           </div>
           <div class="wizard-content-body">
-            <!-- Visual Flow Diagram -->
-            <div class="channel-flow">
-              <!-- Shopify Node -->
-              <div class="channel-flow-node">
-                <div class="channel-flow-icon shopify">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            <!-- Data Flow Visual -->
+            <div class="data-flow-visual">
+              <!-- Source: Shopify (store name pulled dynamically) -->
+              <div class="flow-source">
+                <div class="flow-node shopify">
+                  <svg viewBox="0 0 109.5 124.5" fill="white">
+                    <path d="M95.9 23.9c-.1-.6-.6-1-1.1-1-.5 0-9.3-.2-9.3-.2s-7.4-7.2-8.1-7.9c-.7-.7-2.2-.5-2.7-.3 0 0-1.4.4-3.7 1.1-.4-1.3-1-2.8-1.8-4.4-2.6-5-6.5-7.7-11.1-7.7-.3 0-.6 0-1 .1-.1-.2-.3-.3-.4-.5-2-2.2-4.6-3.2-7.7-3.1-6 .2-12 4.5-16.8 12.2-3.4 5.4-6 12.2-6.7 17.5-6.9 2.1-11.7 3.6-11.8 3.7-3.5 1.1-3.6 1.2-4 4.5-.3 2.5-9.5 73.1-9.5 73.1l75.6 13.1 32.7-8.2S96 24.5 95.9 23.9zM67.2 16.8l-5.7 1.8c0-.1 0-.3-.1-.5-.5-2.7-1.4-4.9-2.5-6.6 3.1.5 5.1 4.1 6.3 7.6-.6.2-1.3.4-2 .7zm-9.5 2.9l-11.6 3.6c1.1-4.4 3.2-8.8 5.8-11.7.9-1.1 2.3-2.2 3.8-2.9 1.5 3.1 2.1 7.5 2 11zm-7.7-13.4c1.2 0 2.3.3 3.2.9-1.4.7-2.8 1.9-4.1 3.4-3.4 3.8-6 9.6-7 15.2l-9.1 2.8c1.7-8.9 9-21.4 17-22.3z"/>
                   </svg>
                 </div>
-                <span class="channel-flow-label">Your Store</span>
+                <span class="flow-node-label" id="flow-store-name">Zach's Shop</span>
               </div>
 
-              <!-- Arrow -->
-              <span class="channel-flow-arrow">→</span>
+              <!-- Line: Shopify to Popsixle (green dashed - always visible) -->
+              <svg class="flow-line-svg" width="60" height="20" style="margin: 0 8px;">
+                <path class="dashed-line green" d="M 0,10 L 60,10" />
+              </svg>
 
-              <!-- Popsixle Node -->
-              <div class="channel-flow-node">
-                <div class="channel-flow-icon popsixle">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
-                  </svg>
+              <!-- Hub: Popsixle (actual logo image) -->
+              <div class="flow-hub">
+                <div class="flow-node popsixle">
+                  <img src="popsixle_logo_gradient_circle_500 (1).png" alt="Popsixle">
                 </div>
-                <span class="channel-flow-label">Server-Side<br>Tracking</span>
+                <span class="flow-node-sublabel">Popsixle Pixel</span>
               </div>
 
-              <!-- Arrow -->
-              <span class="channel-flow-arrow">→</span>
+              <!-- Branching lines to destinations (purple dashed - HIDDEN initially) -->
+              <svg class="flow-line-svg branch-lines" width="80" height="420" viewBox="0 0 80 420" style="margin: 0 8px;">
+                <!-- Main trunk line (shared) -->
+                <path class="dashed-line purple trunk" d="M 0,210 L 30,210" />
+                <!-- Individual branches - no overlap -->
+                <path class="dashed-line purple" id="line-meta" d="M 30,210 L 30,56 L 80,56" />
+                <path class="dashed-line purple" id="line-google" d="M 30,210 L 80,210" />
+                <path class="dashed-line purple" id="line-tiktok" d="M 30,210 L 30,364 L 80,364" />
+              </svg>
 
-              <!-- Channels Node -->
-              <div class="channel-flow-node">
-                <div class="channel-flow-icon channels">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-                  </svg>
+              <!-- Destinations -->
+              <div class="flow-destinations">
+                <!-- Meta -->
+                <div class="flow-destination-wrapper" data-channel="meta">
+                  <div class="flow-destination-card">
+                    <div class="destination-icon meta">
+                      <img src="assets/meta-color.png" alt="Meta">
+                    </div>
+                    <div class="destination-info">
+                      <span class="destination-name">Meta</span>
+                      <span class="channel-status-badge" id="dest-meta-status">
+                        <span class="status-dot"></span>
+                        Not Connected
+                      </span>
+                    </div>
+                  </div>
+                  <button class="flow-connect-btn" id="connect-meta">Connect</button>
                 </div>
-                <span class="channel-flow-label">Ad Channels</span>
+
+                <!-- Google -->
+                <div class="flow-destination-wrapper" data-channel="google">
+                  <div class="flow-destination-card">
+                    <div class="destination-icon google">
+                      <svg width="36" height="36" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                      </svg>
+                    </div>
+                    <div class="destination-info">
+                      <span class="destination-name">Google Ads</span>
+                      <span class="channel-status-badge" id="dest-google-status">
+                        <span class="status-dot"></span>
+                        Not Connected
+                      </span>
+                    </div>
+                  </div>
+                  <button class="flow-connect-btn" id="connect-google">Connect</button>
+                </div>
+
+                <!-- TikTok -->
+                <div class="flow-destination-wrapper" data-channel="tiktok">
+                  <div class="flow-destination-card">
+                    <div class="destination-icon tiktok">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+                      </svg>
+                    </div>
+                    <div class="destination-info">
+                      <span class="destination-name">TikTok</span>
+                      <span class="channel-status-badge" id="dest-tiktok-status">
+                        <span class="status-dot"></span>
+                        Not Connected
+                      </span>
+                    </div>
+                  </div>
+                  <button class="flow-connect-btn" id="connect-tiktok">Connect</button>
+                </div>
               </div>
             </div>
 
-            <!-- Channel Cards -->
-            <div class="channel-connect-list">
-              <!-- Meta -->
-              <div class="channel-connect-card" id="channel-meta">
-                <div class="channel-connect-left">
-                  <div class="channel-connect-icon meta">f</div>
-                  <div class="channel-connect-info">
-                    <span class="channel-connect-name">Meta (Facebook / Instagram)</span>
-                    <span class="channel-connect-status" id="meta-status">Ready to connect</span>
-                  </div>
-                </div>
-                <div class="channel-connect-right">
-                  <button class="channel-connect-btn connect" id="connect-meta">Connect</button>
-                </div>
-              </div>
-
-              <!-- Google -->
-              <div class="channel-connect-card" id="channel-google">
-                <div class="channel-connect-left">
-                  <div class="channel-connect-icon google">
-                    <svg width="20" height="20" viewBox="0 0 24 24">
-                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                    </svg>
-                  </div>
-                  <div class="channel-connect-info">
-                    <span class="channel-connect-name">Google Ads</span>
-                    <span class="channel-connect-status" id="google-status">Ready to connect</span>
-                  </div>
-                </div>
-                <div class="channel-connect-right">
-                  <button class="channel-connect-btn connect" id="connect-google">Connect</button>
-                </div>
-              </div>
-
-              <!-- TikTok -->
-              <div class="channel-connect-card" id="channel-tiktok">
-                <div class="channel-connect-left">
-                  <div class="channel-connect-icon tiktok">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
-                    </svg>
-                  </div>
-                  <div class="channel-connect-info">
-                    <span class="channel-connect-name">TikTok</span>
-                    <span class="channel-connect-status" id="tiktok-status">Ready to connect</span>
-                  </div>
-                </div>
-                <div class="channel-connect-right">
-                  <button class="channel-connect-btn connect" id="connect-tiktok">Connect</button>
-                </div>
-              </div>
-            </div>
-
-            <p class="channel-note">Connect at least one channel to continue</p>
           </div>
           <div class="wizard-footer">
             <div class="wizard-footer-left">
               <button class="wizard-btn wizard-btn-secondary" id="back-btn-5">Back</button>
             </div>
             <div class="wizard-footer-right">
-              <button class="wizard-btn wizard-btn-primary" id="go-to-dashboard" disabled>Go to Dashboard</button>
+              <div class="dashboard-btn-wrapper" id="dashboard-btn-wrapper">
+                <button class="wizard-btn wizard-btn-primary" id="go-to-dashboard" disabled>Go to Dashboard</button>
+                <span class="dashboard-tooltip">Connect at least one channel to continue</span>
+              </div>
             </div>
           </div>
         </div>
@@ -3745,6 +3854,13 @@
       }
     };
 
+    // Sync store name from sidebar to flow visual
+    const sidebarStoreName = document.querySelector('.outer-sidebar-store-name');
+    const flowStoreName = document.getElementById('flow-store-name');
+    if (sidebarStoreName && flowStoreName) {
+      flowStoreName.textContent = sidebarStoreName.textContent;
+    }
+
     // Product type selection
     const productTypeInputs = document.querySelectorAll('.product-type-input');
     const unrestrictedBanner = document.getElementById('unrestricted-banner');
@@ -4014,25 +4130,27 @@
     // Update dashboard button state
     function updateDashboardButton() {
       const hasConnection = wizardState.channels.meta || wizardState.channels.google || wizardState.channels.tiktok;
+      const btnWrapper = document.getElementById('dashboard-btn-wrapper');
       if (goToDashboardBtn) {
         goToDashboardBtn.disabled = !hasConnection;
+      }
+      if (btnWrapper) {
+        if (hasConnection) {
+          btnWrapper.classList.add('connected');
+        } else {
+          btnWrapper.classList.remove('connected');
+        }
       }
     }
 
     // Connect channel function
     function connectChannel(channel) {
-      const card = document.getElementById(`channel-${channel}`);
-      const status = document.getElementById(`${channel}-status`);
+      const row = document.querySelector(`.flow-destination-wrapper[data-channel="${channel}"]`);
+      const status = document.getElementById(`dest-${channel}-status`);
       const btn = document.getElementById(`connect-${channel}`);
+      const line = document.getElementById(`line-${channel}`);
 
-      if (!card || !status || !btn) return;
-
-      // Simulate OAuth connection
-      const channelNames = {
-        meta: 'Meta (Facebook)',
-        google: 'Google Ads',
-        tiktok: 'TikTok'
-      };
+      if (!row || !btn) return;
 
       // Show connecting state
       btn.textContent = 'Connecting...';
@@ -4043,13 +4161,22 @@
         // Update state
         wizardState.channels[channel] = true;
 
-        // Update UI
-        card.classList.add('connected');
-        status.textContent = 'Connected';
-        status.classList.add('connected');
-        btn.textContent = 'Connected';
-        btn.classList.remove('connect');
-        btn.classList.add('connected');
+        // Update visual - row and line
+        row.classList.add('connected');
+        if (status) {
+          status.innerHTML = '<span class="status-dot"></span>Connected';
+          status.classList.add('connected');
+        }
+        if (line) {
+          line.classList.add('connected');
+        }
+        // Also animate trunk line when first channel connects
+        const trunk = document.querySelector('.dashed-line.purple.trunk');
+        if (trunk) {
+          trunk.classList.add('connected');
+        }
+        // Hide the button after connecting
+        btn.style.display = 'none';
 
         // Update dashboard button
         updateDashboardButton();
