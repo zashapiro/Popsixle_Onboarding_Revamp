@@ -718,8 +718,9 @@
     .wizard-content-area {
       display: flex;
       gap: 24px;
-      padding: 32px;
+      padding: 24px;
       align-items: flex-start;
+      overflow-x: hidden;
     }
 
     /* Explanation Panel (White card next to wizard) */
@@ -727,8 +728,11 @@
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
       border-radius: 12px;
-      padding: 24px;
+      padding: 20px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
     }
 
     .explanation-content {
@@ -791,8 +795,8 @@
     }
 
     .faq-item {
-      margin-bottom: 16px;
-      padding-bottom: 16px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
       border-bottom: 1px solid #F1F5F9;
     }
 
@@ -819,14 +823,13 @@
     .explanation-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
       width: 340px;
       min-width: 340px;
       flex-shrink: 0;
       position: sticky;
-      top: 32px;
-      max-height: calc(100vh - 64px);
-      overflow-y: auto;
+      top: 24px;
+      max-height: calc(100vh - 48px);
     }
 
     /* Setup Assistance Card */
@@ -834,8 +837,9 @@
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
       border-radius: 12px;
-      padding: 20px 24px;
+      padding: 16px 20px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      flex-shrink: 0;
     }
 
     .assistance-card-label {
@@ -844,15 +848,15 @@
       color: #A855F7;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .assistance-card-link {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 14px 16px;
-      margin-bottom: 10px;
+      gap: 12px;
+      padding: 10px 12px;
+      margin-bottom: 6px;
       font-size: 15px;
       font-weight: 500;
       color: #1E293B;
@@ -898,7 +902,7 @@
     }
 
     .setup-steps-header {
-      padding: 24px 24px 16px;
+      padding: 16px 20px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -907,29 +911,29 @@
     .wizard-main-header {
       display: flex;
       justify-content: flex-end;
-      padding: 16px 0 0 0;
+      padding: 12px 0 0 0;
     }
 
     .setup-steps-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 600;
       color: #1E293B;
     }
 
     .setup-steps-progress {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       color: #64748B;
     }
 
     .setup-steps-list {
       flex: 1;
-      padding: 0 24px;
+      padding: 0 20px;
       overflow-y: auto;
     }
 
     .setup-steps-footer {
-      padding: 16px 24px;
+      padding: 12px 20px;
       border-top: 1px solid #E2E8F0;
       background: white;
     }
@@ -1054,8 +1058,8 @@
     .wizard-step-item {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      padding: 12px 0;
+      gap: 10px;
+      padding: 10px 0;
       position: relative;
     }
 
@@ -1063,8 +1067,8 @@
       content: '';
       position: absolute;
       left: 13px;
-      top: 40px;
-      bottom: -12px;
+      top: 36px;
+      bottom: -10px;
       width: 2px;
       background: #E2E8F0;
       z-index: 0;
@@ -1291,12 +1295,13 @@
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
       border-radius: 12px;
-      padding: 32px 40px;
+      padding: 24px 32px;
       flex: 1;
       max-width: 900px;
       display: flex;
       flex-direction: column;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      overflow-x: hidden;
     }
 
     .wizard-content-header {
@@ -1879,11 +1884,11 @@
     }
 
     .overview-video {
-      margin: 32px 0;
-      border-radius: 16px;
+      margin: 20px 0;
+      border-radius: 12px;
       overflow: hidden;
       background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
-      min-height: 320px;
+      min-height: 220px;
       width: 100%;
       display: flex;
       align-items: center;
@@ -2967,6 +2972,479 @@
 
     .dashboard-btn-wrapper.connected .dashboard-tooltip {
       display: none;
+    }
+
+    /* ============================================
+       RESPONSIVE: Smaller Laptop Screens
+       ============================================ */
+    @media (max-height: 900px) {
+      /* Shrink setup steps sidebar */
+      .wizard-inner-layout {
+        grid-template-columns: 220px 1fr;
+      }
+
+      .setup-steps-title {
+        font-size: 15px;
+      }
+
+      .setup-steps-progress {
+        font-size: 12px;
+      }
+
+      .wizard-step-title {
+        font-size: 13px;
+      }
+
+      .wizard-step-number {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+      }
+
+      .wizard-step-item {
+        gap: 8px;
+      }
+
+      .wizard-step-item:not(:last-child)::after {
+        left: 11px;
+      }
+
+      .wizard-content-area {
+        padding: 16px;
+      }
+
+      .wizard-main {
+        padding: 16px 20px;
+      }
+
+      /* Overview page - shrink main content */
+      .overview-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
+      }
+
+      .overview-icon img {
+        width: 48px;
+        height: 48px;
+      }
+
+      .overview-hero h1 {
+        font-size: 26px;
+        margin-bottom: 8px;
+      }
+
+      .overview-hero p {
+        font-size: 15px;
+        margin-bottom: 16px;
+      }
+
+      .overview-video {
+        margin-bottom: 16px;
+      }
+
+      .overview-video-placeholder {
+        height: 160px;
+      }
+
+      .overview-steps {
+        gap: 8px;
+      }
+
+      .overview-step {
+        padding: 10px 14px;
+      }
+
+      .overview-step-number {
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+      }
+
+      .overview-step-title {
+        font-size: 14px;
+      }
+
+      .overview-step-desc {
+        font-size: 12px;
+      }
+
+      .overview-step-time {
+        font-size: 11px;
+      }
+
+      /* Explanation panel */
+      .explanation-wrapper {
+        gap: 12px;
+        top: 16px;
+        max-height: calc(100vh - 32px);
+      }
+
+      .explanation-panel {
+        padding: 16px;
+      }
+
+      .explanation-label {
+        margin-bottom: 6px;
+        font-size: 11px;
+      }
+
+      .explanation-title {
+        font-size: 17px;
+        margin-bottom: 8px;
+      }
+
+      .explanation-body {
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .faq-section-title {
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+
+      .faq-item {
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+      }
+
+      .faq-question {
+        font-size: 13px;
+        margin-bottom: 4px;
+      }
+
+      .faq-answer {
+        font-size: 12px;
+      }
+
+      /* Assistance card */
+      .assistance-card {
+        padding: 12px 14px;
+      }
+
+      .assistance-card-label {
+        margin-bottom: 8px;
+        font-size: 10px;
+      }
+
+      .assistance-card-link {
+        padding: 8px 10px;
+        margin-bottom: 4px;
+        font-size: 13px;
+        gap: 10px;
+      }
+
+      .assistance-card-icon {
+        width: 32px;
+        height: 32px;
+      }
+
+      .assistance-card-icon img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .assistance-card-icon svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* Setup steps sidebar */
+      .setup-steps-header {
+        padding: 12px 16px 8px;
+      }
+
+      .setup-steps-list {
+        padding: 0 16px;
+      }
+
+      .wizard-step-item {
+        padding: 8px 0;
+      }
+
+      .wizard-step-item:not(:last-child)::after {
+        top: 32px;
+        bottom: -8px;
+      }
+
+      .setup-steps-footer {
+        padding: 10px 16px;
+      }
+
+      /* Connect Channels page - shrink flow visual */
+      .wizard-content-area {
+        gap: 16px;
+      }
+
+      .flow-node {
+        width: 80px;
+        height: 80px;
+      }
+
+      .flow-node.shopify img {
+        width: 80px;
+      }
+
+      .flow-node.popsixle img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .flow-node-label,
+      .flow-node-sublabel {
+        font-size: 13px;
+        margin-top: 10px;
+      }
+
+      .channels-flow {
+        min-height: 380px;
+        gap: 0;
+      }
+
+      .flow-destinations {
+        gap: 20px;
+      }
+
+      .flow-destination-card {
+        padding: 12px 14px;
+        min-width: 200px;
+        gap: 12px;
+      }
+
+      .destination-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+      }
+
+      .destination-icon img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .destination-icon svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .destination-name {
+        font-size: 14px;
+      }
+
+      .channel-status-badge {
+        font-size: 11px;
+        padding: 3px 8px;
+      }
+
+      .flow-connect-btn {
+        padding: 8px 18px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-height: 850px) {
+      /* Even smaller sidebar */
+      .wizard-inner-layout {
+        grid-template-columns: 180px 1fr;
+      }
+
+      .setup-steps-header {
+        padding: 10px 12px 6px;
+      }
+
+      .setup-steps-title {
+        font-size: 14px;
+      }
+
+      .setup-steps-list {
+        padding: 0 12px;
+      }
+
+      .wizard-step-item {
+        padding: 6px 0;
+        gap: 6px;
+      }
+
+      .wizard-step-number {
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+      }
+
+      .wizard-step-title {
+        font-size: 12px;
+      }
+
+      .wizard-step-item:not(:last-child)::after {
+        left: 10px;
+        top: 26px;
+        bottom: -6px;
+      }
+
+      .setup-steps-footer {
+        padding: 8px 12px;
+      }
+
+      /* Overview - keep steps but smaller */
+      .overview-hero h1 {
+        font-size: 22px;
+      }
+
+      .overview-hero p {
+        font-size: 14px;
+        margin-bottom: 12px;
+      }
+
+      .overview-video {
+        min-height: 140px;
+        margin: 12px 0;
+      }
+
+      .overview-steps {
+        gap: 6px;
+      }
+
+      .overview-step {
+        padding: 8px 10px;
+      }
+
+      .overview-step-number {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+      }
+
+      .overview-step-title {
+        font-size: 13px;
+      }
+
+      .overview-step-desc {
+        font-size: 11px;
+      }
+
+      .overview-step-time {
+        font-size: 10px;
+      }
+
+      /* Explanation panel even tighter */
+      .explanation-wrapper {
+        width: 280px;
+        min-width: 280px;
+      }
+
+      .explanation-panel {
+        padding: 12px;
+      }
+
+      .explanation-title {
+        font-size: 16px;
+      }
+
+      .explanation-body {
+        font-size: 12px;
+      }
+
+      .faq-question {
+        font-size: 12px;
+      }
+
+      .faq-answer {
+        font-size: 11px;
+      }
+
+      .assistance-card {
+        padding: 10px 12px;
+      }
+
+      .assistance-card-link {
+        padding: 6px 8px;
+        font-size: 12px;
+      }
+
+      /* Connect Channels page - even more compact */
+      .wizard-content-area {
+        gap: 12px;
+      }
+
+      .flow-node {
+        width: 60px;
+        height: 60px;
+      }
+
+      .flow-node.shopify img {
+        width: 60px;
+      }
+
+      .flow-node.popsixle img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .flow-node-label,
+      .flow-node-sublabel {
+        font-size: 12px;
+        margin-top: 8px;
+      }
+
+      .channels-flow {
+        min-height: 300px;
+      }
+
+      .flow-destinations {
+        gap: 12px;
+      }
+
+      .flow-destination-card {
+        padding: 8px 10px;
+        min-width: 160px;
+        gap: 8px;
+      }
+
+      .destination-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+      }
+
+      .destination-icon img {
+        width: 22px;
+        height: 22px;
+      }
+
+      .destination-icon svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .destination-name {
+        font-size: 13px;
+      }
+
+      .channel-status-badge {
+        font-size: 10px;
+        padding: 2px 6px;
+        gap: 4px;
+      }
+
+      .flow-destination-wrapper {
+        gap: 8px;
+      }
+
+      .flow-connect-btn {
+        padding: 6px 14px;
+        font-size: 12px;
+        border-radius: 6px;
+      }
+
+      .destination-name {
+        font-size: 12px;
+      }
+
+      .channel-status-badge {
+        font-size: 9px;
+        padding: 2px 5px;
+      }
     }
   </style>
 </head>
