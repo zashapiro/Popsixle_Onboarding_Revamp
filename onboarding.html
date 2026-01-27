@@ -2329,6 +2329,69 @@
       background: #10B981;
     }
 
+    /* Connection Test Status Badge */
+    .connection-test-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 100px;
+      font-size: 16px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .connection-test-badge .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .connection-test-badge.status-pending {
+      background: #F1F5F9;
+      color: #64748B;
+    }
+
+    .connection-test-badge.status-pending .status-dot {
+      background: #94A3B8;
+    }
+
+    .connection-test-badge.status-testing {
+      background: #FAF5FF;
+      color: #A855F7;
+    }
+
+    .connection-test-badge.status-testing .status-dot {
+      background: #A855F7;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .connection-test-badge.status-success {
+      background: #ECFDF5;
+      color: #059669;
+    }
+
+    .connection-test-badge.status-success .status-dot {
+      background: #10B981;
+    }
+
+    .connection-test-badge.status-failed {
+      background: #FEF2F2;
+      color: #DC2626;
+    }
+
+    .connection-test-badge.status-failed .status-dot {
+      background: #EF4444;
+    }
+
     /* Demo Controls */
     .pixel-demo-controls {
       margin-top: 20px;
@@ -3448,6 +3511,301 @@
         padding: 2px 5px;
       }
     }
+
+    /* ============================================
+       CHANNEL CONNECTION FORM STYLES
+       ============================================ */
+
+    /* Inner Sidebar - Connection Steps variant */
+    .connection-steps-sidebar {
+      display: none;
+    }
+
+    .connection-steps-sidebar.active {
+      display: block;
+    }
+
+    .connection-steps-header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .connection-steps-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1E293B;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .connection-steps-title img {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+    }
+
+    .connection-steps-list {
+      padding: 16px 24px;
+    }
+
+    .connection-step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      position: relative;
+    }
+
+    .connection-step-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 34px;
+      bottom: -10px;
+      width: 2px;
+      background: #E2E8F0;
+    }
+
+    .connection-step-item.completed:not(:last-child)::after {
+      background: #A855F7;
+    }
+
+    .connection-step-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
+      background: #F1F5F9;
+      color: #94A3B8;
+      border: 2px solid #E2E8F0;
+    }
+
+    .connection-step-item.active .connection-step-number {
+      background: #A855F7;
+      color: white;
+      border-color: #A855F7;
+    }
+
+    .connection-step-item.completed .connection-step-number {
+      background: #A855F7;
+      color: white;
+      border-color: #A855F7;
+    }
+
+    .connection-step-content {
+      padding-top: 2px;
+    }
+
+    .connection-step-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #64748B;
+    }
+
+    .connection-step-item.active .connection-step-title {
+      color: #1E293B;
+      font-weight: 600;
+    }
+
+    .connection-step-item.completed .connection-step-title {
+      color: #A855F7;
+    }
+
+    /* Data Flow Visual - Single Channel Variant */
+    .channel-connect-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 24px;
+      background: #F8FAFC;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+
+    .channel-connect-flow .flow-node {
+      width: 64px;
+      height: 64px;
+    }
+
+    .channel-connect-flow .flow-node img {
+      width: 64px;
+      height: 64px;
+    }
+
+    .channel-connect-flow .flow-node-label {
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .channel-connect-flow .flow-line-svg {
+      width: 48px;
+      height: 20px;
+    }
+
+    /* Channel Form Container - fills available space */
+    .channel-form-container {
+      width: 100%;
+      max-width: 680px;
+    }
+
+    /* Help link - positioned below header */
+    .channel-form-help-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      color: #A855F7;
+      margin-bottom: 24px;
+      text-decoration: none;
+    }
+
+    .channel-form-help-link:hover {
+      text-decoration: underline;
+    }
+
+    .channel-form-help-link svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Individual card for each form field */
+    .channel-connect-card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+
+    .channel-connect-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .channel-form-label {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1E293B;
+      margin-bottom: 8px;
+    }
+
+    .channel-form-helper {
+      font-size: 15px;
+      color: #1E293B;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .channel-form-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      font-size: 15px;
+      color: #1E293B;
+      background: white;
+      box-sizing: border-box;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .channel-form-input:focus {
+      outline: none;
+      border-color: #A855F7;
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+    }
+
+    .channel-form-input::placeholder {
+      color: #94A3B8;
+    }
+
+    .channel-form-input.error {
+      border-color: #EF4444;
+    }
+
+    .channel-form-hint {
+      font-size: 14px;
+      color: #475569;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .channel-form-error {
+      font-size: 14px;
+      color: #EF4444;
+      margin-top: 8px;
+      display: none;
+    }
+
+    .channel-form-input.error + .channel-form-hint + .channel-form-error,
+    .channel-form-input.error ~ .channel-form-error {
+      display: block;
+    }
+
+    /* Primary Action Button */
+    .channel-form-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: #A855F7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      margin-top: 8px;
+    }
+
+    .channel-form-submit:hover {
+      background: #9333EA;
+    }
+
+    .channel-form-submit:disabled {
+      background: #CBD5E1;
+      cursor: not-allowed;
+    }
+
+    .channel-form-submit svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Spinner animation */
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .animate-spin {
+      animation: spin 1s linear infinite;
+    }
+
+    /* Meta flow node in connection form */
+    .flow-node.meta {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #0668E1, #1877F2);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flow-destination {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   </style>
 </head>
 <body>
@@ -3648,6 +4006,23 @@
                 <span class="wizard-step-title">Connect Channels</span>
               </div>
             </li>
+            </ul>
+          </div>
+          <!-- Connection Steps (shown when on channel form, replaces setup steps list) -->
+          <div class="connection-steps-list" id="connection-steps-list" style="display: none;">
+            <ul class="wizard-step-list">
+              <li class="wizard-step-item active" id="connection-step-1">
+                <span class="wizard-step-number">1</span>
+                <div class="wizard-step-content">
+                  <span class="wizard-step-title">Enter Details</span>
+                </div>
+              </li>
+              <li class="wizard-step-item" id="connection-step-2">
+                <span class="wizard-step-number">2</span>
+                <div class="wizard-step-content">
+                  <span class="wizard-step-title">Test Connection</span>
+                </div>
+              </li>
             </ul>
           </div>
         </aside>
@@ -4165,6 +4540,104 @@
             </div>
           </div>
         </div>
+
+        <!-- Step 5-Meta: Meta Connection Form -->
+        <div class="step-panel" data-step="5-meta">
+          <div class="wizard-content-header" style="position: relative;">
+            <!-- Status Badge - Top Right of Header -->
+            <div class="connection-test-badge status-pending" id="meta-test-badge">
+              <span class="status-dot"></span>
+              <span class="status-text">Not Connected</span>
+            </div>
+            <h1>Connect to Meta</h1>
+            <p style="color: #1E293B;">Send your conversion data to Meta to improve your ad performance</p>
+            <!-- Help Link - below header -->
+            <a href="https://info.popsixle.com/knowledge/popsixle-onboarding-fb-pixel-dataset" target="_blank" class="channel-form-help-link" style="margin-top: 12px;">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+              Need help? Read our step-by-step guide
+            </a>
+          </div>
+          <div class="wizard-content-body">
+            <!-- Data Flow Visual - Single Channel -->
+            <div class="channel-connect-flow">
+              <div class="flow-source">
+                <div class="flow-node shopify">
+                  <img src="assets/Shopify_Logo.png" alt="Shopify">
+                </div>
+                <span class="flow-node-label">Your Store</span>
+              </div>
+              <svg class="flow-line-svg" width="48" height="20">
+                <path class="dashed-line green" d="M 0,10 L 48,10" />
+              </svg>
+              <div class="flow-hub">
+                <div class="flow-node popsixle">
+                  <img src="popsixle_logo_gradient_circle_500 (1).png" alt="Popsixle">
+                </div>
+                <span class="flow-node-label">Popsixle Pixel</span>
+              </div>
+              <svg class="flow-line-svg" width="48" height="20">
+                <path class="dashed-line purple" d="M 0,10 L 48,10" />
+              </svg>
+              <div class="flow-destination">
+                <div class="flow-node meta">
+                  <img src="assets/meta-color.png" alt="Meta" style="width: 40px; height: 40px;">
+                </div>
+                <span class="flow-node-label">Meta</span>
+              </div>
+            </div>
+
+            <!-- Form Container -->
+            <div class="channel-form-container">
+              <!-- Pixel/Dataset ID Card -->
+              <div class="channel-connect-card">
+                <label class="channel-form-label">Pixel/Dataset ID</label>
+                <div class="channel-form-helper">Found in Meta Events Manager: Select your Dataset → Settings Tab → Top of page</div>
+                <input type="text" id="meta-pixel-id" class="channel-form-input" placeholder="Paste the Pixel/Dataset ID here">
+                <div class="channel-form-hint">Your Pixel/Dataset ID will appear as a number like 1234567890</div>
+                <div class="channel-form-error">Please enter a valid Pixel/Dataset ID</div>
+              </div>
+
+              <!-- CAPI Token Card -->
+              <div class="channel-connect-card">
+                <label class="channel-form-label">Conversions API Access Token</label>
+                <div class="channel-form-helper">Generate in Meta Events Manager → Settings → Conversions API → Generate Token</div>
+                <input type="text" id="meta-capi-token" class="channel-form-input" placeholder="Paste the generated CAPI token here">
+                <div class="channel-form-hint">Your CAPI token will appear as a long alpha-numeric string</div>
+                <div class="channel-form-error">Please enter a valid CAPI token</div>
+              </div>
+
+              <!-- Test Event Code Card -->
+              <div class="channel-connect-card">
+                <label class="channel-form-label">Test Event Code</label>
+                <div class="channel-form-helper">Found in Meta Events Manager → Test Events tab</div>
+                <input type="text" id="meta-test-code" class="channel-form-input" placeholder="Paste the Test Event Code here">
+                <div class="channel-form-hint">Starts with TEST followed by numbers like TEST12345</div>
+                <div class="channel-form-error">Please enter a valid Test Event Code</div>
+              </div>
+
+              <!-- Demo Controls (for prototype testing) -->
+              <div class="pixel-demo-controls">
+                <div class="pixel-demo-controls-label">Demo Controls (preview states)</div>
+                <div class="pixel-demo-controls-buttons">
+                  <button class="pixel-demo-btn" onclick="showMetaTestStatus('pending')">Not Connected (gray)</button>
+                  <button class="pixel-demo-btn" onclick="showMetaTestStatus('testing')">Testing Connection (purple)</button>
+                  <button class="pixel-demo-btn" onclick="showMetaTestStatus('success')">Connected (green)</button>
+                  <button class="pixel-demo-btn" onclick="showMetaTestStatus('failed')">Connection Failed (red)</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wizard-footer">
+            <div class="wizard-footer-left">
+              <button class="wizard-btn wizard-btn-secondary" id="meta-back-btn">Back</button>
+            </div>
+            <div class="wizard-footer-right">
+              <button class="wizard-btn wizard-btn-primary" id="meta-submit-btn">Test Meta Connection</button>
+            </div>
+          </div>
+        </div>
       </main>
 
       <!-- Right Side Container (Explanation + Assistance) -->
@@ -4330,6 +4803,40 @@
           </div>
         </div>
 
+        <!-- Step 5-Meta: Meta Connection Explanation -->
+        <div class="explanation-content" data-explanation="5-meta">
+          <div class="explanation-header">
+            <div class="explanation-label">Step 5</div>
+            <h3 class="explanation-title">Connect to Meta</h3>
+          </div>
+          <div class="explanation-body">
+            <p>Connecting to Meta allows Popsixle to send conversion data directly to your Meta Ads account via the Conversions API.</p>
+            <p>This bypasses browser limitations and ensures accurate attribution for your ad campaigns.</p>
+          </div>
+          <div class="explanation-section">
+            <div class="explanation-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+              Common Questions
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Where do I find my Pixel/Dataset ID?</div>
+              <div class="faq-answer">In Meta Events Manager, select your Dataset, go to the Settings tab, and find the ID at the top of the page.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">How do I generate a CAPI token?</div>
+              <div class="faq-answer">In Events Manager → Settings → Conversions API section, click "Generate Access Token" and copy the generated token.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">What is a Test Event Code?</div>
+              <div class="faq-answer">A temporary code from Meta's Test Events tab that lets you verify your connection is working before going live.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Why do I need all three values?</div>
+              <div class="faq-answer">The Pixel ID identifies your dataset, the CAPI token authenticates Popsixle to send events, and the Test Code verifies the connection.</div>
+            </div>
+          </div>
+        </div>
+
       </aside>
 
         <!-- Setup Assistance Card (persistent across all steps) -->
@@ -4343,7 +4850,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
             </svg>
-            Popsixle Setup Overview
+            Meta Setup Overview
           </a>
           <a href="#" class="assistance-card-link">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -4476,6 +4983,7 @@
     // Wizard State
     let currentStep = 0; // Start at Overview (step 0)
     const totalSteps = 5; // Steps 1-5 (not counting Overview)
+    let currentChannelStep = null; // Track channel sub-step (e.g., "5-meta")
 
     // Start trial - transition to wizard
     document.getElementById('start-trial-btn').addEventListener('click', function() {
@@ -4513,17 +5021,24 @@
         }
       });
 
-      // Update step panels
-      document.querySelectorAll('.step-panel').forEach(panel => {
-        const stepNum = parseInt(panel.dataset.step);
-        panel.classList.toggle('active', stepNum === currentStep);
-      });
+      // Update step panels (skip if we're on a channel sub-step)
+      if (!currentChannelStep) {
+        document.querySelectorAll('.step-panel').forEach(panel => {
+          const stepData = panel.dataset.step;
+          // Only match exact numeric steps, not sub-steps like "5-meta"
+          const stepNum = parseInt(stepData);
+          const isExactMatch = stepData === String(stepNum);
+          panel.classList.toggle('active', isExactMatch && stepNum === currentStep);
+        });
 
-      // Update explanation panel
-      document.querySelectorAll('.explanation-content').forEach(content => {
-        const explanationStep = parseInt(content.dataset.explanation);
-        content.classList.toggle('active', explanationStep === currentStep);
-      });
+        // Update explanation panel
+        document.querySelectorAll('.explanation-content').forEach(content => {
+          const explanationData = content.dataset.explanation;
+          const explanationStep = parseInt(explanationData);
+          const isExactMatch = explanationData === String(explanationStep);
+          content.classList.toggle('active', isExactMatch && explanationStep === currentStep);
+        });
+      }
 
       // Update flow lines when on step 5 (Connect Channels)
       if (currentStep === 5) {
@@ -4669,6 +5184,35 @@
           statusText.textContent = 'Enabled';
           wizardState.pixelEnabled = true;
           step2Continue.disabled = false;
+          break;
+      }
+    }
+
+    // Function to show Meta test status (for channel connection)
+    function showMetaTestStatus(status) {
+      const badge = document.getElementById('meta-test-badge');
+      if (!badge) return;
+      const statusText = badge.querySelector('.status-text');
+
+      // Remove all status classes
+      badge.classList.remove('status-pending', 'status-testing', 'status-success', 'status-failed');
+
+      switch(status) {
+        case 'pending':
+          badge.classList.add('status-pending');
+          statusText.textContent = 'Not Connected';
+          break;
+        case 'testing':
+          badge.classList.add('status-testing');
+          statusText.textContent = 'Testing Connection';
+          break;
+        case 'success':
+          badge.classList.add('status-success');
+          statusText.textContent = 'Connected';
+          break;
+        case 'failed':
+          badge.classList.add('status-failed');
+          statusText.textContent = 'Connection Failed';
           break;
       }
     }
@@ -4886,44 +5430,134 @@
       }
     }
 
-    // Connect channel function
+    // Navigate to channel connection form
+    function goToChannelStep(channel) {
+      currentChannelStep = `5-${channel}`;
+
+      // Hide all step panels
+      document.querySelectorAll('.step-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+
+      // Show the channel-specific panel
+      const channelPanel = document.querySelector(`.step-panel[data-step="5-${channel}"]`);
+      if (channelPanel) {
+        channelPanel.classList.add('active');
+      }
+
+      // Update explanation panel
+      document.querySelectorAll('.explanation-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      const channelExplanation = document.querySelector(`.explanation-content[data-explanation="5-${channel}"]`);
+      if (channelExplanation) {
+        channelExplanation.classList.add('active');
+      }
+
+      // Update inner sidebar: hide setup steps, show connection steps
+      const setupStepsList = document.querySelector('.setup-steps-list');
+      const connectionStepsList = document.getElementById('connection-steps-list');
+      const setupStepsHeader = document.querySelector('.setup-steps-header');
+
+      if (setupStepsList) setupStepsList.style.display = 'none';
+      if (connectionStepsList) connectionStepsList.style.display = 'block';
+
+      // Update header text based on channel
+      if (setupStepsHeader) {
+        const channelNames = { meta: 'Meta', google: 'Google Ads', tiktok: 'TikTok' };
+        setupStepsHeader.querySelector('.setup-steps-title').textContent = `Connect to ${channelNames[channel] || channel}`;
+        setupStepsHeader.querySelector('.setup-steps-progress').style.display = 'none';
+      }
+
+      // Reset connection steps state (step 1 active, step 2 pending)
+      const step1 = document.getElementById('connection-step-1');
+      const step2 = document.getElementById('connection-step-2');
+      if (step1) { step1.classList.add('active'); step1.classList.remove('completed'); }
+      if (step2) { step2.classList.remove('active', 'completed'); }
+
+      // Reset status badge for Meta channel
+      if (channel === 'meta') {
+        showMetaTestStatus('pending');
+      }
+    }
+
+    // Return to channel selection from channel form
+    function returnToChannelSelection() {
+      currentChannelStep = null;
+
+      // Show step 5 panel
+      document.querySelectorAll('.step-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+      const step5Panel = document.querySelector('.step-panel[data-step="5"]');
+      if (step5Panel) {
+        step5Panel.classList.add('active');
+      }
+
+      // Show step 5 explanation
+      document.querySelectorAll('.explanation-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      const step5Explanation = document.querySelector('.explanation-content[data-explanation="5"]');
+      if (step5Explanation) {
+        step5Explanation.classList.add('active');
+      }
+
+      // Restore inner sidebar: show setup steps, hide connection steps
+      const setupStepsList = document.querySelector('.setup-steps-list');
+      const connectionStepsList = document.getElementById('connection-steps-list');
+      const setupStepsHeader = document.querySelector('.setup-steps-header');
+
+      if (setupStepsList) setupStepsList.style.display = 'block';
+      if (connectionStepsList) connectionStepsList.style.display = 'none';
+
+      // Restore header text
+      if (setupStepsHeader) {
+        setupStepsHeader.querySelector('.setup-steps-title').textContent = 'Setup Steps';
+        setupStepsHeader.querySelector('.setup-steps-progress').style.display = '';
+      }
+
+      // Update flow lines
+      setTimeout(updateFlowLines, 50);
+    }
+
+    // Connect channel function - navigates to connection form
     function connectChannel(channel) {
+      goToChannelStep(channel);
+    }
+
+    // Complete channel connection (called after successful test)
+    function completeChannelConnection(channel) {
       const row = document.querySelector(`.flow-destination-wrapper[data-channel="${channel}"]`);
       const status = document.getElementById(`dest-${channel}-status`);
       const btn = document.getElementById(`connect-${channel}`);
       const line = document.getElementById(`line-${channel}`);
 
-      if (!row || !btn) return;
+      // Update state
+      wizardState.channels[channel] = true;
 
-      // Show connecting state
-      btn.textContent = 'Connecting...';
-      btn.disabled = true;
+      // Update visual - row and line
+      if (row) row.classList.add('connected');
+      if (status) {
+        status.innerHTML = '<span class="status-dot"></span>Connected';
+        status.classList.add('connected');
+      }
+      if (line) {
+        line.classList.add('connected');
+      }
+      // Also animate trunk line when first channel connects
+      const trunk = document.querySelector('.dashed-line.purple.trunk');
+      if (trunk) {
+        trunk.classList.add('connected');
+      }
+      // Hide the button after connecting
+      if (btn) btn.style.display = 'none';
 
-      // Simulate API delay
-      setTimeout(() => {
-        // Update state
-        wizardState.channels[channel] = true;
+      // Update dashboard button
+      updateDashboardButton();
 
-        // Update visual - row and line
-        row.classList.add('connected');
-        if (status) {
-          status.innerHTML = '<span class="status-dot"></span>Connected';
-          status.classList.add('connected');
-        }
-        if (line) {
-          line.classList.add('connected');
-        }
-        // Also animate trunk line when first channel connects
-        const trunk = document.querySelector('.dashed-line.purple.trunk');
-        if (trunk) {
-          trunk.classList.add('connected');
-        }
-        // Hide the button after connecting
-        btn.style.display = 'none';
-
-        // Update dashboard button
-        updateDashboardButton();
-      }, 800);
+      // Return to channel selection
+      returnToChannelSelection();
     }
 
     // Function to dynamically position SVG lines based on card positions
@@ -4999,6 +5633,70 @@
     const connectTiktok = document.getElementById('connect-tiktok');
     if (connectTiktok) {
       connectTiktok.addEventListener('click', () => connectChannel('tiktok'));
+    }
+
+    // ============================================
+    // META CONNECTION FORM HANDLERS
+    // ============================================
+
+    // Meta back button
+    const metaBackBtn = document.getElementById('meta-back-btn');
+    if (metaBackBtn) {
+      metaBackBtn.addEventListener('click', returnToChannelSelection);
+    }
+
+    // Meta submit button
+    const metaSubmitBtn = document.getElementById('meta-submit-btn');
+    if (metaSubmitBtn) {
+      metaSubmitBtn.addEventListener('click', function() {
+        const pixelId = document.getElementById('meta-pixel-id').value.trim();
+        const capiToken = document.getElementById('meta-capi-token').value.trim();
+        const testCode = document.getElementById('meta-test-code').value.trim();
+
+        // Basic validation
+        let isValid = true;
+
+        if (!pixelId) {
+          document.getElementById('meta-pixel-id').classList.add('error');
+          isValid = false;
+        } else {
+          document.getElementById('meta-pixel-id').classList.remove('error');
+        }
+
+        if (!capiToken) {
+          document.getElementById('meta-capi-token').classList.add('error');
+          isValid = false;
+        } else {
+          document.getElementById('meta-capi-token').classList.remove('error');
+        }
+
+        if (!testCode) {
+          document.getElementById('meta-test-code').classList.add('error');
+          isValid = false;
+        } else {
+          document.getElementById('meta-test-code').classList.remove('error');
+        }
+
+        if (!isValid) return;
+
+        // Show testing state
+        showMetaTestStatus('testing');
+        metaSubmitBtn.disabled = true;
+        metaSubmitBtn.textContent = 'Testing...';
+
+        // Simulate API call
+        setTimeout(() => {
+          // Show success state
+          showMetaTestStatus('success');
+          metaSubmitBtn.disabled = false;
+          metaSubmitBtn.textContent = 'Test Meta Connection';
+
+          // Complete connection after short delay to show success state
+          setTimeout(() => {
+            completeChannelConnection('meta');
+          }, 1000);
+        }, 1500);
+      });
     }
 
     // Go to Dashboard button
