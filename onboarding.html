@@ -2618,6 +2618,57 @@
       color: #94A3B8;
     }
 
+    /* Debug Panel */
+    .debug-panel {
+      position: fixed;
+      bottom: 100px;
+      right: 24px;
+      background: #1E293B;
+      border-radius: 8px;
+      padding: 12px;
+      z-index: 9999;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 140px;
+    }
+
+    .debug-panel-header {
+      color: #94A3B8;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .debug-btn {
+      background: #334155;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s;
+    }
+
+    .debug-btn:hover {
+      background: #475569;
+    }
+
+    .debug-btn-reset {
+      background: #7F1D1D;
+      margin-top: 4px;
+    }
+
+    .debug-btn-reset:hover {
+      background: #991B1B;
+    }
+
     /* Live Chat Button */
     .live-chat-button {
       position: fixed;
@@ -6639,6 +6690,93 @@
     }
   </script>
   <script src="js/main.js"></script>
+
+  <!-- Unified Debug Panel -->
+  <div id="debug-panel" class="debug-panel">
+    <div class="debug-panel-header">Onboarding</div>
+    <button type="button" class="debug-btn" onclick="debugGoToStep(0)">0. Overview</button>
+    <button type="button" class="debug-btn" onclick="debugGoToStep(1)">1. Product Type</button>
+    <button type="button" class="debug-btn" onclick="debugGoToStep(2)">2. Enable Pixel</button>
+    <button type="button" class="debug-btn" onclick="debugGoToStep(3)">3. Special Cases</button>
+    <button type="button" class="debug-btn" onclick="debugGoToStep(4)">4. Review</button>
+    <button type="button" class="debug-btn" onclick="debugGoToStep(5)">5. Channels</button>
+
+    <div class="debug-panel-header" style="margin-top: 8px;">Meta Flow</div>
+    <button type="button" class="debug-btn" onclick="debugGoToMeta(1)">M1. Credentials</button>
+    <button type="button" class="debug-btn" onclick="debugGoToMeta(2)">M2. Testing</button>
+    <button type="button" class="debug-btn" onclick="debugGoToMeta(3)">M3. Data Sharing</button>
+    <button type="button" class="debug-btn" onclick="debugGoToMeta(4)">M4. Ad Account</button>
+  </div>
+
+  <script>
+    // Debug: Go to onboarding step
+    function debugGoToStep(step) {
+      // Make sure wizard is visible (skip pricing screen)
+      var pricingScreen = document.getElementById('pricing-screen');
+      var wizardScreen = document.getElementById('wizard-screen');
+      if (pricingScreen) pricingScreen.style.display = 'none';
+      if (wizardScreen) wizardScreen.classList.add('active');
+
+      // Now go to step
+      goToStep(step);
+    }
+
+    // Debug: Go to Meta sub-step
+    function debugGoToMeta(metaStep) {
+      // Make sure wizard is visible
+      var pricingScreen = document.getElementById('pricing-screen');
+      var wizardScreen = document.getElementById('wizard-screen');
+      if (pricingScreen) pricingScreen.style.display = 'none';
+      if (wizardScreen) wizardScreen.classList.add('active');
+
+      // First go to step 5 and open Meta
+      goToStep(5);
+
+      setTimeout(function() {
+        goToChannelStep('meta');
+
+        setTimeout(function() {
+          // Pre-fill credentials
+          var pixelInput = document.getElementById('meta-pixel-id');
+          var capiInput = document.getElementById('meta-capi-token');
+          var testInput = document.getElementById('meta-test-code');
+          if (pixelInput) pixelInput.value = '123456789';
+          if (capiInput) capiInput.value = 'EAAtest123';
+          if (testInput) testInput.value = 'TEST12345';
+
+          var credentialsSection = document.getElementById('meta-credentials-section');
+          var dataSharingSection = document.getElementById('meta-data-sharing-section');
+          var adAccountSection = document.getElementById('meta-ad-account-section');
+          var metaFooter = document.getElementById('meta-wizard-footer');
+
+          switch(metaStep) {
+            case 1:
+              if (credentialsSection) credentialsSection.style.display = 'block';
+              if (dataSharingSection) dataSharingSection.style.display = 'none';
+              if (adAccountSection) adAccountSection.style.display = 'none';
+              if (metaFooter) metaFooter.style.display = 'flex';
+              updateMetaConnectionStep(1);
+              showMetaTestStatus('pending');
+              break;
+            case 2:
+              if (credentialsSection) credentialsSection.style.display = 'block';
+              if (dataSharingSection) dataSharingSection.style.display = 'none';
+              if (adAccountSection) adAccountSection.style.display = 'none';
+              if (metaFooter) metaFooter.style.display = 'flex';
+              updateMetaConnectionStep(2);
+              showMetaTestStatus('testing');
+              break;
+            case 3:
+              showMetaDataSharingStep();
+              break;
+            case 4:
+              showMetaAdAccountStep();
+              break;
+          }
+        }, 100);
+      }, 50);
+    }
+  </script>
 
   <!-- Live Chat Button -->
   <button class="live-chat-button" title="Chat with us">
