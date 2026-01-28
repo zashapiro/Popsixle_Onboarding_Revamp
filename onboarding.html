@@ -3806,6 +3806,408 @@
       flex-direction: column;
       align-items: center;
     }
+
+    /* ============================================
+       META DATA SHARING STEP STYLES
+       ============================================ */
+
+    .meta-credentials-section,
+    .meta-data-sharing-section {
+      animation: fadeInSection 0.25s ease;
+    }
+
+    @keyframes fadeInSection {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .data-sharing-card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 24px;
+    }
+
+    .data-sharing-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .data-sharing-icon {
+      width: 40px;
+      height: 40px;
+      background: #FEF3C7;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .data-sharing-icon svg {
+      width: 24px;
+      height: 24px;
+      color: #F59E0B;
+    }
+
+    .data-sharing-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1E293B;
+      margin: 0;
+      padding-top: 8px;
+    }
+
+    .data-sharing-explanation {
+      margin-bottom: 20px;
+    }
+
+    .data-sharing-explanation p {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .data-sharing-steps {
+      background: #F8FAFC;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+
+    .data-sharing-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 0;
+    }
+
+    .data-sharing-step:not(:last-child) {
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 12px;
+      margin-bottom: 4px;
+    }
+
+    .data-sharing-step-number {
+      width: 24px;
+      height: 24px;
+      background: #A855F7;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .data-sharing-step-text {
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.5;
+      padding-top: 2px;
+    }
+
+    .data-sharing-screenshot {
+      margin-bottom: 20px;
+    }
+
+    .screenshot-placeholder {
+      background: #F1F5F9;
+      border: 2px dashed #CBD5E1;
+      border-radius: 8px;
+      padding: 40px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+
+    .screenshot-placeholder svg {
+      width: 48px;
+      height: 48px;
+      color: #94A3B8;
+    }
+
+    .screenshot-placeholder span {
+      font-size: 13px;
+      color: #64748B;
+      max-width: 300px;
+    }
+
+    .data-sharing-help {
+      padding-top: 4px;
+    }
+
+    .data-sharing-kb-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #A855F7;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .data-sharing-kb-link:hover {
+      text-decoration: underline;
+    }
+
+    .data-sharing-kb-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .data-sharing-confirmation {
+      margin-top: 24px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    /* Real screenshot image */
+    .data-sharing-screenshot-img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #E2E8F0;
+    }
+
+    /* ============================================
+       SIDEBAR OPTIONAL BADGE
+       ============================================ */
+    .wizard-step-optional {
+      display: block;
+      font-size: 11px;
+      color: #94A3B8;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    /* ============================================
+       AD ACCOUNT STEP STYLES
+       ============================================ */
+    .meta-ad-account-section {
+      animation: fadeInSection 0.25s ease;
+    }
+
+    .ad-account-demo-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      background: #FEF3C7;
+      border-radius: 6px;
+      font-size: 13px;
+      color: #92400E;
+    }
+
+    .demo-version-btn {
+      padding: 4px 12px;
+      border-radius: 4px;
+      border: 1px solid #E2E8F0;
+      background: white;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .demo-version-btn.active {
+      background: #A855F7;
+      color: white;
+      border-color: #A855F7;
+    }
+
+    .ad-account-card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 24px;
+    }
+
+    .ad-account-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .ad-account-icon {
+      width: 40px;
+      height: 40px;
+      background: #F3E8FF;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ad-account-icon svg {
+      width: 24px;
+      height: 24px;
+      color: #A855F7;
+    }
+
+    .ad-account-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1E293B;
+      margin: 0 0 4px 0;
+    }
+
+    .ad-account-optional-badge {
+      display: inline-block;
+      background: #F1F5F9;
+      color: #64748B;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .ad-account-explanation {
+      margin-bottom: 20px;
+    }
+
+    .ad-account-explanation p {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .ad-account-steps {
+      background: #F8FAFC;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+
+    .ad-account-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 0;
+    }
+
+    .ad-account-step:not(:last-child) {
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 12px;
+      margin-bottom: 4px;
+    }
+
+    .ad-account-step-number {
+      width: 24px;
+      height: 24px;
+      background: #A855F7;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .ad-account-step-text {
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.5;
+      padding-top: 2px;
+    }
+
+    .ad-account-input-group {
+      margin-bottom: 20px;
+    }
+
+    .ad-account-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #F8FAFC;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .ad-account-note svg {
+      width: 20px;
+      height: 20px;
+      color: #64748B;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .ad-account-note span {
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    .ad-account-help {
+      padding-top: 4px;
+    }
+
+    .ad-account-actions {
+      margin-top: 24px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    /* OAuth Version Styles */
+    .ad-account-oauth-section {
+      margin: 24px 0;
+    }
+
+    .oauth-connect-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s ease;
+    }
+
+    .oauth-connect-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .oauth-connect-btn.meta-oauth {
+      background: #1877F2;
+      color: white;
+    }
+
+    .oauth-connect-btn.meta-oauth:hover {
+      background: #166FE5;
+    }
+
+    .ad-account-oauth-note {
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: #F8FAFC;
+      border-radius: 8px;
+    }
+
+    .ad-account-oauth-note p {
+      font-size: 13px;
+      color: #64748B;
+      line-height: 1.5;
+      margin: 0;
+    }
   </style>
 </head>
 <body>
@@ -4014,13 +4416,26 @@
               <li class="wizard-step-item active" id="connection-step-1">
                 <span class="wizard-step-number">1</span>
                 <div class="wizard-step-content">
-                  <span class="wizard-step-title">Enter Details</span>
+                  <span class="wizard-step-title">Add credentials</span>
                 </div>
               </li>
               <li class="wizard-step-item" id="connection-step-2">
                 <span class="wizard-step-number">2</span>
                 <div class="wizard-step-content">
-                  <span class="wizard-step-title">Test Connection</span>
+                  <span class="wizard-step-title">Test connection</span>
+                </div>
+              </li>
+              <li class="wizard-step-item" id="connection-step-3">
+                <span class="wizard-step-number">3</span>
+                <div class="wizard-step-content">
+                  <span class="wizard-step-title">Disable Data Sharing</span>
+                </div>
+              </li>
+              <li class="wizard-step-item" id="connection-step-4">
+                <span class="wizard-step-number">4</span>
+                <div class="wizard-step-content">
+                  <span class="wizard-step-title">Add ad account</span>
+                  <span class="wizard-step-optional">(optional)</span>
                 </div>
               </li>
             </ul>
@@ -4588,53 +5003,230 @@
               </div>
             </div>
 
-            <!-- Form Container -->
-            <div class="channel-form-container">
-              <!-- Pixel/Dataset ID Card -->
-              <div class="channel-connect-card">
-                <label class="channel-form-label">Pixel/Dataset ID</label>
-                <div class="channel-form-helper">Found in Meta Events Manager: Select your Dataset → Settings Tab → Top of page</div>
-                <input type="text" id="meta-pixel-id" class="channel-form-input" placeholder="Paste the Pixel/Dataset ID here">
-                <div class="channel-form-hint">Your Pixel/Dataset ID will appear as a number like 1234567890</div>
-                <div class="channel-form-error">Please enter a valid Pixel/Dataset ID</div>
+            <!-- Step 1: Credentials Section -->
+            <div class="meta-credentials-section" id="meta-credentials-section">
+              <!-- Form Container -->
+              <div class="channel-form-container">
+                <!-- Pixel/Dataset ID Card -->
+                <div class="channel-connect-card">
+                  <label class="channel-form-label">Pixel/Dataset ID</label>
+                  <div class="channel-form-helper">Found in Meta Events Manager: Select your Dataset → Settings Tab → Top of page</div>
+                  <input type="text" id="meta-pixel-id" class="channel-form-input" placeholder="Paste the Pixel/Dataset ID here">
+                  <div class="channel-form-hint">Your Pixel/Dataset ID will appear as a number like 1234567890</div>
+                  <div class="channel-form-error">Please enter a valid Pixel/Dataset ID</div>
+                </div>
+
+                <!-- CAPI Token Card -->
+                <div class="channel-connect-card">
+                  <label class="channel-form-label">Conversions API Access Token</label>
+                  <div class="channel-form-helper">Generate in Meta Events Manager → Settings → Conversions API → Generate Token</div>
+                  <input type="text" id="meta-capi-token" class="channel-form-input" placeholder="Paste the generated CAPI token here">
+                  <div class="channel-form-hint">Your CAPI token will appear as a long alpha-numeric string</div>
+                  <div class="channel-form-error">Please enter a valid CAPI token</div>
+                </div>
+
+                <!-- Test Event Code Card -->
+                <div class="channel-connect-card">
+                  <label class="channel-form-label">Test Event Code</label>
+                  <div class="channel-form-helper">Found in Meta Events Manager → Test Events tab</div>
+                  <input type="text" id="meta-test-code" class="channel-form-input" placeholder="Paste the Test Event Code here">
+                  <div class="channel-form-hint">Starts with TEST followed by numbers like TEST12345</div>
+                  <div class="channel-form-error">Please enter a valid Test Event Code</div>
+                </div>
+
+                <!-- Demo Controls (for prototype testing) -->
+                <div class="pixel-demo-controls">
+                  <div class="pixel-demo-controls-label">Demo Controls (preview states)</div>
+                  <div class="pixel-demo-controls-buttons">
+                    <button class="pixel-demo-btn" onclick="showMetaTestStatus('pending')">Not Connected</button>
+                    <button class="pixel-demo-btn" onclick="showMetaTestStatus('testing')">Testing</button>
+                    <button class="pixel-demo-btn" onclick="showMetaTestStatus('success')">Connected</button>
+                    <button class="pixel-demo-btn" onclick="showMetaTestStatus('failed')">Failed</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Data Sharing Section (shown after successful connection test) -->
+            <div class="meta-data-sharing-section" id="meta-data-sharing-section" style="display: none;">
+              <div class="channel-connect-card data-sharing-card">
+                <div class="data-sharing-header">
+                  <div class="data-sharing-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                    </svg>
+                  </div>
+                  <h3 class="data-sharing-title">Disable Shopify's Meta Data Sharing</h3>
+                </div>
+
+                <div class="data-sharing-explanation">
+                  <p>Popsixle sends both browser and server-side events to Meta, so Shopify's native Meta connection is no longer needed. Disable it to avoid duplicate events.</p>
+                </div>
+
+                <div class="data-sharing-steps">
+                  <div class="data-sharing-step">
+                    <span class="data-sharing-step-number">1</span>
+                    <span class="data-sharing-step-text">Go to your <strong>Shopify Admin</strong></span>
+                  </div>
+                  <div class="data-sharing-step">
+                    <span class="data-sharing-step-number">2</span>
+                    <span class="data-sharing-step-text">Navigate to <strong>Sales Channels → Facebook & Instagram → Settings</strong></span>
+                  </div>
+                  <div class="data-sharing-step">
+                    <span class="data-sharing-step-number">3</span>
+                    <span class="data-sharing-step-text">In the <strong>Share data</strong> section, click <strong>Change</strong> and toggle off data sharing</span>
+                  </div>
+                </div>
+
+                <!-- Screenshot -->
+                <div class="data-sharing-screenshot">
+                  <img src="assets/Data_Sharing2.PNG" alt="Shopify Admin showing Data Sharing toggle in Facebook & Instagram settings" class="data-sharing-screenshot-img">
+                </div>
+
+                <div class="data-sharing-help">
+                  <a href="https://popsixle.frontkb.com/en/articles/8953281" target="_blank" class="data-sharing-kb-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                    Read the full guide in our Knowledge Base
+                  </a>
+                </div>
               </div>
 
-              <!-- CAPI Token Card -->
-              <div class="channel-connect-card">
-                <label class="channel-form-label">Conversions API Access Token</label>
-                <div class="channel-form-helper">Generate in Meta Events Manager → Settings → Conversions API → Generate Token</div>
-                <input type="text" id="meta-capi-token" class="channel-form-input" placeholder="Paste the generated CAPI token here">
-                <div class="channel-form-hint">Your CAPI token will appear as a long alpha-numeric string</div>
-                <div class="channel-form-error">Please enter a valid CAPI token</div>
+              <div class="data-sharing-confirmation">
+                <button type="button" class="wizard-btn wizard-btn-primary" id="meta-data-sharing-confirm" onclick="showMetaAdAccountStep()">
+                  I've disabled Data Sharing
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 4: Ad Account Section (shown after Data Sharing) -->
+            <div class="meta-ad-account-section" id="meta-ad-account-section" style="display: none;">
+              <!-- Demo toggle for team review -->
+              <div class="ad-account-demo-toggle">
+                <span>Version:</span>
+                <button type="button" class="demo-version-btn active" data-version="manual">Manual</button>
+                <button type="button" class="demo-version-btn" data-version="oauth">OAuth</button>
               </div>
 
-              <!-- Test Event Code Card -->
-              <div class="channel-connect-card">
-                <label class="channel-form-label">Test Event Code</label>
-                <div class="channel-form-helper">Found in Meta Events Manager → Test Events tab</div>
-                <input type="text" id="meta-test-code" class="channel-form-input" placeholder="Paste the Test Event Code here">
-                <div class="channel-form-hint">Starts with TEST followed by numbers like TEST12345</div>
-                <div class="channel-form-error">Please enter a valid Test Event Code</div>
+              <!-- Manual Version -->
+              <div class="ad-account-version" id="ad-account-manual">
+                <div class="channel-connect-card ad-account-card">
+                  <div class="ad-account-header">
+                    <div class="ad-account-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="ad-account-title">Add Your Ad Account</h3>
+                      <span class="ad-account-optional-badge">Optional</span>
+                    </div>
+                  </div>
+
+                  <div class="ad-account-explanation">
+                    <p>Adding your ad account enables Pre/Post Performance Reports and Attribution Accuracy Reports in your Popsixle dashboard.</p>
+                  </div>
+
+                  <div class="ad-account-steps">
+                    <div class="ad-account-step">
+                      <span class="ad-account-step-number">1</span>
+                      <span class="ad-account-step-text">In Meta Business Manager, go to <strong>Accounts → Ad Accounts</strong></span>
+                    </div>
+                    <div class="ad-account-step">
+                      <span class="ad-account-step-number">2</span>
+                      <span class="ad-account-step-text">Find your ad account, click <strong>Assign Partners</strong></span>
+                    </div>
+                    <div class="ad-account-step">
+                      <span class="ad-account-step-number">3</span>
+                      <span class="ad-account-step-text">Enter Popsixle's Business ID: <strong>600470493346123</strong></span>
+                    </div>
+                    <div class="ad-account-step">
+                      <span class="ad-account-step-number">4</span>
+                      <span class="ad-account-step-text">Select <strong>"View performance"</strong> access level</span>
+                    </div>
+                  </div>
+
+                  <div class="ad-account-input-group">
+                    <label class="channel-form-label">Ad Account ID</label>
+                    <input type="text" id="meta-ad-account-id" class="channel-form-input" placeholder="Enter your Ad Account ID">
+                    <div class="channel-form-hint">Found in Meta Business Manager under Accounts → Ad Accounts</div>
+                  </div>
+
+                  <div class="ad-account-note">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                    </svg>
+                    <span><strong>Note:</strong> Business accounts only. Personal ad accounts cannot be connected.</span>
+                  </div>
+
+                  <div class="ad-account-help">
+                    <a href="https://popsixle.frontkb.com/en/articles/7972353" target="_blank" class="data-sharing-kb-link">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                      </svg>
+                      Read the full guide in our Knowledge Base
+                    </a>
+                  </div>
+                </div>
+
+                <div class="ad-account-actions">
+                  <button type="button" class="wizard-btn wizard-btn-secondary" id="meta-skip-ad-account">
+                    Skip for now
+                  </button>
+                  <button type="button" class="wizard-btn wizard-btn-primary" id="meta-confirm-ad-account">
+                    Confirm Ad Account
+                  </button>
+                </div>
               </div>
 
-              <!-- Demo Controls (for prototype testing) -->
-              <div class="pixel-demo-controls">
-                <div class="pixel-demo-controls-label">Demo Controls (preview states)</div>
-                <div class="pixel-demo-controls-buttons">
-                  <button class="pixel-demo-btn" onclick="showMetaTestStatus('pending')">Not Connected (gray)</button>
-                  <button class="pixel-demo-btn" onclick="showMetaTestStatus('testing')">Testing Connection (purple)</button>
-                  <button class="pixel-demo-btn" onclick="showMetaTestStatus('success')">Connected (green)</button>
-                  <button class="pixel-demo-btn" onclick="showMetaTestStatus('failed')">Connection Failed (red)</button>
+              <!-- OAuth Version (pending Facebook approval) -->
+              <div class="ad-account-version" id="ad-account-oauth" style="display: none;">
+                <div class="channel-connect-card ad-account-card">
+                  <div class="ad-account-header">
+                    <div class="ad-account-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="ad-account-title">Add Your Ad Account</h3>
+                      <span class="ad-account-optional-badge">Optional</span>
+                    </div>
+                  </div>
+
+                  <div class="ad-account-explanation">
+                    <p>Adding your ad account enables Pre/Post Performance Reports and Attribution Accuracy Reports in your Popsixle dashboard.</p>
+                  </div>
+
+                  <div class="ad-account-oauth-section">
+                    <button type="button" class="oauth-connect-btn meta-oauth" id="meta-ad-account-oauth">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                      </svg>
+                      Connect with Facebook
+                    </button>
+                  </div>
+
+                  <div class="ad-account-oauth-note">
+                    <p>We'll request read-only access to view your ad performance metrics. Popsixle never modifies your campaigns or settings.</p>
+                  </div>
+                </div>
+
+                <div class="ad-account-actions">
+                  <button type="button" class="wizard-btn wizard-btn-secondary" id="meta-skip-ad-account-oauth">
+                    Skip for now
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="wizard-footer">
+          <div class="wizard-footer" id="meta-wizard-footer">
             <div class="wizard-footer-left">
-              <button class="wizard-btn wizard-btn-secondary" id="meta-back-btn">Back</button>
+              <button type="button" class="wizard-btn wizard-btn-secondary" id="meta-back-btn">Back</button>
             </div>
             <div class="wizard-footer-right">
-              <button class="wizard-btn wizard-btn-primary" id="meta-submit-btn">Test Meta Connection</button>
+              <button type="button" class="wizard-btn wizard-btn-primary" id="meta-submit-btn" onclick="testMetaConnection()">Test Meta Connection</button>
             </div>
           </div>
         </div>
@@ -4837,6 +5429,62 @@
           </div>
         </div>
 
+        <!-- Step 5-Meta-DataSharing: Data Sharing Explanation -->
+        <div class="explanation-content" data-explanation="5-meta-datasharing">
+          <div class="explanation-header">
+            <div class="explanation-label">Step 5</div>
+            <h3 class="explanation-title">Disable Data Sharing</h3>
+          </div>
+          <div class="explanation-body">
+            <p>Popsixle sends both browser and server-side events to Meta, so Shopify's native Meta connection is no longer needed.</p>
+            <p>Disable Shopify's data sharing to avoid sending duplicate events.</p>
+          </div>
+          <div class="explanation-section">
+            <div class="explanation-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+              Common Questions
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Will this affect my tracking?</div>
+              <div class="faq-answer">No. Popsixle handles both browser and server-side events, fully replacing Shopify's Meta integration.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">What if I don't disable it?</div>
+              <div class="faq-answer">Meta will receive duplicate events from both Shopify and Popsixle, which skews your attribution data.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5-Meta-AdAccount: Ad Account Explanation -->
+        <div class="explanation-content" data-explanation="5-meta-adaccount">
+          <div class="explanation-header">
+            <div class="explanation-label">Step 5</div>
+            <h3 class="explanation-title">Add Ad Account (Optional)</h3>
+          </div>
+          <div class="explanation-body">
+            <p>Connecting your ad account enables Popsixle's advanced reporting features.</p>
+            <p>This is optional - you can skip this step and add it later from your dashboard.</p>
+          </div>
+          <div class="explanation-section">
+            <div class="explanation-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+              Common Questions
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">What reports does this enable?</div>
+              <div class="faq-answer">Pre/Post Performance Reports compare your ad performance before and after Popsixle. Attribution Accuracy Reports show match quality.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Why "View performance" access only?</div>
+              <div class="faq-answer">Popsixle only needs read-only access to pull metrics. We never modify your ad campaigns or settings.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Can I use a personal ad account?</div>
+              <div class="faq-answer">No. Popsixle requires a Business account. Contact support if you need help setting one up.</div>
+            </div>
+          </div>
+        </div>
+
       </aside>
 
         <!-- Setup Assistance Card (persistent across all steps) -->
@@ -4984,6 +5632,7 @@
     let currentStep = 0; // Start at Overview (step 0)
     const totalSteps = 5; // Steps 1-5 (not counting Overview)
     let currentChannelStep = null; // Track channel sub-step (e.g., "5-meta")
+    let currentMetaStep = 1; // Track Meta sub-step: 1=credentials, 2=testing, 3=data-sharing
 
     // Start trial - transition to wizard
     document.getElementById('start-trial-btn').addEventListener('click', function() {
@@ -5053,6 +5702,9 @@
 
     // Navigation button handlers
     document.querySelectorAll('.wizard-btn-primary').forEach(btn => {
+      // Skip buttons that have their own onclick handlers OR are inside channel connection UI
+      if (btn.hasAttribute('onclick') || btn.closest('.channel-connection-ui')) return;
+
       btn.addEventListener('click', function() {
         if (currentStep < totalSteps) {
           goToStep(currentStep + 1);
@@ -5064,6 +5716,9 @@
     });
 
     document.querySelectorAll('.wizard-btn-secondary').forEach(btn => {
+      // Skip buttons inside channel connection UI
+      if (btn.closest('.channel-connection-ui')) return;
+
       btn.addEventListener('click', function() {
         if (currentStep > 0) {
           goToStep(currentStep - 1);
@@ -5208,13 +5863,201 @@
           break;
         case 'success':
           badge.classList.add('status-success');
-          statusText.textContent = 'Connected';
+          statusText.textContent = 'Connection Verified';
           break;
         case 'failed':
           badge.classList.add('status-failed');
           statusText.textContent = 'Connection Failed';
           break;
       }
+    }
+
+    // Update Meta connection sidebar steps (1=credentials, 2=testing, 3=data-sharing, 4=ad-account)
+    function updateMetaConnectionStep(step) {
+      currentMetaStep = step;
+
+      const step1 = document.getElementById('connection-step-1');
+      const step2 = document.getElementById('connection-step-2');
+      const step3 = document.getElementById('connection-step-3');
+      const step4 = document.getElementById('connection-step-4');
+
+      // Reset all steps
+      [step1, step2, step3, step4].forEach(s => {
+        if (s) {
+          s.classList.remove('active', 'completed');
+        }
+      });
+
+      // Update based on current step
+      if (step >= 1) {
+        if (step1) step1.classList.add(step > 1 ? 'completed' : 'active');
+      }
+      if (step >= 2) {
+        if (step2) step2.classList.add(step > 2 ? 'completed' : 'active');
+      }
+      if (step >= 3) {
+        if (step3) step3.classList.add(step > 3 ? 'completed' : 'active');
+      }
+      if (step >= 4) {
+        if (step4) step4.classList.add('active');
+      }
+    }
+
+    // Show Meta Data Sharing step (after successful connection test)
+    function showMetaDataSharingStep() {
+      // Update sidebar to show step 2 complete, step 3 active
+      updateMetaConnectionStep(3);
+
+      // Hide credentials section, show data sharing section
+      var credentialsSection = document.getElementById('meta-credentials-section');
+      var dataSharingSection = document.getElementById('meta-data-sharing-section');
+      var adAccountSection = document.getElementById('meta-ad-account-section');
+      var metaFooter = document.getElementById('meta-wizard-footer');
+
+      if (credentialsSection) credentialsSection.style.display = 'none';
+      if (dataSharingSection) dataSharingSection.style.display = 'block';
+      if (adAccountSection) adAccountSection.style.display = 'none';
+      if (metaFooter) metaFooter.style.display = 'none';
+
+      // Update the status badge to show verified
+      showMetaTestStatus('success');
+
+      // Update explanation panel
+      updateExplanationPanel('5-meta-datasharing');
+    }
+
+    // Show Meta Ad Account step (after Data Sharing confirmed)
+    function showMetaAdAccountStep() {
+      updateMetaConnectionStep(4);
+
+      const credentialsSection = document.getElementById('meta-credentials-section');
+      const dataSharingSection = document.getElementById('meta-data-sharing-section');
+      const adAccountSection = document.getElementById('meta-ad-account-section');
+      const metaFooter = document.getElementById('meta-wizard-footer');
+
+      if (credentialsSection) credentialsSection.style.display = 'none';
+      if (dataSharingSection) dataSharingSection.style.display = 'none';
+      if (adAccountSection) adAccountSection.style.display = 'block';
+      if (metaFooter) metaFooter.style.display = 'none';
+
+      updateExplanationPanel('5-meta-adaccount');
+    }
+
+    // Test Meta Connection (called from button onclick)
+    function testMetaConnection() {
+      var pixelId = document.getElementById('meta-pixel-id').value.trim();
+      var capiToken = document.getElementById('meta-capi-token').value.trim();
+      var testCode = document.getElementById('meta-test-code').value.trim();
+      var metaSubmitBtn = document.getElementById('meta-submit-btn');
+
+      // Basic validation
+      var isValid = true;
+
+      if (!pixelId) {
+        document.getElementById('meta-pixel-id').classList.add('error');
+        isValid = false;
+      } else {
+        document.getElementById('meta-pixel-id').classList.remove('error');
+      }
+
+      if (!capiToken) {
+        document.getElementById('meta-capi-token').classList.add('error');
+        isValid = false;
+      } else {
+        document.getElementById('meta-capi-token').classList.remove('error');
+      }
+
+      if (!testCode) {
+        document.getElementById('meta-test-code').classList.add('error');
+        isValid = false;
+      } else {
+        document.getElementById('meta-test-code').classList.remove('error');
+      }
+
+      if (!isValid) return;
+
+      // Update sidebar to step 2
+      updateMetaConnectionStep(2);
+      showMetaTestStatus('testing');
+
+      if (metaSubmitBtn) {
+        metaSubmitBtn.disabled = true;
+        metaSubmitBtn.textContent = 'Testing...';
+      }
+
+      // Show success then data sharing
+      window.setTimeout(function() {
+        showMetaTestStatus('success');
+        updateMetaConnectionStep(3);
+        window.setTimeout(function() {
+          showMetaDataSharingStep();
+        }, 800);
+      }, 1200);
+    }
+
+    // Helper function to update explanation panel
+    function updateExplanationPanel(panelId) {
+      document.querySelectorAll('.explanation-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      const panel = document.querySelector(`.explanation-content[data-explanation="${panelId}"]`);
+      if (panel) {
+        panel.classList.add('active');
+      }
+    }
+
+    // Reset Meta form to initial state
+    function resetMetaForm() {
+      currentMetaStep = 1;
+      showMetaTestStatus('pending');
+
+      // Reset section visibility
+      const credentialsSection = document.getElementById('meta-credentials-section');
+      const dataSharingSection = document.getElementById('meta-data-sharing-section');
+      const adAccountSection = document.getElementById('meta-ad-account-section');
+      const metaFooter = document.getElementById('meta-wizard-footer');
+
+      if (credentialsSection) credentialsSection.style.display = 'block';
+      if (dataSharingSection) dataSharingSection.style.display = 'none';
+      if (adAccountSection) adAccountSection.style.display = 'none';
+      if (metaFooter) metaFooter.style.display = 'flex';
+
+      // Reset sidebar steps
+      updateMetaConnectionStep(1);
+
+      // Reset submit button
+      const metaSubmitBtn = document.getElementById('meta-submit-btn');
+      if (metaSubmitBtn) {
+        metaSubmitBtn.disabled = false;
+        metaSubmitBtn.textContent = 'Test Meta Connection';
+      }
+
+      // Reset ad account form
+      const adAccountInput = document.getElementById('meta-ad-account-id');
+      if (adAccountInput) {
+        adAccountInput.value = '';
+        adAccountInput.classList.remove('error');
+      }
+
+      // Reset version toggle to manual
+      document.querySelectorAll('.demo-version-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.version === 'manual') btn.classList.add('active');
+      });
+      const manualVersion = document.getElementById('ad-account-manual');
+      const oauthVersion = document.getElementById('ad-account-oauth');
+      if (manualVersion) manualVersion.style.display = 'block';
+      if (oauthVersion) oauthVersion.style.display = 'none';
+
+      // Reset OAuth button
+      const oauthBtn = document.getElementById('meta-ad-account-oauth');
+      if (oauthBtn) {
+        oauthBtn.disabled = false;
+        oauthBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Connect with Facebook';
+      }
+
+      // Update explanation panel back to default
+      updateExplanationPanel('5-meta');
     }
 
     // Simulate pixel check (for prototype)
@@ -5469,15 +6312,19 @@
         setupStepsHeader.querySelector('.setup-steps-progress').style.display = 'none';
       }
 
-      // Reset connection steps state (step 1 active, step 2 pending)
+      // Reset connection steps state (step 1 active, steps 2-4 pending)
       const step1 = document.getElementById('connection-step-1');
       const step2 = document.getElementById('connection-step-2');
+      const step3 = document.getElementById('connection-step-3');
+      const step4 = document.getElementById('connection-step-4');
       if (step1) { step1.classList.add('active'); step1.classList.remove('completed'); }
       if (step2) { step2.classList.remove('active', 'completed'); }
+      if (step3) { step3.classList.remove('active', 'completed'); }
+      if (step4) { step4.classList.remove('active', 'completed'); }
 
-      // Reset status badge for Meta channel
+      // Reset Meta-specific state when entering Meta form
       if (channel === 'meta') {
-        showMetaTestStatus('pending');
+        resetMetaForm();
       }
     }
 
@@ -5528,10 +6375,10 @@
 
     // Complete channel connection (called after successful test)
     function completeChannelConnection(channel) {
-      const row = document.querySelector(`.flow-destination-wrapper[data-channel="${channel}"]`);
-      const status = document.getElementById(`dest-${channel}-status`);
-      const btn = document.getElementById(`connect-${channel}`);
-      const line = document.getElementById(`line-${channel}`);
+      var row = document.querySelector('.flow-destination-wrapper[data-channel="' + channel + '"]');
+      var status = document.getElementById('dest-' + channel + '-status');
+      var btn = document.getElementById('connect-' + channel);
+      var line = document.getElementById('line-' + channel);
 
       // Update state
       wizardState.channels[channel] = true;
@@ -5645,59 +6492,84 @@
       metaBackBtn.addEventListener('click', returnToChannelSelection);
     }
 
-    // Meta submit button
-    const metaSubmitBtn = document.getElementById('meta-submit-btn');
-    if (metaSubmitBtn) {
-      metaSubmitBtn.addEventListener('click', function() {
-        const pixelId = document.getElementById('meta-pixel-id').value.trim();
-        const capiToken = document.getElementById('meta-capi-token').value.trim();
-        const testCode = document.getElementById('meta-test-code').value.trim();
 
-        // Basic validation
-        let isValid = true;
 
-        if (!pixelId) {
-          document.getElementById('meta-pixel-id').classList.add('error');
-          isValid = false;
-        } else {
-          document.getElementById('meta-pixel-id').classList.remove('error');
+    // Meta Ad Account buttons (manual version)
+    const metaSkipAdAccount = document.getElementById('meta-skip-ad-account');
+    if (metaSkipAdAccount) {
+      metaSkipAdAccount.addEventListener('click', function() {
+        // Mark step 4 as skipped/complete and finish
+        const step4 = document.getElementById('connection-step-4');
+        if (step4) {
+          step4.classList.remove('active');
+          step4.classList.add('completed');
         }
-
-        if (!capiToken) {
-          document.getElementById('meta-capi-token').classList.add('error');
-          isValid = false;
-        } else {
-          document.getElementById('meta-capi-token').classList.remove('error');
-        }
-
-        if (!testCode) {
-          document.getElementById('meta-test-code').classList.add('error');
-          isValid = false;
-        } else {
-          document.getElementById('meta-test-code').classList.remove('error');
-        }
-
-        if (!isValid) return;
-
-        // Show testing state
-        showMetaTestStatus('testing');
-        metaSubmitBtn.disabled = true;
-        metaSubmitBtn.textContent = 'Testing...';
-
-        // Simulate API call
-        setTimeout(() => {
-          // Show success state
-          showMetaTestStatus('success');
-          metaSubmitBtn.disabled = false;
-          metaSubmitBtn.textContent = 'Test Meta Connection';
-
-          // Complete connection after short delay to show success state
-          setTimeout(() => {
-            completeChannelConnection('meta');
-          }, 1000);
-        }, 1500);
+        completeChannelConnection('meta');
       });
     }
+
+    const metaConfirmAdAccount = document.getElementById('meta-confirm-ad-account');
+    if (metaConfirmAdAccount) {
+      metaConfirmAdAccount.addEventListener('click', function() {
+        const adAccountId = document.getElementById('meta-ad-account-id').value.trim();
+        if (!adAccountId) {
+          document.getElementById('meta-ad-account-id').classList.add('error');
+          return;
+        }
+        document.getElementById('meta-ad-account-id').classList.remove('error');
+
+        // Mark step 4 as complete and finish
+        const step4 = document.getElementById('connection-step-4');
+        if (step4) {
+          step4.classList.remove('active');
+          step4.classList.add('completed');
+        }
+        completeChannelConnection('meta');
+      });
+    }
+
+    // Meta Ad Account buttons (OAuth version)
+    const metaSkipAdAccountOAuth = document.getElementById('meta-skip-ad-account-oauth');
+    if (metaSkipAdAccountOAuth) {
+      metaSkipAdAccountOAuth.addEventListener('click', function() {
+        const step4 = document.getElementById('connection-step-4');
+        if (step4) {
+          step4.classList.remove('active');
+          step4.classList.add('completed');
+        }
+        completeChannelConnection('meta');
+      });
+    }
+
+    const metaAdAccountOAuth = document.getElementById('meta-ad-account-oauth');
+    if (metaAdAccountOAuth) {
+      metaAdAccountOAuth.addEventListener('click', function() {
+        // Simulate OAuth flow
+        this.disabled = true;
+        this.innerHTML = '<svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Connecting...';
+
+        setTimeout(() => {
+          const step4 = document.getElementById('connection-step-4');
+          if (step4) {
+            step4.classList.remove('active');
+            step4.classList.add('completed');
+          }
+          completeChannelConnection('meta');
+        }, 2000);
+      });
+    }
+
+    // Ad Account version toggle (for team review)
+    document.querySelectorAll('.demo-version-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const version = this.dataset.version;
+        document.querySelectorAll('.demo-version-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        document.getElementById('ad-account-manual').style.display = version === 'manual' ? 'block' : 'none';
+        document.getElementById('ad-account-oauth').style.display = version === 'oauth' ? 'block' : 'none';
+      });
+    });
 
     // Go to Dashboard button
     if (goToDashboardBtn) {
