@@ -1636,6 +1636,127 @@
       color: #9333EA;
     }
 
+    /* Meta Celebration Modal */
+    .meta-celebration-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .meta-celebration-overlay.active {
+      display: flex;
+    }
+
+    .meta-celebration-modal {
+      background: white;
+      border-radius: 16px;
+      padding: 48px;
+      max-width: 800px;
+      width: 94%;
+      max-height: 90vh;
+      overflow-y: auto;
+      text-align: center;
+    }
+
+    .meta-celebration-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 32px 0 40px;
+    }
+
+    .meta-celebration-flow .flow-node {
+      width: 80px;
+      height: 80px;
+    }
+
+    .meta-celebration-flow .flow-node img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .meta-celebration-flow .flow-node.shopify img {
+      width: 80px;
+      height: auto;
+      border-radius: 0;
+    }
+
+    .meta-celebration-flow .flow-node-label {
+      font-size: 14px;
+      margin-top: 12px;
+    }
+
+    .meta-celebration-header h2 {
+      font-size: 30px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #A855F7, #6366F1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+    }
+
+    .meta-celebration-divider {
+      height: 1px;
+      background: #E2E8F0;
+      margin: 32px 0;
+    }
+
+    .meta-celebration-section {
+      text-align: left;
+    }
+
+    .meta-celebration-section-title {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #A855F7;
+      margin-bottom: 10px;
+    }
+
+    .meta-celebration-section-body {
+      font-size: 16px;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .meta-celebration-emq-img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #E2E8F0;
+      margin-top: 20px;
+    }
+
+    .meta-celebration-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .meta-celebration-actions .wizard-btn-secondary {
+      background: none;
+      border: none;
+      color: #64748B;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .meta-celebration-actions .wizard-btn-secondary:hover {
+      color: #1E293B;
+    }
+
     /* Unrestricted Modal */
     .unrestricted-modal-overlay {
       display: none;
@@ -2970,7 +3091,7 @@
     }
 
     .destination-icon.meta {
-      background: #F8FAFC;
+      background: #F3F4F6;
     }
 
     .destination-icon.google {
@@ -3845,7 +3966,8 @@
     .flow-node.meta {
       width: 64px;
       height: 64px;
-      background: linear-gradient(135deg, #0668E1, #1877F2);
+      background: #F3F4F6;
+      border: 1px solid #E2E8F0;
       border-radius: 16px;
       display: flex;
       align-items: center;
@@ -3872,129 +3994,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .data-sharing-card {
-      background: white;
-      border: 1px solid #E2E8F0;
-      border-radius: 10px;
-      padding: 24px;
-    }
-
-    .data-sharing-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .data-sharing-icon {
-      width: 40px;
-      height: 40px;
-      background: #FEF3C7;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .data-sharing-icon svg {
-      width: 24px;
-      height: 24px;
-      color: #F59E0B;
-    }
-
-    .data-sharing-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #1E293B;
-      margin: 0;
-      padding-top: 8px;
-    }
-
-    .data-sharing-explanation {
-      margin-bottom: 20px;
-    }
-
-    .data-sharing-explanation p {
-      font-size: 15px;
-      color: #475569;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .data-sharing-steps {
-      background: #F8FAFC;
-      border-radius: 8px;
-      padding: 16px 20px;
-      margin-bottom: 20px;
-    }
-
-    .data-sharing-step {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 8px 0;
-    }
-
-    .data-sharing-step:not(:last-child) {
-      border-bottom: 1px solid #E2E8F0;
-      padding-bottom: 12px;
-      margin-bottom: 4px;
-    }
-
-    .data-sharing-step-number {
-      width: 24px;
-      height: 24px;
-      background: #A855F7;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 600;
-      flex-shrink: 0;
-    }
-
-    .data-sharing-step-text {
-      font-size: 14px;
-      color: #334155;
-      line-height: 1.5;
-      padding-top: 2px;
-    }
-
-    .data-sharing-screenshot {
-      margin-bottom: 20px;
-    }
-
-    .screenshot-placeholder {
-      background: #F1F5F9;
-      border: 2px dashed #CBD5E1;
-      border-radius: 8px;
-      padding: 40px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      text-align: center;
-    }
-
-    .screenshot-placeholder svg {
-      width: 48px;
-      height: 48px;
-      color: #94A3B8;
-    }
-
-    .screenshot-placeholder span {
-      font-size: 13px;
-      color: #64748B;
-      max-width: 300px;
-    }
-
-    .data-sharing-help {
-      padding-top: 4px;
-    }
-
     .data-sharing-kb-link {
       display: inline-flex;
       align-items: center;
@@ -4009,22 +4008,10 @@
       text-decoration: underline;
     }
 
-    .data-sharing-kb-link svg {
-      width: 16px;
-      height: 16px;
-    }
-
     .data-sharing-confirmation {
       margin-top: 24px;
       display: flex;
       justify-content: flex-end;
-    }
-
-    /* Real screenshot image */
-    .data-sharing-screenshot-img {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid #E2E8F0;
     }
 
     /* ============================================
@@ -4045,18 +4032,6 @@
       animation: fadeInSection 0.25s ease;
     }
 
-    .ad-account-demo-toggle {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
-      padding: 8px 12px;
-      background: #FEF3C7;
-      border-radius: 6px;
-      font-size: 13px;
-      color: #92400E;
-    }
-
     .demo-version-btn {
       padding: 4px 12px;
       border-radius: 4px;
@@ -4073,44 +4048,6 @@
       border-color: #A855F7;
     }
 
-    .ad-account-card {
-      background: white;
-      border: 1px solid #E2E8F0;
-      border-radius: 10px;
-      padding: 24px;
-    }
-
-    .ad-account-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .ad-account-icon {
-      width: 40px;
-      height: 40px;
-      background: #F3E8FF;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .ad-account-icon svg {
-      width: 24px;
-      height: 24px;
-      color: #A855F7;
-    }
-
-    .ad-account-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #1E293B;
-      margin: 0 0 4px 0;
-    }
-
     .ad-account-optional-badge {
       display: inline-block;
       background: #F1F5F9;
@@ -4121,100 +4058,11 @@
       font-weight: 500;
     }
 
-    .ad-account-explanation {
-      margin-bottom: 20px;
-    }
-
-    .ad-account-explanation p {
-      font-size: 15px;
-      color: #475569;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .ad-account-steps {
-      background: #F8FAFC;
-      border-radius: 8px;
-      padding: 16px 20px;
-      margin-bottom: 20px;
-    }
-
-    .ad-account-step {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 8px 0;
-    }
-
-    .ad-account-step:not(:last-child) {
-      border-bottom: 1px solid #E2E8F0;
-      padding-bottom: 12px;
-      margin-bottom: 4px;
-    }
-
-    .ad-account-step-number {
-      width: 24px;
-      height: 24px;
-      background: #A855F7;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 600;
-      flex-shrink: 0;
-    }
-
-    .ad-account-step-text {
-      font-size: 14px;
-      color: #334155;
-      line-height: 1.5;
-      padding-top: 2px;
-    }
-
-    .ad-account-input-group {
-      margin-bottom: 20px;
-    }
-
-    .ad-account-note {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      padding: 12px 16px;
-      background: #F8FAFC;
-      border-radius: 8px;
-      margin-bottom: 16px;
-    }
-
-    .ad-account-note svg {
-      width: 20px;
-      height: 20px;
-      color: #64748B;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .ad-account-note span {
-      font-size: 13px;
-      color: #475569;
-      line-height: 1.5;
-    }
-
-    .ad-account-help {
-      padding-top: 4px;
-    }
-
     .ad-account-actions {
       margin-top: 24px;
       display: flex;
       justify-content: flex-end;
       gap: 12px;
-    }
-
-    /* OAuth Version Styles */
-    .ad-account-oauth-section {
-      margin: 24px 0;
     }
 
     .oauth-connect-btn {
@@ -4246,19 +4094,6 @@
       background: #166FE5;
     }
 
-    .ad-account-oauth-note {
-      margin-top: 16px;
-      padding: 12px 16px;
-      background: #F8FAFC;
-      border-radius: 8px;
-    }
-
-    .ad-account-oauth-note p {
-      font-size: 13px;
-      color: #64748B;
-      line-height: 1.5;
-      margin: 0;
-    }
   </style>
 </head>
 <body>
@@ -4473,19 +4308,19 @@
               <li class="wizard-step-item" id="connection-step-2">
                 <span class="wizard-step-number">2</span>
                 <div class="wizard-step-content">
-                  <span class="wizard-step-title">Test connection</span>
+                  <span class="wizard-step-title">Verify connection</span>
                 </div>
               </li>
               <li class="wizard-step-item" id="connection-step-3">
                 <span class="wizard-step-number">3</span>
                 <div class="wizard-step-content">
-                  <span class="wizard-step-title">Disable Data Sharing</span>
+                  <span class="wizard-step-title">Optimize data quality</span>
                 </div>
               </li>
               <li class="wizard-step-item" id="connection-step-4">
                 <span class="wizard-step-number">4</span>
                 <div class="wizard-step-content">
-                  <span class="wizard-step-title">Add ad account</span>
+                  <span class="wizard-step-title">Enable reporting</span>
                   <span class="wizard-step-optional">(optional)</span>
                 </div>
               </li>
@@ -5050,7 +4885,6 @@
                 <div class="flow-node meta">
                   <img src="assets/meta-color.png" alt="Meta" style="width: 40px; height: 40px;">
                 </div>
-                <span class="flow-node-label">Meta</span>
               </div>
             </div>
 
@@ -5058,6 +4892,14 @@
             <div class="meta-credentials-section" id="meta-credentials-section">
               <!-- Form Container -->
               <div class="channel-form-container">
+                <!-- Intro Card -->
+                <div class="channel-connect-card">
+                  <label class="channel-form-label">Add your Meta credentials</label>
+                  <div class="channel-form-helper">
+                    Enter the three values below from your Meta Events Manager. These let Popsixle send conversion events directly to your Meta Ad Account.
+                  </div>
+                </div>
+
                 <!-- Pixel/Dataset ID Card -->
                 <div class="channel-connect-card">
                   <label class="channel-form-label">Pixel/Dataset ID</label>
@@ -5100,48 +4942,26 @@
 
             <!-- Step 3: Data Sharing Section (shown after successful connection test) -->
             <div class="meta-data-sharing-section" id="meta-data-sharing-section" style="display: none;">
-              <div class="channel-connect-card data-sharing-card">
-                <div class="data-sharing-header">
-                  <div class="data-sharing-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-                    </svg>
-                  </div>
-                  <h3 class="data-sharing-title">Disable Shopify's Meta Data Sharing</h3>
-                </div>
-
-                <div class="data-sharing-explanation">
-                  <p>Popsixle sends both browser and server-side events to Meta, so Shopify's native Meta connection is no longer needed. Disable it to avoid duplicate events.</p>
-                </div>
-
-                <div class="data-sharing-steps">
-                  <div class="data-sharing-step">
-                    <span class="data-sharing-step-number">1</span>
-                    <span class="data-sharing-step-text">Go to your <strong>Shopify Admin</strong></span>
-                  </div>
-                  <div class="data-sharing-step">
-                    <span class="data-sharing-step-number">2</span>
-                    <span class="data-sharing-step-text">Navigate to <strong>Sales Channels → Facebook & Instagram → Settings</strong></span>
-                  </div>
-                  <div class="data-sharing-step">
-                    <span class="data-sharing-step-number">3</span>
-                    <span class="data-sharing-step-text">In the <strong>Share data</strong> section, click <strong>Change</strong> and toggle off data sharing</span>
+              <div class="channel-form-container">
+                <!-- Card 1: Why -->
+                <div class="channel-connect-card">
+                  <label class="channel-form-label">Optimize your data quality</label>
+                  <div class="channel-form-helper">
+                    You're connected to Meta! But there's one important step: Shopify's built-in Meta connection will send duplicate events alongside Popsixle, which hurts your attribution accuracy. Disable it to keep your data clean.
                   </div>
                 </div>
 
-                <!-- Screenshot -->
-                <div class="data-sharing-screenshot">
-                  <img src="assets/Data_Sharing2.PNG" alt="Shopify Admin showing Data Sharing toggle in Facebook & Instagram settings" class="data-sharing-screenshot-img">
+                <!-- Card 2: How -->
+                <div class="channel-connect-card">
+                  <label class="channel-form-label">How to disable</label>
+                  <div class="channel-form-helper">
+                    In your Shopify Admin, go to <strong>Sales Channels &rarr; Facebook &amp; Instagram &rarr; Settings</strong>. In the <strong>Share data</strong> section, click <strong>Change</strong> and toggle off data sharing.
+                  </div>
+                  <div class="data-sharing-screenshot" style="margin-top: 16px;">
+                    <img src="assets/Data_Sharing2.PNG" alt="Shopify Data Sharing toggle" class="data-sharing-screenshot-img" style="max-width: 80%; border-radius: 8px; border: 1px solid #E2E8F0;">
+                  </div>
                 </div>
 
-                <div class="data-sharing-help">
-                  <a href="https://popsixle.frontkb.com/en/articles/8953281" target="_blank" class="data-sharing-kb-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                    </svg>
-                    Read the full guide in our Knowledge Base
-                  </a>
-                </div>
               </div>
 
               <div class="data-sharing-confirmation">
@@ -5153,71 +4973,34 @@
 
             <!-- Step 4: Ad Account Section (shown after Data Sharing) -->
             <div class="meta-ad-account-section" id="meta-ad-account-section" style="display: none;">
-              <!-- Demo toggle for team review -->
-              <div class="ad-account-demo-toggle">
-                <span>Version:</span>
-                <button type="button" class="demo-version-btn active" data-version="manual">Manual</button>
-                <button type="button" class="demo-version-btn" data-version="oauth">OAuth</button>
-              </div>
-
               <!-- Manual Version -->
               <div class="ad-account-version" id="ad-account-manual">
-                <div class="channel-connect-card ad-account-card">
-                  <div class="ad-account-header">
-                    <div class="ad-account-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 class="ad-account-title">Add Your Ad Account</h3>
-                      <span class="ad-account-optional-badge">Optional</span>
+                <div class="channel-form-container">
+                  <!-- Card 1: Why -->
+                  <div class="channel-connect-card">
+                    <label class="channel-form-label">Add your Ad Account <span class="ad-account-optional-badge">Optional</span></label>
+                    <div class="channel-form-helper">
+                      Enables Pre/Post Performance Reports and Attribution Accuracy Reports in your Popsixle dashboard.
                     </div>
                   </div>
 
-                  <div class="ad-account-explanation">
-                    <p>Adding your ad account enables Pre/Post Performance Reports and Attribution Accuracy Reports in your Popsixle dashboard.</p>
-                  </div>
-
-                  <div class="ad-account-steps">
-                    <div class="ad-account-step">
-                      <span class="ad-account-step-number">1</span>
-                      <span class="ad-account-step-text">In Meta Business Manager, go to <strong>Accounts → Ad Accounts</strong></span>
+                  <!-- Card 2: Steps + Input -->
+                  <div class="channel-connect-card">
+                    <label class="channel-form-label">How to add</label>
+                    <ol style="margin: 8px 0 0 0; padding-left: 20px; color: #475569; font-size: 14px; line-height: 1.8;">
+                      <li>In Meta Business Manager, go to <strong>Accounts → Ad Accounts</strong></li>
+                      <li>Find your ad account and click <strong>Assign Partners</strong></li>
+                      <li>Enter Popsixle's Business ID: <strong>600470493346123</strong></li>
+                      <li>Select <strong>"View performance"</strong> access level</li>
+                      <li>Enter your Ad Account ID below</li>
+                    </ol>
+                    <div style="margin-top: 16px;">
+                      <input type="text" id="meta-ad-account-id" class="channel-form-input" placeholder="Enter your Ad Account ID">
+                      <div class="channel-form-hint">Found in Meta Business Manager under Accounts → Ad Accounts</div>
+                      <div class="channel-form-hint" style="margin-top: 8px; font-style: normal; color: #64748B;">
+                        <strong>Note:</strong> Business accounts only. Personal ad accounts cannot be connected.
+                      </div>
                     </div>
-                    <div class="ad-account-step">
-                      <span class="ad-account-step-number">2</span>
-                      <span class="ad-account-step-text">Find your ad account, click <strong>Assign Partners</strong></span>
-                    </div>
-                    <div class="ad-account-step">
-                      <span class="ad-account-step-number">3</span>
-                      <span class="ad-account-step-text">Enter Popsixle's Business ID: <strong>600470493346123</strong></span>
-                    </div>
-                    <div class="ad-account-step">
-                      <span class="ad-account-step-number">4</span>
-                      <span class="ad-account-step-text">Select <strong>"View performance"</strong> access level</span>
-                    </div>
-                  </div>
-
-                  <div class="ad-account-input-group">
-                    <label class="channel-form-label">Ad Account ID</label>
-                    <input type="text" id="meta-ad-account-id" class="channel-form-input" placeholder="Enter your Ad Account ID">
-                    <div class="channel-form-hint">Found in Meta Business Manager under Accounts → Ad Accounts</div>
-                  </div>
-
-                  <div class="ad-account-note">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-                    </svg>
-                    <span><strong>Note:</strong> Business accounts only. Personal ad accounts cannot be connected.</span>
-                  </div>
-
-                  <div class="ad-account-help">
-                    <a href="https://popsixle.frontkb.com/en/articles/7972353" target="_blank" class="data-sharing-kb-link">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                      </svg>
-                      Read the full guide in our Knowledge Base
-                    </a>
                   </div>
                 </div>
 
@@ -5233,34 +5016,18 @@
 
               <!-- OAuth Version (pending Facebook approval) -->
               <div class="ad-account-version" id="ad-account-oauth" style="display: none;">
-                <div class="channel-connect-card ad-account-card">
-                  <div class="ad-account-header">
-                    <div class="ad-account-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-                      </svg>
+                <div class="channel-form-container">
+                  <div class="channel-connect-card">
+                    <label class="channel-form-label">Add your Ad Account <span class="ad-account-optional-badge">Optional</span></label>
+                    <div class="channel-form-helper">
+                      Enables Pre/Post Performance Reports and Attribution Accuracy Reports in your Popsixle dashboard.
                     </div>
-                    <div>
-                      <h3 class="ad-account-title">Add Your Ad Account</h3>
-                      <span class="ad-account-optional-badge">Optional</span>
-                    </div>
-                  </div>
-
-                  <div class="ad-account-explanation">
-                    <p>Adding your ad account enables Pre/Post Performance Reports and Attribution Accuracy Reports in your Popsixle dashboard.</p>
-                  </div>
-
-                  <div class="ad-account-oauth-section">
-                    <button type="button" class="oauth-connect-btn meta-oauth" id="meta-ad-account-oauth">
+                    <button type="button" class="oauth-connect-btn meta-oauth" id="meta-ad-account-oauth" style="margin-top: 16px;">
                       <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                       </svg>
                       Connect with Facebook
                     </button>
-                  </div>
-
-                  <div class="ad-account-oauth-note">
-                    <p>We'll request read-only access to view your ad performance metrics. Popsixle never modifies your campaigns or settings.</p>
                   </div>
                 </div>
 
@@ -5268,6 +5035,15 @@
                   <button type="button" class="wizard-btn wizard-btn-secondary" id="meta-skip-ad-account-oauth">
                     Skip for now
                   </button>
+                </div>
+              </div>
+
+              <!-- Demo toggle for team review -->
+              <div class="pixel-demo-controls">
+                <div class="pixel-demo-controls-label">Demo Controls (preview version)</div>
+                <div class="pixel-demo-controls-buttons">
+                  <button class="pixel-demo-btn demo-version-btn active" data-version="manual">Manual</button>
+                  <button class="pixel-demo-btn demo-version-btn" data-version="oauth">OAuth</button>
                 </div>
               </div>
             </div>
@@ -5453,7 +5229,7 @@
             <h3 class="explanation-title">Connect to Meta</h3>
           </div>
           <div class="explanation-body">
-            <p>Connecting to Meta allows Popsixle to send conversion data directly to your Meta Ads account via the Conversions API.</p>
+            <p>Connecting to Meta allows Popsixle to send conversion data directly to your Meta Ad Account via the Conversions API.</p>
             <p>This bypasses browser limitations and ensures accurate attribution for your ad campaigns.</p>
           </div>
           <div class="explanation-section">
@@ -5672,6 +5448,75 @@
     </div>
   </div>
 
+  <!-- Meta Celebration Modal -->
+  <div class="meta-celebration-overlay" id="meta-celebration-modal">
+    <div class="meta-celebration-modal">
+      <!-- Flow visual — fully connected -->
+      <div class="meta-celebration-flow">
+        <div class="flow-source">
+          <div class="flow-node shopify">
+            <img src="assets/Shopify_Logo.png" alt="Shopify">
+          </div>
+          <span class="flow-node-label">Your Store</span>
+        </div>
+        <svg class="flow-line-svg" width="56" height="20" style="margin: 0 8px;">
+          <path class="dashed-line green" d="M 0,10 L 56,10" />
+        </svg>
+        <div class="flow-hub">
+          <div class="flow-node popsixle">
+            <img src="popsixle_logo_gradient_circle_500 (1).png" alt="Popsixle">
+          </div>
+          <span class="flow-node-label">Popsixle Pixel</span>
+        </div>
+        <svg class="flow-line-svg" width="56" height="20" style="margin: 0 8px;">
+          <path class="dashed-line purple connected" d="M 0,10 L 56,10" />
+        </svg>
+        <div class="flow-destination">
+          <div class="flow-node meta">
+            <img src="assets/meta-color.png" alt="Meta" style="width: 44px; height: 44px;">
+          </div>
+          <span class="flow-node-label">Meta</span>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div class="meta-celebration-header">
+        <h2>Popsixle is connected to Meta!</h2>
+      </div>
+
+      <div class="meta-celebration-divider"></div>
+
+      <!-- Section 1: Now -->
+      <div class="meta-celebration-section">
+        <div class="meta-celebration-section-title">What's happening now</div>
+        <div class="meta-celebration-section-body">
+          Server-side tracking is active. Every conversion event from your store is being sent directly to Meta, bypassing browser blockers and iOS restrictions.
+        </div>
+      </div>
+
+      <div class="meta-celebration-divider"></div>
+
+      <!-- Section 2: Next -->
+      <div class="meta-celebration-section">
+        <div class="meta-celebration-section-title">What to expect next</div>
+        <div class="meta-celebration-section-body">
+          Most brands see improved ad performance within 7 days. Take a screenshot of your Event Match Quality (EMQ) in <a href="https://www.facebook.com/events_manager" target="_blank" style="color: #A855F7; font-weight: 600;">Meta Events Manager</a> now so you can track your improvement.
+        </div>
+        <img src="assets/EMQ.png" alt="Event Match Quality scores" class="meta-celebration-emq-img">
+      </div>
+
+      <!-- CTAs -->
+      <div class="meta-celebration-actions">
+        <button type="button" class="wizard-btn wizard-btn-primary" onclick="closeMetaCelebration()" style="width: 100%;">
+          Connect More Channels
+        </button>
+        <button type="button" class="wizard-btn wizard-btn-secondary" onclick="closeMetaCelebrationToDashboard()">
+          Go to Dashboard
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Toggle pricing details accordion
     function togglePricingDetails() {
@@ -5754,7 +5599,7 @@
     // Navigation button handlers
     document.querySelectorAll('.wizard-btn-primary').forEach(btn => {
       // Skip buttons that have their own onclick handlers OR are inside channel connection UI
-      if (btn.hasAttribute('onclick') || btn.closest('.channel-connection-ui')) return;
+      if (btn.hasAttribute('onclick') || btn.closest('[data-step="5-meta"]')) return;
 
       btn.addEventListener('click', function() {
         if (currentStep < totalSteps) {
@@ -5768,7 +5613,7 @@
 
     document.querySelectorAll('.wizard-btn-secondary').forEach(btn => {
       // Skip buttons inside channel connection UI
-      if (btn.closest('.channel-connection-ui')) return;
+      if (btn.closest('[data-step="5-meta"]')) return;
 
       btn.addEventListener('click', function() {
         if (currentStep > 0) {
@@ -6424,6 +6269,24 @@
       goToChannelStep(channel);
     }
 
+    // Meta celebration modal
+    function showMetaCelebration() {
+      var modal = document.getElementById('meta-celebration-modal');
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeMetaCelebration() {
+      var modal = document.getElementById('meta-celebration-modal');
+      if (modal) modal.classList.remove('active');
+      returnToChannelSelection();
+    }
+
+    function closeMetaCelebrationToDashboard() {
+      var modal = document.getElementById('meta-celebration-modal');
+      if (modal) modal.classList.remove('active');
+      window.location.href = 'dashboard.html';
+    }
+
     // Complete channel connection (called after successful test)
     function completeChannelConnection(channel) {
       var row = document.querySelector('.flow-destination-wrapper[data-channel="' + channel + '"]');
@@ -6454,8 +6317,12 @@
       // Update dashboard button
       updateDashboardButton();
 
-      // Return to channel selection
-      returnToChannelSelection();
+      // Show celebration modal for Meta, otherwise return to channel selection
+      if (channel === 'meta') {
+        showMetaCelebration();
+      } else {
+        returnToChannelSelection();
+      }
     }
 
     // Function to dynamically position SVG lines based on card positions
@@ -6706,6 +6573,7 @@
     <button type="button" class="debug-btn" onclick="debugGoToMeta(2)">M2. Testing</button>
     <button type="button" class="debug-btn" onclick="debugGoToMeta(3)">M3. Data Sharing</button>
     <button type="button" class="debug-btn" onclick="debugGoToMeta(4)">M4. Ad Account</button>
+    <button type="button" class="debug-btn" onclick="showMetaCelebration()">M5. Celebration</button>
   </div>
 
   <script>
