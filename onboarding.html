@@ -4616,6 +4616,41 @@
               </li>
             </ul>
           </div>
+          <!-- TikTok Connection Steps (shown when on TikTok form) -->
+          <div class="connection-steps-list" id="tiktok-connection-steps-list" style="display: none;">
+            <ul class="wizard-step-list">
+              <li class="wizard-step-item active" id="tiktok-step-1">
+                <span class="wizard-step-number">1</span>
+                <div class="wizard-step-content">
+                  <span class="wizard-step-title">Add Popsixle as partner</span>
+                </div>
+              </li>
+              <li class="wizard-step-item" id="tiktok-step-2">
+                <span class="wizard-step-number">2</span>
+                <div class="wizard-step-content">
+                  <span class="wizard-step-title">Enter credentials</span>
+                </div>
+              </li>
+              <li class="wizard-step-item" id="tiktok-step-3">
+                <span class="wizard-step-number">3</span>
+                <div class="wizard-step-content">
+                  <span class="wizard-step-title">Test connection</span>
+                </div>
+              </li>
+              <li class="wizard-step-item" id="tiktok-step-4">
+                <span class="wizard-step-number">4</span>
+                <div class="wizard-step-content">
+                  <span class="wizard-step-title">Turn off Shopify</span>
+                </div>
+              </li>
+              <li class="wizard-step-item" id="tiktok-step-5">
+                <span class="wizard-step-number">5</span>
+                <div class="wizard-step-content">
+                  <span class="wizard-step-title">What's next</span>
+                </div>
+              </li>
+            </ul>
+          </div>
         </aside>
 
         <!-- Content Area (Main + Explanation side by side) -->
@@ -5535,80 +5570,50 @@
 
         <!-- ===== STEP 5 - TIKTOK CONNECTION ===== -->
         <div class="step-panel" data-step="5-tiktok">
-          <div class="wizard-content-area">
-            <!-- Connection Steps Sidebar -->
-            <div class="connection-steps-list" id="tiktok-connection-steps-list">
-              <ul class="wizard-step-list">
-                <li class="wizard-step-item active" id="tiktok-connection-step-1">
-                  <span class="wizard-step-number">1</span>
-                  <div class="wizard-step-content">
-                    <span class="wizard-step-title">Add Popsixle as partner</span>
-                  </div>
-                </li>
-                <li class="wizard-step-item" id="tiktok-connection-step-2">
-                  <span class="wizard-step-number">2</span>
-                  <div class="wizard-step-content">
-                    <span class="wizard-step-title">Enter credentials</span>
-                  </div>
-                </li>
-                <li class="wizard-step-item" id="tiktok-connection-step-3">
-                  <span class="wizard-step-number">3</span>
-                  <div class="wizard-step-content">
-                    <span class="wizard-step-title">Test connection</span>
-                  </div>
-                </li>
-                <li class="wizard-step-item" id="tiktok-connection-step-4">
-                  <span class="wizard-step-number">4</span>
-                  <div class="wizard-step-content">
-                    <span class="wizard-step-title">Turn off Shopify</span>
-                  </div>
-                </li>
-                <li class="wizard-step-item" id="tiktok-connection-step-5">
-                  <span class="wizard-step-number">5</span>
-                  <div class="wizard-step-content">
-                    <span class="wizard-step-title">What's next</span>
-                  </div>
-                </li>
-              </ul>
+          <div class="wizard-content-header" style="position: relative;">
+            <!-- Status Badge - Top Right of Header -->
+            <div class="connection-test-badge status-pending" id="tiktok-status-badge">
+              <span class="status-dot"></span>
+              <span class="status-text">Not Connected</span>
             </div>
-
-            <!-- Main Content -->
-            <div class="wizard-main">
-              <div class="wizard-content-header">
-                <div class="connection-test-badge status-pending" id="tiktok-status-badge">
-                  <span class="status-dot"></span>
-                  Not Connected
+            <h1>Connect to TikTok</h1>
+            <p style="color: #1E293B;">Send your conversion data to TikTok to improve ad targeting and campaign performance</p>
+            <a href="https://popsixle.frontkb.com/en/articles/7938177" target="_blank" class="channel-form-help-link" style="margin-top: 12px;">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+              Need help? Read our step-by-step guide
+            </a>
+          </div>
+          <div class="wizard-content-body">
+            <!-- Data Flow Visual - Single Channel -->
+            <div class="channel-connect-flow">
+              <div class="flow-source">
+                <div class="flow-node shopify">
+                  <img src="assets/Shopify_Logo.png" alt="Shopify">
                 </div>
-                <h1>Connect to TikTok</h1>
-                <p>Send your conversion data to TikTok to improve ad targeting and campaign performance</p>
-                <a href="https://popsixle.frontkb.com/en/articles/7938177" target="_blank" class="channel-form-help-link">
-                  Need help? Read our step-by-step guide
-                </a>
+                <span class="flow-node-label">Your Store</span>
               </div>
-
-              <!-- Flow Diagram -->
-              <div class="channel-connect-flow">
-                <div class="flow-source">
-                  <div class="flow-node shopify">
-                    <img src="assets/Shopify_Logo.png" alt="Shopify">
-                  </div>
-                  <span class="flow-node-label">Your Store</span>
-                </div>
-                <svg class="flow-line-svg" width="60" height="20" style="margin: 0 8px;">
-                  <path class="dashed-line green" d="M 0,10 L 60,10" />
-                </svg>
+              <svg class="flow-line-svg" width="48" height="20">
+                <path class="dashed-line green" d="M 0,10 L 48,10" />
+              </svg>
+              <div class="flow-hub">
                 <div class="flow-node popsixle">
-                  <img src="popsixle_logo_gradient_circle_500 (1).png" alt="Popsixle" class="flow-logo">
+                  <img src="popsixle_logo_gradient_circle_500 (1).png" alt="Popsixle">
                 </div>
-                <svg class="flow-line-svg" width="60" height="20" style="margin: 0 8px;">
-                  <line x1="0" y1="10" x2="60" y2="10" class="dashed-line tiktok-black"/>
-                </svg>
-                <div class="flow-node tiktok">
-                  <img src="assets/tiktok-logo.png" alt="TikTok" class="flow-logo" onerror="this.style.display='none'; this.parentElement.innerHTML += '<div style=\'width:40px;height:40px;background:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;font-size:12px;\'>TT</div>';">
+                <span class="flow-node-label">Popsixle Pixel</span>
+              </div>
+              <svg class="flow-line-svg" width="48" height="20">
+                <path class="dashed-line tiktok-black" d="M 0,10 L 48,10" />
+              </svg>
+              <div class="flow-destination">
+                <div class="flow-node" style="border: 2px solid #000000; background: white;">
+                  <svg width="40" height="40" viewBox="0 0 24 24">
+                    <path fill="#000000" d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+                  </svg>
                 </div>
               </div>
-
-              <div class="wizard-content-body">
+            </div>
                 <!-- Section 1: Partner Setup -->
                 <div id="tiktok-partner-section">
                   <div class="channel-connect-card">
@@ -5659,13 +5664,6 @@
                     </div>
                   </div>
 
-                  <!-- Demo Controls -->
-                  <div class="pixel-demo-controls">
-                    <div class="pixel-demo-controls-label">Demo Controls (preview version)</div>
-                    <div class="pixel-demo-controls-buttons" id="tiktok-demo-controls">
-                      <button class="pixel-demo-btn demo-version-btn active" onclick="resetTikTokForm()">Reset</button>
-                    </div>
-                  </div>
                 </div>
 
                 <!-- Section 2: Credentials -->
@@ -5697,14 +5695,6 @@
                     <div class="channel-form-error" id="tiktok-test-code-error" style="display: none;">Please enter a valid Test Code</div>
                   </div>
 
-                  <!-- Demo Controls -->
-                  <div class="pixel-demo-controls">
-                    <div class="pixel-demo-controls-label">Demo Controls (preview version)</div>
-                    <div class="pixel-demo-controls-buttons">
-                      <button class="pixel-demo-btn demo-version-btn active" onclick="resetTikTokForm()">Reset</button>
-                      <button class="pixel-demo-btn demo-version-btn" onclick="simulateTikTokCredentials()">Fill Credentials</button>
-                    </div>
-                  </div>
                 </div>
 
                 <!-- Section 3: Test Connection -->
@@ -5757,15 +5747,6 @@
                     </div>
                   </div>
 
-                  <!-- Demo Controls -->
-                  <div class="pixel-demo-controls">
-                    <div class="pixel-demo-controls-label">Demo Controls (preview version)</div>
-                    <div class="pixel-demo-controls-buttons">
-                      <button class="pixel-demo-btn demo-version-btn active" onclick="resetTikTokForm()">Reset</button>
-                      <button class="pixel-demo-btn demo-version-btn" onclick="simulateTikTokTestSuccess()">Test Success</button>
-                      <button class="pixel-demo-btn demo-version-btn" onclick="simulateTikTokTestError()">Test Error</button>
-                    </div>
-                  </div>
                 </div>
 
                 <!-- Section 4: Turn Off Shopify -->
@@ -5814,13 +5795,6 @@
                     </a>
                   </div>
 
-                  <!-- Demo Controls -->
-                  <div class="pixel-demo-controls">
-                    <div class="pixel-demo-controls-label">Demo Controls (preview version)</div>
-                    <div class="pixel-demo-controls-buttons">
-                      <button class="pixel-demo-btn demo-version-btn active" onclick="resetTikTokForm()">Reset</button>
-                    </div>
-                  </div>
                 </div>
 
                 <!-- Section 5: What's Next -->
@@ -5866,60 +5840,23 @@
                     </div>
                   </div>
 
-                  <!-- Demo Controls -->
-                  <div class="pixel-demo-controls">
-                    <div class="pixel-demo-controls-label">Demo Controls (preview version)</div>
-                    <div class="pixel-demo-controls-buttons">
-                      <button class="pixel-demo-btn demo-version-btn active" onclick="resetTikTokForm()">Reset</button>
-                      <button class="pixel-demo-btn demo-version-btn" onclick="replayTikTokConfetti()">Replay Confetti</button>
-                    </div>
-                  </div>
                 </div>
-              </div>
 
-              <div class="wizard-footer">
-                <button class="wizard-btn wizard-btn-secondary" onclick="navigateToStep('5')">Back</button>
-                <button class="wizard-btn wizard-btn-primary" onclick="showTikTokSection('tiktok-credentials-section')">I've Added the Partner</button>
+            <!-- Demo Controls (global for TikTok) -->
+            <div class="pixel-demo-controls">
+              <div class="pixel-demo-controls-label">Demo Controls (preview version)</div>
+              <div class="pixel-demo-controls-buttons" id="tiktok-demo-buttons">
+                <button class="pixel-demo-btn" onclick="resetTikTokForm()">Reset</button>
+                <!-- Phase-specific buttons swapped by showTikTokSection() -->
               </div>
             </div>
-
-            <!-- Explanation Panel -->
-            <div class="explanation-panel" data-explanation="5-tiktok">
-              <div class="explanation-content">
-                <span class="explanation-label">TikTok</span>
-                <h3 class="explanation-title">Connect to TikTok</h3>
-                <p class="explanation-body">
-                  Connecting to TikTok allows Popsixle to send server-side conversion data directly to your TikTok Pixel, improving attribution accuracy and campaign optimization.
-                </p>
-                <div class="faq-section">
-                  <div class="faq-item">
-                    <div class="faq-question">Why do I need to add Popsixle as a partner?</div>
-                    <div class="faq-answer">TikTok requires partner authorization before external systems can send events to your Pixel. This is a security measure to protect your ad account.</div>
-                  </div>
-                  <div class="faq-item">
-                    <div class="faq-question">Where do I find my TikTok Business Center?</div>
-                    <div class="faq-answer">Go to business.tiktok.com and sign in with the account that manages your TikTok Ads.</div>
-                  </div>
-                  <div class="faq-item">
-                    <div class="faq-question">What permission level does Popsixle need?</div>
-                    <div class="faq-answer">Popsixle needs "Manage" permission on your Events Manager asset to send conversion events.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="assistance-card">
-                <div class="assistance-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                  </svg>
-                </div>
-                <div class="assistance-content">
-                  <h4>Setup Assistance</h4>
-                  <p>Need help? Watch our TikTok setup video or contact support.</p>
-                  <a href="#" class="assistance-link">Watch TikTok Setup Overview →</a>
-                </div>
-              </div>
+          </div>
+          <div class="wizard-footer" id="tiktok-wizard-footer">
+            <div class="wizard-footer-left">
+              <button type="button" class="wizard-btn wizard-btn-secondary" id="tiktok-back-btn" onclick="navigateToStep('5')">Back</button>
+            </div>
+            <div class="wizard-footer-right">
+              <button type="button" class="wizard-btn wizard-btn-primary" id="tiktok-continue-btn" onclick="showTikTokSection('tiktok-credentials-section')">I've Added the Partner</button>
             </div>
           </div>
         </div>
@@ -7343,7 +7280,7 @@
     function updateTikTokConnectionStep(step) {
       currentTikTokStep = step;
       for (var i = 1; i <= 5; i++) {
-        var stepEl = document.getElementById('tiktok-connection-step-' + i);
+        var stepEl = document.getElementById('tiktok-step-' + i);
         if (stepEl) {
           stepEl.classList.remove('active', 'completed');
           if (i < step) {
@@ -7542,7 +7479,7 @@
 
       // Reset step indicators
       for (var i = 1; i <= 5; i++) {
-        var stepEl = document.getElementById('tiktok-connection-step-' + i);
+        var stepEl = document.getElementById('tiktok-step-' + i);
         if (stepEl) {
           stepEl.classList.remove('active', 'completed');
           if (i === 1) stepEl.classList.add('active');
@@ -7885,11 +7822,11 @@
         resetTikTokForm();
         showTikTokSection('tiktok-partner-section');
         // Reset TikTok connection steps
-        var ts1 = document.getElementById('tiktok-connection-step-1');
-        var ts2 = document.getElementById('tiktok-connection-step-2');
-        var ts3 = document.getElementById('tiktok-connection-step-3');
-        var ts4 = document.getElementById('tiktok-connection-step-4');
-        var ts5 = document.getElementById('tiktok-connection-step-5');
+        var ts1 = document.getElementById('tiktok-step-1');
+        var ts2 = document.getElementById('tiktok-step-2');
+        var ts3 = document.getElementById('tiktok-step-3');
+        var ts4 = document.getElementById('tiktok-step-4');
+        var ts5 = document.getElementById('tiktok-step-5');
         if (ts1) { ts1.classList.add('active'); ts1.classList.remove('completed'); }
         if (ts2) { ts2.classList.remove('active', 'completed'); }
         if (ts3) { ts3.classList.remove('active', 'completed'); }
