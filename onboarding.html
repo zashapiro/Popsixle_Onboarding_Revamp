@@ -4094,6 +4094,70 @@
       background: #166FE5;
     }
 
+    /* Google Sign-in Button (Google brand guidelines) */
+    .google-signin-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 24px;
+      background: #fff;
+      border: 1px solid #747775;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1F1F1F;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .google-signin-btn:hover { background: #F2F2F2; }
+    .google-signin-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Google Error Alert */
+    .google-error-alert {
+      display: flex;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      border-radius: 8px;
+      margin-top: 16px;
+    }
+    .google-error-alert-icon { flex-shrink: 0; padding-top: 1px; }
+    .google-error-alert-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #991B1B;
+      margin-bottom: 4px;
+    }
+    .google-error-alert-body {
+      font-size: 13px;
+      color: #7F1D1D;
+      line-height: 1.5;
+    }
+    .google-error-alert-body a {
+      color: #991B1B;
+      text-decoration: underline;
+    }
+    .google-error-retry {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 6px 14px;
+      background: white;
+      border: 1px solid #FECACA;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #991B1B;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .google-error-retry:hover { background: #FEF2F2; }
+
   </style>
 </head>
 <body>
@@ -4322,6 +4386,29 @@
                 <div class="wizard-step-content">
                   <span class="wizard-step-title">Enable reporting</span>
                   <span class="wizard-step-optional">(optional)</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- Google Connection Steps (shown when on Google form) -->
+          <div class="connection-steps-list" id="google-connection-steps-list" style="display: none;">
+            <ul class="wizard-step-list">
+              <li class="wizard-step-item active" id="google-step-1">
+                <span class="wizard-step-number">1</span>
+                <div class="wizard-step-content">
+                  <span class="wizard-step-title">Connect account</span>
+                </div>
+              </li>
+              <li class="wizard-step-item" id="google-step-2">
+                <span class="wizard-step-number">2</span>
+                <div class="wizard-step-content">
+                  <span class="wizard-step-title">Set up tracking</span>
+                </div>
+              </li>
+              <li class="wizard-step-item" id="google-step-3">
+                <span class="wizard-step-number">3</span>
+                <div class="wizard-step-content">
+                  <span class="wizard-step-title">What's next</span>
                 </div>
               </li>
             </ul>
@@ -5057,6 +5144,191 @@
             </div>
           </div>
         </div>
+
+        <!-- Step 5-Google: Google Ads Connection Form -->
+        <div class="step-panel" data-step="5-google">
+          <div class="wizard-content-header" style="position: relative;">
+            <!-- Status Badge - Top Right of Header -->
+            <div class="connection-test-badge status-pending" id="google-test-badge">
+              <span class="status-dot"></span>
+              <span class="status-text">Not Connected</span>
+            </div>
+            <h1>Connect to Google Ads</h1>
+            <p style="color: #1E293B;">Send your conversion data to Google to improve your ad targeting and campaign performance</p>
+            <!-- Help Link - below header -->
+            <a href="https://info.popsixle.com/knowledge/adding-a-popsixle-google-data-connection" target="_blank" class="channel-form-help-link" style="margin-top: 12px;">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+              Need help? Read our step-by-step guide
+            </a>
+          </div>
+          <div class="wizard-content-body">
+            <!-- Data Flow Visual - Single Channel -->
+            <div class="channel-connect-flow">
+              <div class="flow-source">
+                <div class="flow-node shopify">
+                  <img src="assets/Shopify_Logo.png" alt="Shopify">
+                </div>
+                <span class="flow-node-label">Your Store</span>
+              </div>
+              <svg class="flow-line-svg" width="48" height="20">
+                <path class="dashed-line green" d="M 0,10 L 48,10" />
+              </svg>
+              <div class="flow-hub">
+                <div class="flow-node popsixle">
+                  <img src="popsixle_logo_gradient_circle_500 (1).png" alt="Popsixle">
+                </div>
+                <span class="flow-node-label">Popsixle Pixel</span>
+              </div>
+              <svg class="flow-line-svg" width="48" height="20">
+                <path class="dashed-line" style="stroke: #4285F4; stroke-width: 3; stroke-dasharray: 12, 10; fill: none; stroke-linecap: round;" d="M 0,10 L 48,10" />
+              </svg>
+              <div class="flow-destination">
+                <div class="flow-node" style="border: 2px solid #4285F4; background: white;">
+                  <svg width="40" height="40" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 1: Account ID + OAuth -->
+            <div class="google-connect-section" id="google-connect-section">
+              <div class="channel-form-container">
+                <!-- Account ID Card -->
+                <div class="channel-connect-card">
+                  <label class="channel-form-label">Enter your Google Ads Account ID</label>
+                  <div class="channel-form-helper">
+                    Found in Google Ads: click the Settings gear icon, then Account Settings. Your Customer ID is displayed at the top of the page.
+                  </div>
+                  <input type="text" id="google-account-id" class="channel-form-input" placeholder="Paste your Account ID (xxx-xxx-xxxx)">
+                  <div class="channel-form-hint">Format: xxx-xxx-xxxx (10 digits with dashes)</div>
+                  <div class="channel-form-error">Please enter a valid Google Ads Account ID</div>
+                </div>
+
+                <!-- Google OAuth Card -->
+                <div class="channel-connect-card">
+                  <label class="channel-form-label">Authenticate with Google</label>
+                  <div class="channel-form-helper">
+                    Sign in with your Google account to authorize Popsixle to send conversion data to your Google Ads account.
+                  </div>
+                  <button type="button" class="google-signin-btn" id="google-signin-btn" onclick="startGoogleOAuth()">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Sign in with Google
+                  </button>
+                  <!-- OAuth Error (hidden by default) -->
+                  <div class="google-error-alert" id="google-oauth-error" style="display: none;">
+                    <div class="google-error-alert-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#DC2626" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+                    </div>
+                    <div class="google-error-alert-content">
+                      <div class="google-error-alert-title">Unable to connect your Google account</div>
+                      <div class="google-error-alert-body">The sign-in window was closed or access wasn't granted. Popsixle needs permission to send conversion data to your Google Ads account.</div>
+                      <button type="button" class="google-error-retry" onclick="retryGoogleOAuth()">Try again</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 2: Create Conversion Action (shown after OAuth success) -->
+            <div class="google-conversion-section" id="google-conversion-section" style="display: none;">
+              <div class="channel-form-container">
+                <div class="channel-connect-card">
+                  <label class="channel-form-label">Set up conversion tracking</label>
+                  <div class="channel-form-helper">
+                    Popsixle needs a conversion action in your Google Ads account to send purchase data. It starts as Secondary (reporting-only) so your existing campaigns won't be affected.
+                  </div>
+                  <button type="button" class="wizard-btn wizard-btn-primary" id="google-create-conversion-btn" onclick="createGoogleConversionAction()" style="margin-top: 12px;">
+                    Create Conversion Action
+                  </button>
+                  <!-- Conversion Action Error (hidden by default) -->
+                  <div class="google-error-alert" id="google-conversion-error" style="display: none;">
+                    <div class="google-error-alert-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#DC2626" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+                    </div>
+                    <div class="google-error-alert-content">
+                      <div class="google-error-alert-title">Couldn't create conversion action</div>
+                      <div class="google-error-alert-body">The connected Google account doesn't have the right permissions. You need <strong>Standard</strong> or <strong>Admin</strong> access to the Google Ads account to create conversion actions. <a href="https://support.google.com/google-ads/answer/9978556" target="_blank">Learn about access levels</a></div>
+                      <button type="button" class="google-error-retry" onclick="retryGoogleConversionAction()">Try again</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 3: Verify Connection (shown after conversion action created) -->
+            <div class="google-verify-section" id="google-verify-section" style="display: none;">
+              <div class="channel-form-container">
+                <div class="channel-connect-card">
+                  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#10B981" style="width: 24px; height: 24px;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <label class="channel-form-label" style="margin: 0;">Connection Verified</label>
+                  </div>
+                  <div class="channel-form-helper">
+                    Your Google Ads account is now connected and a Purchase conversion action has been created. Popsixle will automatically start sending conversion data within approximately 6 hours.
+                  </div>
+                </div>
+
+                <div class="channel-connect-card">
+                  <label class="channel-form-label">What to expect</label>
+                  <div class="channel-form-helper">
+                    Google Ads needs approximately 6 hours to propagate your new conversion action. After that, Popsixle will automatically begin sending server events — no action needed from you.
+                  </div>
+                  <div class="channel-form-helper" style="margin-top: 8px;">
+                    To confirm data is flowing, check Google Ads tomorrow: go to Goals, then Conversions, and look for "purchase-popsixle-yourstore" with Secondary status.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 4: What's Next (shown after verify) -->
+            <div class="google-whatsnext-section" id="google-whatsnext-section" style="display: none;">
+              <div class="channel-form-container">
+                <div class="channel-connect-card">
+                  <label class="channel-form-label">Secondary to primary</label>
+                  <div class="channel-form-helper">
+                    Your Popsixle conversion action starts as Secondary (reporting-only), running alongside your existing Google Ads tracking. After 2 or more weeks and at least 20-30 tracked conversions, you can upgrade it to Primary status for maximum attribution accuracy.
+                  </div>
+                </div>
+
+                <div class="channel-connect-card">
+                  <label class="channel-form-label">Monitor your performance</label>
+                  <div class="channel-form-helper">
+                    Check your Google Ads Conversions page to compare Popsixle-attributed conversions against your existing tracking. Look for improved match rates and conversion counts.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Demo Controls -->
+            <div class="pixel-demo-controls">
+              <div class="pixel-demo-controls-label">Demo Controls (preview version)</div>
+              <div class="pixel-demo-controls-buttons" id="google-demo-buttons">
+                <button class="pixel-demo-btn" onclick="resetGoogleForm()">Reset</button>
+                <!-- Phase-specific buttons swapped by showGoogleSection() -->
+              </div>
+            </div>
+          </div>
+          <div class="wizard-footer" id="google-wizard-footer">
+            <div class="wizard-footer-left">
+              <button type="button" class="wizard-btn wizard-btn-secondary" id="google-back-btn">Back</button>
+            </div>
+            <div class="wizard-footer-right">
+              <button type="button" class="wizard-btn wizard-btn-primary" id="google-continue-btn" style="display: none;" onclick="navigateGoogleStep('next')">Continue</button>
+              <button type="button" class="wizard-btn wizard-btn-primary" id="google-done-btn" style="display: none;" onclick="completeChannelConnection('google')">Done — Return to Channels</button>
+            </div>
+          </div>
+        </div>
       </main>
 
       <!-- Right Side Container (Explanation + Assistance) -->
@@ -5312,6 +5584,85 @@
           </div>
         </div>
 
+        <!-- Step 5-Google: Google Ads Connection Explanation -->
+        <div class="explanation-content" data-explanation="5-google">
+          <div class="explanation-header">
+            <div class="explanation-label">Google Ads</div>
+            <h3 class="explanation-title">Connect to Google Ads</h3>
+          </div>
+          <div class="explanation-body">
+            <p>Connecting to Google Ads allows Popsixle to send conversion data directly to your ad account, improving campaign optimization and attribution accuracy.</p>
+          </div>
+          <div class="explanation-section">
+            <div class="explanation-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+              Common Questions
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Where do I find my Ad Account ID?</div>
+              <div class="faq-answer">In Google Ads, click the Settings gear icon, then Account Settings. Your Customer ID is at the top of the page.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Do I need admin access?</div>
+              <div class="faq-answer">Yes, you need admin or standard access to the Google Ads account to authorize the connection.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">What is the conversion action?</div>
+              <div class="faq-answer">A Purchase conversion action in Google Ads that receives data from Popsixle. It starts as Secondary (reporting-only) so it won't disrupt your existing tracking.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5-Google-Verify: Verify Connection Explanation -->
+        <div class="explanation-content" data-explanation="5-google-verify">
+          <div class="explanation-header">
+            <div class="explanation-label">Google Ads</div>
+            <h3 class="explanation-title">Verify Your Connection</h3>
+          </div>
+          <div class="explanation-body">
+            <p>Popsixle has created a conversion action and will automatically begin sending data after the 6-hour propagation window. No manual toggle required.</p>
+          </div>
+          <div class="explanation-section">
+            <div class="explanation-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+              Common Questions
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">How long until I see data in Google Ads?</div>
+              <div class="faq-answer">The conversion action appears immediately, but event data takes approximately 6 hours to begin flowing. Full attribution data within 24-48 hours.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">What if I see "Needs Action" in Google Ads?</div>
+              <div class="faq-answer">This can appear briefly during the 6-hour propagation window. If it persists after 24 hours, contact support@popsixle.com.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5-Google-WhatsNext: What's Next Explanation -->
+        <div class="explanation-content" data-explanation="5-google-whatsnext">
+          <div class="explanation-header">
+            <div class="explanation-label">Google Ads</div>
+            <h3 class="explanation-title">What's Next</h3>
+          </div>
+          <div class="explanation-body">
+            <p>Your Google Ads connection is active. Here's what to expect in the coming weeks.</p>
+          </div>
+          <div class="explanation-section">
+            <div class="explanation-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+              Common Questions
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">When should I switch to primary?</div>
+              <div class="faq-answer">After 2+ weeks of running side-by-side with at least 20-30 conversions tracked, once you've confirmed Popsixle matches or exceeds your current attribution accuracy.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Can I disconnect later?</div>
+              <div class="faq-answer">Yes, from your Popsixle dashboard under Channel Settings.</div>
+            </div>
+          </div>
+        </div>
+
       </aside>
 
         <!-- Setup Assistance Card (persistent across all steps) -->
@@ -5325,7 +5676,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
             </svg>
-            Meta Setup Overview
+            <span id="assistance-video-text">Meta Setup Overview</span>
           </a>
           <a href="#" class="assistance-card-link">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -5529,6 +5880,7 @@
     const totalSteps = 5; // Steps 1-5 (not counting Overview)
     let currentChannelStep = null; // Track channel sub-step (e.g., "5-meta")
     let currentMetaStep = 1; // Track Meta sub-step: 1=credentials, 2=testing, 3=data-sharing
+    let currentGoogleStep = 1; // Track Google sub-step: 1=connect, 2=verify, 3=whatsnext
 
     // Start trial - transition to wizard
     document.getElementById('start-trial-btn').addEventListener('click', function() {
@@ -5599,7 +5951,7 @@
     // Navigation button handlers
     document.querySelectorAll('.wizard-btn-primary').forEach(btn => {
       // Skip buttons that have their own onclick handlers OR are inside channel connection UI
-      if (btn.hasAttribute('onclick') || btn.closest('[data-step="5-meta"]')) return;
+      if (btn.hasAttribute('onclick') || btn.closest('[data-step="5-meta"]') || btn.closest('[data-step="5-google"]')) return;
 
       btn.addEventListener('click', function() {
         if (currentStep < totalSteps) {
@@ -5613,7 +5965,7 @@
 
     document.querySelectorAll('.wizard-btn-secondary').forEach(btn => {
       // Skip buttons inside channel connection UI
-      if (btn.closest('[data-step="5-meta"]')) return;
+      if (btn.closest('[data-step="5-meta"]') || btn.closest('[data-step="5-google"]')) return;
 
       btn.addEventListener('click', function() {
         if (currentStep > 0) {
@@ -5956,6 +6308,281 @@
       updateExplanationPanel('5-meta');
     }
 
+    // ============================================
+    // GOOGLE ADS CONNECTION FUNCTIONS
+    // ============================================
+
+    function showGoogleTestStatus(status) {
+      var badge = document.getElementById('google-test-badge');
+      if (!badge) return;
+      var statusText = badge.querySelector('.status-text');
+
+      badge.classList.remove('status-pending', 'status-testing', 'status-success', 'status-failed');
+
+      switch(status) {
+        case 'pending':
+          badge.classList.add('status-pending');
+          statusText.textContent = 'Not Connected';
+          break;
+        case 'testing':
+          badge.classList.add('status-testing');
+          statusText.textContent = 'Connecting...';
+          break;
+        case 'success':
+          badge.classList.add('status-success');
+          statusText.textContent = 'Connected';
+          break;
+        case 'failed':
+          badge.classList.add('status-failed');
+          statusText.textContent = 'Connection Failed';
+          break;
+      }
+    }
+
+    function updateGoogleConnectionStep(step) {
+      currentGoogleStep = step;
+
+      var gs1 = document.getElementById('google-step-1');
+      var gs2 = document.getElementById('google-step-2');
+      var gs3 = document.getElementById('google-step-3');
+
+      [gs1, gs2, gs3].forEach(function(s) {
+        if (s) s.classList.remove('active', 'completed');
+      });
+
+      if (step >= 1 && gs1) gs1.classList.add(step > 1 ? 'completed' : 'active');
+      if (step >= 2 && gs2) gs2.classList.add(step > 2 ? 'completed' : 'active');
+      if (step >= 3 && gs3) gs3.classList.add('active');
+    }
+
+    function showGoogleSection(sectionId) {
+      // Hide all Google sections
+      var sections = ['google-connect-section', 'google-conversion-section', 'google-verify-section', 'google-whatsnext-section'];
+      sections.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+
+      // Show requested section
+      var target = document.getElementById(sectionId);
+      if (target) target.style.display = 'block';
+
+      // Update footer buttons
+      var continueBtn = document.getElementById('google-continue-btn');
+      var doneBtn = document.getElementById('google-done-btn');
+
+      if (continueBtn) continueBtn.style.display = (sectionId === 'google-verify-section') ? 'inline-flex' : 'none';
+      if (doneBtn) doneBtn.style.display = (sectionId === 'google-whatsnext-section') ? 'inline-flex' : 'none';
+
+      // Swap demo controls per section
+      var demoBtns = document.getElementById('google-demo-buttons');
+      if (demoBtns) {
+        var resetBtn = '<button class="pixel-demo-btn" onclick="resetGoogleForm()">Reset</button>';
+        var demoMap = {
+          'google-connect-section': resetBtn + '<button class="pixel-demo-btn" onclick="simulateGoogleOAuth()">After OAuth</button><button class="pixel-demo-btn" onclick="simulateGoogleOAuthError()">OAuth Error</button>',
+          'google-conversion-section': resetBtn + '<button class="pixel-demo-btn" onclick="simulateGoogleFullConnect()">Full Connect</button><button class="pixel-demo-btn" onclick="simulateGoogleConversionError()">Permission Error</button>',
+          'google-verify-section': resetBtn,
+          'google-whatsnext-section': resetBtn
+        };
+        demoBtns.innerHTML = demoMap[sectionId] || resetBtn;
+      }
+    }
+
+    function startGoogleOAuth() {
+      var accountId = document.getElementById('google-account-id').value.trim();
+      if (!accountId) {
+        document.getElementById('google-account-id').classList.add('error');
+        return;
+      }
+      document.getElementById('google-account-id').classList.remove('error');
+
+      // Disable button, show loading
+      var signinBtn = document.getElementById('google-signin-btn');
+      if (signinBtn) {
+        signinBtn.disabled = true;
+        signinBtn.innerHTML = '<svg style="width:20px;height:20px;animation:spin 1s linear infinite" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle style="opacity:0.25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path style="opacity:0.75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Connecting...';
+      }
+
+      showGoogleTestStatus('testing');
+
+      // Simulate OAuth return after delay
+      setTimeout(function() {
+        showGoogleTestStatus('success');
+        showGoogleSection('google-conversion-section');
+      }, 1500);
+    }
+
+    function createGoogleConversionAction() {
+      var btn = document.getElementById('google-create-conversion-btn');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Creating...';
+      }
+
+      setTimeout(function() {
+        if (btn) {
+          btn.textContent = 'Conversion action created';
+          btn.style.background = '#10B981';
+          btn.style.color = '#fff';
+        }
+
+        // Advance to verify step
+        updateGoogleConnectionStep(2);
+        updateExplanationPanel('5-google-verify');
+
+        setTimeout(function() {
+          showGoogleSection('google-verify-section');
+        }, 800);
+      }, 1200);
+    }
+
+    function navigateGoogleStep(direction) {
+      if (direction === 'next') {
+        if (currentGoogleStep === 2) {
+          // Move from verify to what's next
+          currentGoogleStep = 3;
+          updateGoogleConnectionStep(3);
+          showGoogleSection('google-whatsnext-section');
+          updateExplanationPanel('5-google-whatsnext');
+        }
+      }
+    }
+
+    function resetGoogleForm() {
+      currentGoogleStep = 1;
+      showGoogleTestStatus('pending');
+
+      // Reset section visibility
+      showGoogleSection('google-connect-section');
+
+      // Reset connection steps
+      updateGoogleConnectionStep(1);
+
+      // Reset sign-in button
+      var signinBtn = document.getElementById('google-signin-btn');
+      if (signinBtn) {
+        signinBtn.disabled = false;
+        signinBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Sign in with Google';
+      }
+
+      // Reset conversion action button
+      var convBtn = document.getElementById('google-create-conversion-btn');
+      if (convBtn) {
+        convBtn.disabled = false;
+        convBtn.textContent = 'Create Conversion Action';
+        convBtn.style.background = '';
+        convBtn.style.color = '';
+      }
+
+      // Reset account ID input
+      var accountInput = document.getElementById('google-account-id');
+      if (accountInput) {
+        accountInput.value = '';
+        accountInput.classList.remove('error');
+      }
+
+      // Hide error alerts
+      var oauthError = document.getElementById('google-oauth-error');
+      var convError = document.getElementById('google-conversion-error');
+      if (oauthError) oauthError.style.display = 'none';
+      if (convError) convError.style.display = 'none';
+
+      // Update explanation
+      updateExplanationPanel('5-google');
+    }
+
+    // Demo controls
+    function simulateGoogleOAuth() {
+      // Pre-fill account ID and jump to Phase 2
+      var accountInput = document.getElementById('google-account-id');
+      if (accountInput) accountInput.value = '123-456-7890';
+      showGoogleTestStatus('success');
+      showGoogleSection('google-conversion-section');
+    }
+
+    function simulateGoogleFullConnect() {
+      var accountInput = document.getElementById('google-account-id');
+      if (accountInput) accountInput.value = '123-456-7890';
+      showGoogleTestStatus('success');
+      updateGoogleConnectionStep(2);
+      showGoogleSection('google-verify-section');
+      updateExplanationPanel('5-google-verify');
+    }
+
+    // Error retry functions
+    function retryGoogleOAuth() {
+      var oauthError = document.getElementById('google-oauth-error');
+      if (oauthError) oauthError.style.display = 'none';
+
+      // Re-enable sign-in button
+      var signinBtn = document.getElementById('google-signin-btn');
+      if (signinBtn) {
+        signinBtn.disabled = false;
+        signinBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Sign in with Google';
+      }
+      showGoogleTestStatus('pending');
+    }
+
+    function retryGoogleConversionAction() {
+      var convError = document.getElementById('google-conversion-error');
+      if (convError) convError.style.display = 'none';
+
+      // Re-enable conversion button
+      var convBtn = document.getElementById('google-create-conversion-btn');
+      if (convBtn) {
+        convBtn.disabled = false;
+        convBtn.textContent = 'Create Conversion Action';
+        convBtn.style.background = '';
+        convBtn.style.color = '';
+      }
+    }
+
+    // Error demo controls
+    function simulateGoogleOAuthError() {
+      var accountInput = document.getElementById('google-account-id');
+      if (accountInput) accountInput.value = '123-456-7890';
+
+      showGoogleTestStatus('failed');
+      showGoogleSection('google-connect-section');
+
+      // Show loading briefly then error
+      var signinBtn = document.getElementById('google-signin-btn');
+      if (signinBtn) {
+        signinBtn.disabled = true;
+        signinBtn.innerHTML = '<svg style="width:20px;height:20px;animation:spin 1s linear infinite" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle style="opacity:0.25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path style="opacity:0.75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Connecting...';
+      }
+
+      setTimeout(function() {
+        showGoogleTestStatus('failed');
+        if (signinBtn) {
+          signinBtn.disabled = true;
+          signinBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Sign in with Google';
+        }
+        var oauthError = document.getElementById('google-oauth-error');
+        if (oauthError) oauthError.style.display = 'flex';
+      }, 800);
+    }
+
+    function simulateGoogleConversionError() {
+      var accountInput = document.getElementById('google-account-id');
+      if (accountInput) accountInput.value = '123-456-7890';
+
+      showGoogleTestStatus('success');
+      showGoogleSection('google-conversion-section');
+
+      // Show the conversion card in error state
+      var convBtn = document.getElementById('google-create-conversion-btn');
+      if (convBtn) {
+        convBtn.disabled = true;
+        convBtn.textContent = 'Create Conversion Action';
+        convBtn.style.background = '';
+        convBtn.style.color = '';
+      }
+
+      var convError = document.getElementById('google-conversion-error');
+      if (convError) convError.style.display = 'flex';
+    }
+
     // Simulate pixel check (for prototype)
     let pixelCheckAttempts = 0;
 
@@ -6195,17 +6822,27 @@
 
       // Update inner sidebar: hide setup steps, show connection steps
       const setupStepsList = document.querySelector('.setup-steps-list');
-      const connectionStepsList = document.getElementById('connection-steps-list');
+      const metaConnectionSteps = document.getElementById('connection-steps-list');
+      const googleConnectionSteps = document.getElementById('google-connection-steps-list');
       const setupStepsHeader = document.querySelector('.setup-steps-header');
 
       if (setupStepsList) setupStepsList.style.display = 'none';
-      if (connectionStepsList) connectionStepsList.style.display = 'block';
+      // Show the correct connection steps list
+      if (metaConnectionSteps) metaConnectionSteps.style.display = (channel === 'meta') ? 'block' : 'none';
+      if (googleConnectionSteps) googleConnectionSteps.style.display = (channel === 'google') ? 'block' : 'none';
 
       // Update header text based on channel
       if (setupStepsHeader) {
         const channelNames = { meta: 'Meta', google: 'Google Ads', tiktok: 'TikTok' };
         setupStepsHeader.querySelector('.setup-steps-title').textContent = `Connect to ${channelNames[channel] || channel}`;
         setupStepsHeader.querySelector('.setup-steps-progress').style.display = 'none';
+      }
+
+      // Update assistance card video text
+      var assistanceVideoText = document.getElementById('assistance-video-text');
+      if (assistanceVideoText) {
+        var videoLabels = { meta: 'Meta Setup Overview', google: 'Google Ads Setup Overview', tiktok: 'TikTok Setup Overview' };
+        assistanceVideoText.textContent = videoLabels[channel] || 'Setup Overview';
       }
 
       // Reset connection steps state (step 1 active, steps 2-4 pending)
@@ -6221,6 +6858,18 @@
       // Reset Meta-specific state when entering Meta form
       if (channel === 'meta') {
         resetMetaForm();
+      }
+
+      // Reset Google-specific state when entering Google form
+      if (channel === 'google') {
+        resetGoogleForm();
+        // Reset Google connection steps
+        var gs1 = document.getElementById('google-step-1');
+        var gs2 = document.getElementById('google-step-2');
+        var gs3 = document.getElementById('google-step-3');
+        if (gs1) { gs1.classList.add('active'); gs1.classList.remove('completed'); }
+        if (gs2) { gs2.classList.remove('active', 'completed'); }
+        if (gs3) { gs3.classList.remove('active', 'completed'); }
       }
     }
 
@@ -6248,16 +6897,24 @@
 
       // Restore inner sidebar: show setup steps, hide connection steps
       const setupStepsList = document.querySelector('.setup-steps-list');
-      const connectionStepsList = document.getElementById('connection-steps-list');
+      const metaConnectionSteps = document.getElementById('connection-steps-list');
+      const googleConnectionSteps = document.getElementById('google-connection-steps-list');
       const setupStepsHeader = document.querySelector('.setup-steps-header');
 
       if (setupStepsList) setupStepsList.style.display = 'block';
-      if (connectionStepsList) connectionStepsList.style.display = 'none';
+      if (metaConnectionSteps) metaConnectionSteps.style.display = 'none';
+      if (googleConnectionSteps) googleConnectionSteps.style.display = 'none';
 
       // Restore header text
       if (setupStepsHeader) {
         setupStepsHeader.querySelector('.setup-steps-title').textContent = 'Setup Steps';
         setupStepsHeader.querySelector('.setup-steps-progress').style.display = '';
+      }
+
+      // Restore assistance card video text
+      var assistanceVideoText = document.getElementById('assistance-video-text');
+      if (assistanceVideoText) {
+        assistanceVideoText.textContent = 'Meta Setup Overview';
       }
 
       // Update flow lines
@@ -6408,6 +7065,12 @@
     const metaBackBtn = document.getElementById('meta-back-btn');
     if (metaBackBtn) {
       metaBackBtn.addEventListener('click', returnToChannelSelection);
+    }
+
+    // Google back button
+    var googleBackBtn = document.getElementById('google-back-btn');
+    if (googleBackBtn) {
+      googleBackBtn.addEventListener('click', returnToChannelSelection);
     }
 
 
@@ -6574,6 +7237,14 @@
     <button type="button" class="debug-btn" onclick="debugGoToMeta(3)">M3. Data Sharing</button>
     <button type="button" class="debug-btn" onclick="debugGoToMeta(4)">M4. Ad Account</button>
     <button type="button" class="debug-btn" onclick="showMetaCelebration()">M5. Celebration</button>
+
+    <div class="debug-panel-header" style="margin-top: 8px;">Google Flow</div>
+    <button type="button" class="debug-btn" onclick="debugGoToGoogle(1)">G1. Connect</button>
+    <button type="button" class="debug-btn" onclick="debugGoToGoogle(2)">G2. Conversion</button>
+    <button type="button" class="debug-btn" onclick="debugGoToGoogle(3)">G3. Verify</button>
+    <button type="button" class="debug-btn" onclick="debugGoToGoogle(4)">G4. What's Next</button>
+    <button type="button" class="debug-btn" onclick="simulateGoogleOAuthError()">G-Err. OAuth</button>
+    <button type="button" class="debug-btn" onclick="simulateGoogleConversionError()">G-Err. Perms</button>
   </div>
 
   <script>
@@ -6643,6 +7314,39 @@
           }
         }, 100);
       }, 50);
+    }
+
+    function debugGoToGoogle(googleStep) {
+      var pricingScreen = document.getElementById('pricing-screen');
+      var wizardScreen = document.getElementById('wizard-screen');
+      if (pricingScreen) pricingScreen.style.display = 'none';
+      if (wizardScreen) wizardScreen.classList.add('active');
+
+      goToStep(5);
+
+      setTimeout(function() {
+        goToChannelStep('google');
+
+        setTimeout(function() {
+          var accountInput = document.getElementById('google-account-id');
+          if (accountInput) accountInput.value = '123-456-7890';
+
+          if (googleStep >= 2) {
+            showGoogleTestStatus('success');
+            showGoogleSection('google-conversion-section');
+          }
+          if (googleStep >= 3) {
+            updateGoogleConnectionStep(2);
+            showGoogleSection('google-verify-section');
+            updateExplanationPanel('5-google-verify');
+          }
+          if (googleStep >= 4) {
+            updateGoogleConnectionStep(3);
+            showGoogleSection('google-whatsnext-section');
+            updateExplanationPanel('5-google-whatsnext');
+          }
+        }, 100);
+      }, 100);
     }
   </script>
 
