@@ -3968,7 +3968,7 @@
       height: 64px;
       background: #F3F4F6;
       border: 1px solid #E2E8F0;
-      border-radius: 16px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -4569,13 +4569,13 @@
               <li class="wizard-step-item active" id="connection-step-1">
                 <span class="wizard-step-number">1</span>
                 <div class="wizard-step-content">
-                  <span class="wizard-step-title">Add credentials</span>
+                  <span class="wizard-step-title">Enter credentials</span>
                 </div>
               </li>
               <li class="wizard-step-item" id="connection-step-2">
                 <span class="wizard-step-number">2</span>
                 <div class="wizard-step-content">
-                  <span class="wizard-step-title">Verify connection</span>
+                  <span class="wizard-step-title">Test connection</span>
                 </div>
               </li>
               <li class="wizard-step-item" id="connection-step-3">
@@ -4640,7 +4640,7 @@
               <li class="wizard-step-item" id="tiktok-step-4">
                 <span class="wizard-step-number">4</span>
                 <div class="wizard-step-content">
-                  <span class="wizard-step-title">Turn off Shopify</span>
+                  <span class="wizard-step-title">Optimize data quality</span>
                 </div>
               </li>
               <li class="wizard-step-item" id="tiktok-step-5">
@@ -5372,6 +5372,52 @@
                 </div>
               </div>
             </div>
+
+            <!-- Section 5: What's Next (shown after Ad Account step) -->
+            <div id="meta-whatsnext-section" style="display: none;">
+              <!-- Success Celebration Banner -->
+              <div class="channel-success-banner">
+                <div class="success-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Meta Connected!</strong>
+                  <p>Your store is now sending conversion data to Meta</p>
+                </div>
+              </div>
+
+              <div class="channel-connect-card">
+                <label class="channel-form-label">What's happening now</label>
+                <div class="channel-form-helper">
+                  Server-side tracking is active. Every conversion event from your store is being sent directly to Meta, bypassing browser blockers and iOS restrictions.
+                </div>
+              </div>
+
+              <div class="channel-connect-card">
+                <label class="channel-form-label">What to expect</label>
+                <div class="channel-form-helper">
+                  Most brands see improved ad performance within 7 days. Take a screenshot of your Event Match Quality (EMQ) in <a href="https://www.facebook.com/events_manager" target="_blank" style="color: #A855F7; font-weight: 600;">Meta Events Manager</a> now so you can track your improvement.
+                </div>
+              </div>
+
+              <!-- Connect Another Channel CTA -->
+              <div class="channel-next-cta">
+                <label class="channel-form-label">Ready to maximize your data coverage?</label>
+                <div class="channel-form-helper">
+                  Connect more channels to improve attribution across all your ad platforms.
+                </div>
+                <div class="cta-buttons">
+                  <button class="wizard-btn wizard-btn-primary" onclick="navigateToStep('5')">
+                    Connect Another Channel
+                  </button>
+                  <button class="wizard-btn wizard-btn-secondary" onclick="navigateToStep('6')">
+                    Finish Setup
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="wizard-footer" id="meta-wizard-footer">
             <div class="wizard-footer-left">
@@ -5392,7 +5438,7 @@
               <span class="status-text">Not Connected</span>
             </div>
             <h1>Connect to Google Ads</h1>
-            <p style="color: #1E293B;">Send your conversion data to Google to improve your ad targeting and campaign performance</p>
+            <p style="color: #1E293B;">Send your conversion data to Google to improve your ad performance</p>
             <!-- Help Link - below header -->
             <a href="https://info.popsixle.com/knowledge/adding-a-popsixle-google-data-connection" target="_blank" class="channel-form-help-link" style="margin-top: 12px;">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -5532,6 +5578,19 @@
             <!-- Phase 4: What's Next (shown after verify) -->
             <div class="google-whatsnext-section" id="google-whatsnext-section" style="display: none;">
               <div class="channel-form-container">
+                <!-- Success Celebration Banner -->
+                <div class="channel-success-banner">
+                  <div class="success-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Google Ads Connected!</strong>
+                    <p>Your store is now sending conversion data to Google Ads</p>
+                  </div>
+                </div>
+
                 <div class="channel-connect-card">
                   <label class="channel-form-label">Secondary to primary</label>
                   <div class="channel-form-helper">
@@ -5543,6 +5602,22 @@
                   <label class="channel-form-label">Monitor your performance</label>
                   <div class="channel-form-helper">
                     Check your Google Ads Conversions page to compare Popsixle-attributed conversions against your existing tracking. Look for improved match rates and conversion counts.
+                  </div>
+                </div>
+
+                <!-- Connect Another Channel CTA -->
+                <div class="channel-next-cta">
+                  <label class="channel-form-label">Ready to maximize your data coverage?</label>
+                  <div class="channel-form-helper">
+                    Connect more channels to improve attribution across all your ad platforms.
+                  </div>
+                  <div class="cta-buttons">
+                    <button class="wizard-btn wizard-btn-primary" onclick="navigateToStep('5')">
+                      Connect Another Channel
+                    </button>
+                    <button class="wizard-btn wizard-btn-secondary" onclick="navigateToStep('6')">
+                      Finish Setup
+                    </button>
                   </div>
                 </div>
               </div>
@@ -5563,7 +5638,7 @@
             </div>
             <div class="wizard-footer-right">
               <button type="button" class="wizard-btn wizard-btn-primary" id="google-continue-btn" style="display: none;" onclick="navigateGoogleStep('next')">Continue</button>
-              <button type="button" class="wizard-btn wizard-btn-primary" id="google-done-btn" style="display: none;" onclick="completeChannelConnection('google')">Done — Return to Channels</button>
+              <button type="button" class="wizard-btn wizard-btn-primary" id="google-done-btn" style="display: none;" onclick="navigateToStep('5')">Connect Another Channel</button>
             </div>
           </div>
         </div>
@@ -5577,7 +5652,7 @@
               <span class="status-text">Not Connected</span>
             </div>
             <h1>Connect to TikTok</h1>
-            <p style="color: #1E293B;">Send your conversion data to TikTok to improve ad targeting and campaign performance</p>
+            <p style="color: #1E293B;">Send your conversion data to TikTok to improve your ad performance</p>
             <a href="https://popsixle.frontkb.com/en/articles/7938177" target="_blank" class="channel-form-help-link" style="margin-top: 12px;">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
@@ -5749,14 +5824,15 @@
 
                 </div>
 
-                <!-- Section 4: Turn Off Shopify -->
+                <!-- Section 4: Optimize Data Quality (Shopify-TikTok CAPI) -->
                 <div id="tiktok-shopify-section" style="display: none;">
                   <div class="channel-connect-card">
                     <label class="channel-form-label">Optimize your data quality</label>
                     <div class="channel-form-helper">
-                      You're connected to TikTok! But there's one important step: Shopify's built-in TikTok connection
-                      sends duplicate events alongside Popsixle, causing TikTok to count each sale twice. This hurts
-                      your attribution accuracy and wastes ad spend.
+                      You're connected to TikTok! But there's one important step: leaving the Shopify CAPI connection on can lead to duplicate events firing in your account and TikTok taking more credit for your purchases than it deserves.
+                    </div>
+                    <div class="channel-form-helper" style="margin-top: 8px;">
+                      The fix is to create a secondary "dummy" pixel for browser events only, then point your Shopify-TikTok connection to it. This lets Popsixle handle all server-side events through your primary pixel.
                     </div>
                   </div>
 
@@ -5767,24 +5843,32 @@
                       <div class="tiktok-step">
                         <span class="tiktok-step-number">1</span>
                         <div class="tiktok-step-content">
-                          <strong>Open your Shopify TikTok settings</strong>
-                          <p>In Shopify Admin, go to <strong>Settings → Apps and sales channels → TikTok</strong></p>
-                          <div class="tiktok-screenshot">
-                            <img src="https://info.popsixle.com/hs-fs/hubfs/image-png-Feb-14-2024-09-43-37-2060-PM.png" alt="Shopify TikTok Settings"
-                                 onerror="this.parentElement.innerHTML = '<div class=\'tiktok-screenshot-placeholder\'>[Screenshot: Shopify → Settings → Apps and sales channels → TikTok]</div>';">
-                          </div>
+                          <strong>Create a new TikTok Pixel</strong>
+                          <p>In <a href="https://ads.tiktok.com" target="_blank">ads.tiktok.com</a>, go to <strong>Tools → Events</strong>, click the <strong>+</strong> button to "Connect New Data Source", and set it up as a standard browser pixel. Name it something like <strong>"Shopify-Browser-Events-Only"</strong>.</p>
                         </div>
                       </div>
 
                       <div class="tiktok-step">
                         <span class="tiktok-step-number">2</span>
                         <div class="tiktok-step-content">
-                          <strong>Disconnect your pixel</strong>
-                          <p>Click <strong>Disconnect</strong> to stop Shopify from sending duplicate events to TikTok.</p>
-                          <div class="tiktok-screenshot">
-                            <img src="https://info.popsixle.com/hs-fs/hubfs/image-png-Feb-14-2024-09-45-27-5993-PM.png" alt="Disconnect TikTok Pixel"
-                                 onerror="this.parentElement.innerHTML = '<div class=\'tiktok-screenshot-placeholder\'>[Screenshot: Click Disconnect to remove pixel]</div>';">
-                          </div>
+                          <strong>Disconnect your current pixel from Shopify</strong>
+                          <p>In Shopify Admin, go to <strong>Sales Channels → TikTok → Settings → Data Sharing</strong>. Find your current connected pixel and click <strong>Disconnect</strong>.</p>
+                        </div>
+                      </div>
+
+                      <div class="tiktok-step">
+                        <span class="tiktok-step-number">3</span>
+                        <div class="tiktok-step-content">
+                          <strong>Connect the dummy pixel</strong>
+                          <p>Connect your new "Shopify-Browser-Events-Only" pixel to the Shopify TikTok sales channel. The configuration setting (Standard, Enhanced, or Maximum) doesn't matter for this pixel.</p>
+                        </div>
+                      </div>
+
+                      <div class="tiktok-step">
+                        <span class="tiktok-step-number">4</span>
+                        <div class="tiktok-step-content">
+                          <strong>Let us know you're done</strong>
+                          <p>Contact <a href="mailto:success@popsixle.com">success@popsixle.com</a> to confirm the adjustment was completed. We'll verify everything is working correctly.</p>
                         </div>
                       </div>
                     </div>
@@ -6063,7 +6147,7 @@
         <div class="explanation-content" data-explanation="5-meta-datasharing">
           <div class="explanation-header">
             <div class="explanation-label">Step 5</div>
-            <h3 class="explanation-title">Disable Data Sharing</h3>
+            <h3 class="explanation-title">Optimize Your Data Quality</h3>
           </div>
           <div class="explanation-body">
             <p>Popsixle sends both browser and server-side events to Meta, so Shopify's native Meta connection is no longer needed.</p>
@@ -6111,6 +6195,31 @@
             <div class="faq-item">
               <div class="faq-question">Can I use a personal ad account?</div>
               <div class="faq-answer">No. Popsixle requires a Business account. Contact support if you need help setting one up.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5-Meta-WhatsNext: What's Next Explanation -->
+        <div class="explanation-content" data-explanation="5-meta-whatsnext">
+          <div class="explanation-header">
+            <div class="explanation-label">Meta</div>
+            <h3 class="explanation-title">What's Next</h3>
+          </div>
+          <div class="explanation-body">
+            <p>Your Meta connection is active. Here's what to expect in the coming weeks.</p>
+          </div>
+          <div class="explanation-section">
+            <div class="explanation-section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+              Common Questions
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">When will I see improved results?</div>
+              <div class="faq-answer">Most brands see improved Event Match Quality within 7 days. Monitor your EMQ score in Meta Events Manager to track progress.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Can I disconnect Popsixle later?</div>
+              <div class="faq-answer">Yes, from your Popsixle dashboard under Channel Settings.</div>
             </div>
           </div>
         </div>
@@ -6281,10 +6390,10 @@
         <div class="explanation-content" data-explanation="5-tiktok-shopify">
           <div class="explanation-header">
             <div class="explanation-label">TikTok</div>
-            <h3 class="explanation-title">Turn Off Shopify Connection</h3>
+            <h3 class="explanation-title">Optimize Your Data Quality</h3>
           </div>
           <div class="explanation-body">
-            <p>Popsixle sends both browser and server-side events to TikTok, so Shopify's native TikTok connection is no longer needed.</p>
+            <p>Leaving the Shopify CAPI connection on leads to duplicate events and TikTok over-attributing conversions. Creating a "dummy" pixel for browser events keeps things clean while Popsixle handles server-side tracking.</p>
           </div>
           <div class="explanation-section">
             <div class="explanation-section-title">
@@ -6292,12 +6401,16 @@
               Common Questions
             </div>
             <div class="faq-item">
-              <div class="faq-question">Why disconnect Shopify's TikTok integration?</div>
-              <div class="faq-answer">Shopify's built-in TikTok connection sends duplicate events alongside Popsixle, which causes TikTok to count each sale twice and hurts your attribution accuracy.</div>
+              <div class="faq-question">Why can't I just disconnect and leave it?</div>
+              <div class="faq-answer">Fully disconnecting the TikTok sales channel from Shopify can cause issues. Using a dummy pixel preserves the connection while preventing duplicate server events.</div>
             </div>
             <div class="faq-item">
               <div class="faq-question">What if I skip this step?</div>
               <div class="faq-answer">TikTok will receive duplicate events from both Shopify and Popsixle, which inflates your conversion counts and wastes ad spend on over-attributed conversions.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Does the dummy pixel configuration matter?</div>
+              <div class="faq-answer">No. Whether you set it to Standard, Enhanced, or Maximum doesn't matter — it's only there to keep the Shopify-TikTok connection alive without sending server events.</div>
             </div>
           </div>
         </div>
@@ -6523,10 +6636,10 @@
       <!-- CTAs -->
       <div class="meta-celebration-actions">
         <button type="button" class="wizard-btn wizard-btn-primary" onclick="closeMetaCelebration()" style="width: 100%;">
-          Connect More Channels
+          Connect Another Channel
         </button>
         <button type="button" class="wizard-btn wizard-btn-secondary" onclick="closeMetaCelebrationToDashboard()">
-          Go to Dashboard
+          Finish Setup
         </button>
       </div>
     </div>
@@ -6853,6 +6966,34 @@
       if (metaFooter) metaFooter.style.display = 'none';
 
       updateExplanationPanel('5-meta-adaccount');
+    }
+
+    // Show Meta What's Next step (after Ad Account step)
+    function showMetaWhatsNextStep() {
+      const credentialsSection = document.getElementById('meta-credentials-section');
+      const dataSharingSection = document.getElementById('meta-data-sharing-section');
+      const adAccountSection = document.getElementById('meta-ad-account-section');
+      const whatsNextSection = document.getElementById('meta-whatsnext-section');
+      const metaFooter = document.getElementById('meta-wizard-footer');
+
+      if (credentialsSection) credentialsSection.style.display = 'none';
+      if (dataSharingSection) dataSharingSection.style.display = 'none';
+      if (adAccountSection) adAccountSection.style.display = 'none';
+      if (whatsNextSection) whatsNextSection.style.display = 'block';
+      if (metaFooter) metaFooter.style.display = 'none';
+
+      // Update explanation panel
+      updateExplanationPanel('5-meta-whatsnext');
+
+      // Fire confetti
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#A855F7', '#7C3AED', '#EC4899', '#10B981']
+        });
+      }
     }
 
     // Test Meta Connection (called from button onclick)
@@ -7946,9 +8087,9 @@
       // Update dashboard button
       updateDashboardButton();
 
-      // Show celebration modal for Meta, otherwise return to channel selection
+      // Show What's Next section for Meta, otherwise return to channel selection
       if (channel === 'meta') {
-        showMetaCelebration();
+        showMetaWhatsNextStep();
       } else {
         returnToChannelSelection();
       }

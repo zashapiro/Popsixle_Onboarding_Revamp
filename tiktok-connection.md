@@ -53,7 +53,7 @@ Identical to Meta/Google: two-panel layout inside `.wizard-content-area`.
 ```
 
 ### Connection Steps List (Inner Nav)
-**4 steps** (matches Meta complexity due to partner setup + credentials + test + next):
+**5 steps** (partner setup + credentials + test + data quality + next):
 
 ```html
 <div class="connection-steps-list" id="tiktok-connection-steps-list">
@@ -79,6 +79,12 @@ Identical to Meta/Google: two-panel layout inside `.wizard-content-area`.
     <li class="wizard-step-item" id="tiktok-connection-step-4">
       <span class="wizard-step-number">4</span>
       <div class="wizard-step-content">
+        <span class="wizard-step-title">Optimize data quality</span>
+      </div>
+    </li>
+    <li class="wizard-step-item" id="tiktok-connection-step-5">
+      <span class="wizard-step-number">5</span>
+      <div class="wizard-step-content">
         <span class="wizard-step-title">What's next</span>
       </div>
     </li>
@@ -95,7 +101,7 @@ Identical to Meta/Google: two-panel layout inside `.wizard-content-area`.
 ### Header (`.wizard-content-header`)
 - **Status badge** (`.connection-test-badge .status-pending`): "Not Connected"
 - **h1:** "Connect to TikTok"
-- **Description:** "Send your conversion data to TikTok to improve ad targeting and campaign performance"
+- **Description:** "Send your conversion data to TikTok to improve your ad performance"
 - **Help link:** `<a href="https://popsixle.frontkb.com/en/articles/7938177" target="_blank" class="channel-form-help-link">` "Need help? Read our step-by-step guide"
 
 ### Flow Diagram (`.channel-connect-flow`)
@@ -339,71 +345,132 @@ Displayed after credentials are validated.
 
 ---
 
-## Step 4: What's Next
+## Step 4: Optimize Your Data Quality
 
-Educational step with critical data duplication warning.
+Dedicated step to address Shopify-TikTok data duplication. Shown after successful connection test.
+
+**Source:** [How to Turn Off Shopify-TikTok CAPI](https://info.popsixle.com/knowledge/how-to-turn-off-the-shopify-tiktok-capi-connection)
 
 ### Main Content
 - Connection steps list: step 4 highlighted
 - Status badge: "Connected" (green)
 
-**Card 1: Data Duplication Warning (CRITICAL)**
+**Card 1: Why This Matters**
 ```html
-<div class="channel-connect-card tiktok-warning-card">
-  <div style="display: flex; align-items: flex-start; gap: 12px;">
-    <svg class="warning-icon" style="flex-shrink: 0; color: #F59E0B;">
-      <!-- warning triangle icon -->
-    </svg>
-    <div>
-      <label class="channel-form-label" style="color: #B45309;">Important: Avoid Data Duplication</label>
-      <div class="channel-form-helper">
-        If you're using Shopify's built-in TikTok connection, you're likely sending duplicate events.
-        TikTok will count each conversion twice, causing over-attribution and wasted ad spend.
-      </div>
-      <div class="channel-form-helper" style="margin-top: 8px;">
-        <strong>Recommended:</strong> Create a "dummy" pixel in TikTok for browser events only,
-        then update your Shopify-TikTok sales channel to use the dummy pixel. This lets Popsixle
-        handle all server-side events.
-      </div>
-      <a href="https://info.popsixle.com/knowledge/how-to-turn-off-the-shopify-tiktok-capi-connection"
-         target="_blank" class="channel-form-help-link" style="margin-top: 12px; display: inline-block;">
-        Read the full guide →
-      </a>
-    </div>
+<div class="channel-connect-card">
+  <label class="channel-form-label">Optimize your data quality</label>
+  <div class="channel-form-helper">
+    If you're using Shopify's built-in TikTok sales channel, it sends duplicate conversion
+    data alongside Popsixle. To get the most accurate attribution, you'll need to redirect
+    Shopify's TikTok connection to a separate pixel.
   </div>
 </div>
 ```
 
-**Card 2: What to Expect**
+**Card 2: Step-by-Step Instructions (KB-aligned dummy pixel approach)**
 ```html
 <div class="channel-connect-card">
-  <label class="channel-form-label">What to expect</label>
-  <div class="channel-form-helper">
-    Popsixle will now send server-side conversion events to TikTok in real-time.
-    You should start seeing events in your TikTok Events Manager within a few hours.
+  <label class="channel-form-label">Follow these steps</label>
+  <!-- 4 numbered steps matching KB article exactly -->
+  <div class="tiktok-steps-list">
+    <div class="tiktok-step">
+      <span class="tiktok-step-number">1</span>
+      <div class="tiktok-step-content">
+        <strong>Create a new TikTok pixel</strong>
+        <p>In TikTok Events Manager, create a new pixel called "Shopify-Browser-Events-Only".
+           This will be a dummy pixel that only receives browser events from Shopify.</p>
+      </div>
+    </div>
+    <div class="tiktok-step">
+      <span class="tiktok-step-number">2</span>
+      <div class="tiktok-step-content">
+        <strong>Disconnect your real pixel from Shopify</strong>
+        <p>In Shopify Admin → Sales Channels → TikTok, disconnect your current
+           (real) TikTok pixel from the sales channel.</p>
+      </div>
+    </div>
+    <div class="tiktok-step">
+      <span class="tiktok-step-number">3</span>
+      <div class="tiktok-step-content">
+        <strong>Connect the dummy pixel to Shopify</strong>
+        <p>In the same Shopify TikTok sales channel settings, connect the new
+           "Shopify-Browser-Events-Only" pixel instead.</p>
+      </div>
+    </div>
+    <div class="tiktok-step">
+      <span class="tiktok-step-number">4</span>
+      <div class="tiktok-step-content">
+        <strong>Confirm with Popsixle</strong>
+        <p>Email <a href="mailto:success@popsixle.com">success@popsixle.com</a>
+           to confirm the switch. We'll verify your setup is clean.</p>
+      </div>
+    </div>
   </div>
-  <div class="channel-form-helper" style="margin-top: 8px;">
-    Monitor your TikTok Ads reporting over the next 1-2 weeks to compare
-    Popsixle-attributed conversions against your previous tracking.
-  </div>
+  <a href="https://info.popsixle.com/knowledge/how-to-turn-off-the-shopify-tiktok-capi-connection"
+     target="_blank" class="channel-form-help-link" style="margin-top: 12px; display: inline-block;">
+    Read the full guide →
+  </a>
 </div>
 ```
 
 ### Footer
 - Left: "Back" (`.wizard-btn-secondary`)
-- Right: "Done — Return to Channels" (`.wizard-btn-primary`, returns to Step 5 channel select)
+- Right: "I've Done This" (`.wizard-btn-primary`, advances to Step 5 What's Next)
 
-### Demo Controls
+### Explanation Panel (`data-explanation="5-tiktok-shopify"`)
+- **label:** "TikTok"
+- **title:** "Optimize Your Data Quality"
+- **body:** "Shopify's built-in TikTok connection sends duplicate server-side events alongside Popsixle. Redirecting Shopify to a dummy pixel ensures clean attribution."
+- **FAQ:**
+  1. "Why not just disconnect Shopify TikTok entirely?" — "The dummy pixel approach keeps Shopify's browser-side TikTok tracking (like the TikTok pixel on your storefront) while Popsixle handles all server-side events."
+  2. "What if I don't have a Shopify TikTok sales channel?" — "If you never connected TikTok through Shopify, you can skip this step."
+  3. "What does the dummy pixel do?" — "It receives only browser-based events from Shopify (like page views). Popsixle handles all conversion events via server-side API, so there's no overlap."
+
+---
+
+## Step 5: What's Next
+
+Celebration and next steps. Shown after user confirms data quality step.
+
+### Main Content
+- Connection steps list: all steps complete
+- Status badge: "Connected" (green)
+
+**Success Banner**
 ```html
-<button class="pixel-demo-btn demo-version-btn" onclick="resetTikTokForm()">Reset</button>
+<div class="channel-success-banner">
+  <div class="success-icon"><svg><!-- checkmark --></svg></div>
+  <div>
+    <strong>TikTok Connected!</strong>
+    <p>Your store is now sending conversion data to TikTok</p>
+  </div>
+</div>
 ```
+
+**Card 1: What's happening now**
+- Server-side tracking is active, events sent directly to TikTok
+
+**Card 2: What to expect**
+- Most brands see improved results within 1-2 weeks
+- Monitor Events Manager to confirm events are flowing
+
+**Inline CTAs**
+```html
+<div class="channel-next-cta">
+  <button class="wizard-btn wizard-btn-primary" onclick="navigateToStep('5')">Connect Another Channel</button>
+  <button class="wizard-btn wizard-btn-secondary" onclick="navigateToStep('6')">Finish Setup</button>
+</div>
+```
+
+### Footer
+- Empty (CTAs are inline)
 
 ### Explanation Panel (`data-explanation="5-tiktok-whatsnext"`)
 - **label:** "TikTok"
 - **title:** "What's Next"
 - **body:** "Your TikTok connection is active. Here's what to expect in the coming weeks."
 - **FAQ:**
-  1. "Why do I need to turn off Shopify's TikTok connection?" — "Shopify and Popsixle both send server events. Running both causes TikTok to count each conversion twice, inflating your metrics and wasting ad spend."
+  1. "When will I see improved results?" — "TikTok typically needs 1-2 weeks of data to optimize. Monitor your Events Manager to confirm events are flowing correctly."
   2. "Can I disconnect Popsixle later?" — "Yes, from your Popsixle dashboard under Channel Settings."
 
 ---
@@ -415,6 +482,7 @@ Educational step with critical data duplication warning.
 | `5-tiktok` | TikTok | Connect to TikTok | 3 |
 | `5-tiktok-credentials` | TikTok | Enter Your Credentials | 3 |
 | `5-tiktok-test` | TikTok | Test Your Connection | 2 |
+| `5-tiktok-shopify` | TikTok | Optimize Your Data Quality | 3 |
 | `5-tiktok-whatsnext` | TikTok | What's Next | 2 |
 
 ---
@@ -537,7 +605,7 @@ Educational step with critical data duplication warning.
 
 | Function | Purpose |
 |----------|---------|
-| `showTikTokSection(sectionId)` | Navigate between 4 sections + update demo controls |
+| `showTikTokSection(sectionId)` | Navigate between 5 sections + update demo controls |
 | `updateTikTokConnectionStep(step)` | Update connection-steps-list active state |
 | `copyBusinessId()` | Copy Popsixle Business ID to clipboard |
 | `validateTikTokCredentials()` | Validate all 3 credential fields |
@@ -555,17 +623,18 @@ Educational step with critical data duplication warning.
 
 - [ ] Add TikTok logo to `assets/`
 - [ ] Add `data-step="5-tiktok"` panel to `onboarding.html` (after Google panel)
-- [ ] Add 4 explanation panels (`5-tiktok`, `5-tiktok-credentials`, `5-tiktok-test`, `5-tiktok-whatsnext`)
-- [ ] Add TikTok connection-steps-list (4 items)
+- [ ] Add 5 explanation panels (`5-tiktok`, `5-tiktok-credentials`, `5-tiktok-test`, `5-tiktok-shopify`, `5-tiktok-whatsnext`)
+- [ ] Add TikTok connection-steps-list (5 items)
 - [ ] Add ~40 lines CSS (steps list, copy field, error alert, warning card)
 - [ ] Add JS functions for navigation + credential handling + test event
 - [ ] Update channel select card for TikTok to navigate to `5-tiktok` step
 - [ ] Update Setup Assistance card video link text when on TikTok page
 - [ ] Add TikTok to debug panel with buttons for each step
-- [ ] Test: All 4 steps navigate correctly
+- [ ] Test: All 5 steps navigate correctly
 - [ ] Test: Copy Business ID works
 - [ ] Test: Credential validation shows errors
 - [ ] Test: Test event success/error states
 - [ ] Test: Demo controls work for each section
 - [ ] Test: Back button returns to channel select from Step 1
-- [ ] Test: "Done — Return to Channels" returns to channel select
+- [ ] Test: "Connect Another Channel" returns to channel select
+- [ ] Test: "Finish Setup" advances to next onboarding step

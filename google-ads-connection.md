@@ -82,7 +82,7 @@ Same card below explanation panel. Video link changes to "Google Ads Setup Overv
 ### Header (`.wizard-content-header`)
 - **Status badge** (`.connection-test-badge .status-pending`): "Not Connected" (top-right)
 - **h1:** "Connect to Google Ads"
-- **Description:** "Send your conversion data to Google to improve your ad targeting and campaign performance"
+- **Description:** "Send your conversion data to Google to improve your ad performance"
 - **Help link:** `<a href="https://info.popsixle.com/knowledge/adding-a-popsixle-google-data-connection" target="_blank" class="channel-form-help-link">` "Need help? Read our step-by-step guide"
 
 ### Flow Diagram (`.channel-connect-flow`)
@@ -265,13 +265,22 @@ Displayed after conversion action is created. This is a confirmation + education
 
 ## Step 3: What's Next
 
-Educational step. No form inputs.
+Celebration and next steps. No form inputs.
 
 ### Main Content
-- Connection steps list: step 3 highlighted
+- Connection steps list: step 3 highlighted (all steps complete)
 
 ```html
 <div class="google-whatsnext-section" id="google-whatsnext-section">
+  <!-- Success Celebration Banner -->
+  <div class="channel-success-banner">
+    <div class="success-icon"><svg><!-- checkmark --></svg></div>
+    <div>
+      <strong>Google Ads Connected!</strong>
+      <p>Your store is now sending conversion data to Google</p>
+    </div>
+  </div>
+
   <div class="channel-connect-card">
     <label class="channel-form-label">Secondary to primary</label>
     <div class="channel-form-helper">
@@ -290,12 +299,23 @@ Educational step. No form inputs.
       rates and conversion counts.
     </div>
   </div>
+
+  <!-- Inline CTAs -->
+  <div class="channel-next-cta">
+    <label class="channel-form-label">Ready to maximize your data coverage?</label>
+    <div class="channel-form-helper">
+      Connect more channels to improve attribution across all your ad platforms.
+    </div>
+    <div class="cta-buttons">
+      <button class="wizard-btn wizard-btn-primary" onclick="navigateToStep('5')">Connect Another Channel</button>
+      <button class="wizard-btn wizard-btn-secondary" onclick="navigateToStep('6')">Finish Setup</button>
+    </div>
+  </div>
 </div>
 ```
 
 ### Footer
-- Left: "Back" (`.wizard-btn-secondary`)
-- Right: "Done — Return to Channels" (`.wizard-btn-primary`, returns to Step 5 channel select)
+- Empty (CTAs are inline, matching TikTok and Meta pattern)
 
 ### Explanation Panel (`data-explanation="5-google-whatsnext"`)
 - **label:** "Google Ads"
@@ -386,4 +406,5 @@ All follow the same patterns as existing Meta JS functions in `js/wizard.js`.
 - [ ] Test: demo controls (Reset, After OAuth, Full Connect)
 - [ ] Test: all 3 sub-steps navigate correctly via connection-steps-list
 - [ ] Test: Back button returns to channel select
-- [ ] Test: "Done — Return to Channels" returns to channel select
+- [ ] Test: "Connect Another Channel" returns to channel select
+- [ ] Test: "Finish Setup" advances to next onboarding step
